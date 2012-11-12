@@ -1,2 +1,4 @@
 /.sconsign.dblite
 *.xcuserdatad
+/apportable/xcodebuild.out
+/apportable/xcodesettings.out
