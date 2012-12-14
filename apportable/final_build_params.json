@@ -1,155 +1,169 @@
-// THIS IS A GENERATED FILE.  DO NOT EDIT IT DIRECTLY.
-// Instead, edit ./apportable/overridden_params.json
-// This file was generated with the command:
-//      
-
 {
-  "config": {
-    "APPLICATION_IDENTIFIER": "com.apportable.Spin",
-    "SHORT_VERSION": "1.0",
-    "LONG_VERSION": "1.0",
-    "APPLICATION_NAME": "Spin",
-    "APPLICATION_FULL_NAME": "Spin",
-    "MAJOR_VERSION": 1,
-    "MINOR_VERSION": 0,
-    "APPLICATION_DESCRIPTION": "",
-    "APPLICATION_SIZE": "iPhone",
-    "APPLICATION_SIZE_ADJUSTMENT": "stretch",
-    "APPLICATION_CONTENT_SCALE": "match_none",
-    "FEATURES": [
-
-    ],
-    "VENDOR_PREFIX": "",
-    "CRASHDUMP_APP_ID": "",
-    "CRASHDUMP_SECRET": "",
-    "REMOTE_NOTIFICATION_KEY": "",
-    "SPLASH_SCREEN_TYPE": "letterbox",
-    "COMPRESSED_ASSETS_PATTERN": ""
-  },
-  "header_ordering_constraints": [
-
-  ],
-  "pchs": [
-    "Spin/Spin-Prefix.pch"
-  ],
-  "header_paths": [
-    ".",
-    "Spin",
-    "Spin/Shaders",
-    "apportable",
-    "apportable.old",
-    "build",
-    "build/Debug-iphonesimulator",
-    "build/Debug-iphonesimulator/Spin.app",
-    "build/Debug-iphonesimulator/ThisWayIsUp.app",
-    "build/Spin.build",
-    "build/Spin.build/Debug-iphonesimulator",
-    "build/Spin.build/Debug-iphonesimulator/Spin.build",
-    "build/Spin.build/Debug-iphonesimulator/Spin.build/Objects-normal",
-    "build/Spin.build/Debug-iphonesimulator/Spin.build/Objects-normal/i386",
-    "build/ThisWayIsUp.build",
-    "build/ThisWayIsUp.build/Debug-iphonesimulator",
-    "build/ThisWayIsUp.build/Debug-iphonesimulator/ThisWayIsUp.build",
-    "build/ThisWayIsUp.build/Debug-iphonesimulator/ThisWayIsUp.build/Objects-normal",
-    "build/ThisWayIsUp.build/Debug-iphonesimulator/ThisWayIsUp.build/Objects-normal/i386"
-  ],
-  "flags": [
-    "-Wformat",
-    "-Wno-conversion",
-    "-Wno-missing-field-initializers",
-    "-Wno-receiver-is-weak",
-    "-Wno-selector",
-    "-Wno-shadow",
-    "-Wno-sign-conversion",
-    "-Wno-trigraphs",
-    "-Wno-undeclared-selector",
-    "-Wno-unused-function",
-    "-Wno-unused-parameter",
-    "-Wparentheses",
-    "-Wpointer-sign",
-    "-Wprotocol",
-    "-Wreturn-type",
-    "-Wuninitialized",
-    "-Wunused-value",
-    "-fexceptions",
-    "-fmessage-length=0",
-    "-fpascal-strings"
-  ],
-  "defines": {
-    "DEBUG": {
-      "value": "1",
-      "env": {
-      }
+    "xcode_project": "Spin.xcodeproj", 
+    "pchs": [
+        "./Spin/Spin-Prefix.pch"
+    ], 
+    "assets": [
+        {
+            "asset": "Spin/SpinViewController.xib", 
+            "target": null
+        }, 
+        {
+            "asset": "Spin/Default.png", 
+            "target": "Default.png"
+        }, 
+        {
+            "asset": "Spin/Default@2x.png", 
+            "target": "Default@2x.png"
+        }, 
+        {
+            "asset": "Spin/Default-568h@2x.png", 
+            "target": "Default-568h@2x.png"
+        }, 
+        {
+            "asset": "Spin/en.lproj/InfoPlist.strings", 
+            "target": "en.lproj/InfoPlist.strings"
+        }
+    ], 
+    "moms": [], 
+    "config": {
+        "APPLICATION_NAME": "Spin", 
+        "LONG_VERSION": "1.0", 
+        "APPLICATION_IDENTIFIER": "com.apportable.Spin", 
+        "APPLICATION_FULL_NAME": "Spin", 
+        "SHORT_VERSION": "1.0"
+    }, 
+    "header_paths": [
+        {
+            "header_path": "Spin-generated-files.hmap", 
+            "type": "iquote", 
+            "hmap": {}
+        }, 
+        {
+            "header_path": "Spin-own-target-headers.hmap", 
+            "type": "I", 
+            "hmap": {}
+        }, 
+        {
+            "header_path": "Spin-all-target-headers.hmap", 
+            "type": "I", 
+            "hmap": {}
+        }, 
+        {
+            "header_path": "Spin-project-headers.hmap", 
+            "type": "iquote", 
+            "hmap": {
+                "Spin-Prefix.pch": {
+                    "prefix": "Spin/", 
+                    "suffix": "Spin-Prefix.pch", 
+                    "key": "Spin-Prefix.pch"
+                }, 
+                "SpinView.h": {
+                    "prefix": "Spin/", 
+                    "suffix": "SpinView.h", 
+                    "key": "SpinView.h"
+                }, 
+                "SpinViewController.h": {
+                    "prefix": "Spin/", 
+                    "suffix": "SpinViewController.h", 
+                    "key": "SpinViewController.h"
+                }, 
+                "SpinAppDelegate.h": {
+                    "prefix": "Spin/", 
+                    "suffix": "SpinAppDelegate.h", 
+                    "key": "SpinAppDelegate.h"
+                }
+            }
+        }, 
+        {
+            "header_path": ".", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "apportable", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Spin", 
+            "type": "iquote"
+        }
+    ], 
+    "modules": [], 
+    "sources": [
+        {
+            "source": "Spin/main.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Spin/SpinAppDelegate.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Spin/SpinView.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Spin/SpinViewController.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }
+    ], 
+    "flags": [
+        "-DNS_BLOCK_ASSERTIONS=1", 
+        "-fwritable-strings", 
+        {
+            "flag": "-std=gnu++0x", 
+            "type": "c++"
+        }, 
+        "-fasm-blocks", 
+        "-fno-asm", 
+        "-fpascal-strings", 
+        "-Wempty-body", 
+        "-Wno-deprecated-declarations", 
+        "-Wreturn-type", 
+        "-Wswitch", 
+        "-Wparentheses", 
+        "-Wformat", 
+        "-Wuninitialized", 
+        "-Wunused-value", 
+        "-Wunused-variable", 
+        {
+            "flag": "-Winvalid-offsetof", 
+            "type": "c++"
+        }, 
+        {
+            "flag": "-Wprotocol", 
+            "type": "objc"
+        }
+    ], 
+    "infoplists": [
+        "./Spin/Spin-Info.plist"
+    ], 
+    "deps": [
+        "UIKit", 
+        "QuartzCore", 
+        "UIKit", 
+        "Foundation", 
+        "CoreGraphics", 
+        "OpenGLES"
+    ], 
+    "type": "app", 
+    "defines": {
+        "IBOutletCollection(ClassName)": "__attribute__((iboutletcollection(ClassName)))", 
+        "__IPHONE_OS_VERSION_MIN_REQUIRED": 60000, 
+        "IBAction": "void)__attribute__((ibaction)", 
+        "NS_BLOCK_ASSERTIONS": 1, 
+        "IBOutlet": "__attribute__((iboutlet))"
     }
-  },
-  "deps": [
-    "CoreGraphics",
-    "Foundation",
-    "OpenGLES",
-    "QuartzCore",
-    "UIKit"
-  ],
-  "sources": [
-    {
-      "source": "Spin/SpinAppDelegate.m",
-      "flags": [
-
-      ],
-      "defines": {
-      },
-      "env": {
-      }
-    },
-    {
-      "source": "Spin/SpinView.m",
-      "flags": [
-
-      ],
-      "defines": {
-      },
-      "env": {
-      }
-    },
-    {
-      "source": "Spin/SpinViewController.m",
-      "flags": [
-
-      ],
-      "defines": {
-      },
-      "env": {
-      }
-    },
-    {
-      "source": "Spin/main.m",
-      "flags": [
-
-      ],
-      "defines": {
-      },
-      "env": {
-      }
-    }
-  ],
-  "assets": [
-    "Spin/Default-568h@2x.png",
-    "Spin/Default.png",
-    "Spin/Default@2x.png",
-    "Spin/Spin-Info.plist",
-    "Spin/SpinViewController.xib",
-    "Spin/en.lproj/InfoPlist.strings"
-  ],
-  "infoplists": [
-    "Spin/Spin-Info.plist"
-  ],
-  "moms": [
-
-  ],
-  "libs": [
-
-  ],
-  "modules": [
-
-  ]
 }
-

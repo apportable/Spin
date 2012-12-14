@@ -1,3 +1,4 @@
+
 {
   // Dictionary of global configuration parameters.
   // These parameters are not taken from the xcode project,
@@ -22,23 +23,23 @@
     // "LONG_VERSION": "",
 
     // Major version number for the app, e.g., 1
-    "MAJOR_VERSION": 1,
+    //"MAJOR_VERSION": 1,
 
     // Minor version number for the app, e.g., 0
     // or 0.1
-    "MINOR_VERSION": 0,
+    //"MINOR_VERSION": 0,
 
     // Short description of the app.
-    "APPLICATION_DESCRIPTION": "",
+    //"APPLICATION_DESCRIPTION": "",
 
     // One of "iPhone", "iPhonePortrait", "iPad", or "Native".
     // Determines the screen bounds returned by [UIScreen bounds].
-    "APPLICATION_SIZE": "iPhone",
+    //"APPLICATION_SIZE": "iPhone",
 
     // One of "stretch" or "scale".  Determines how the APPLICATION_SIZE
     // is adjusted to match the native screen bounds.  Defaults to
     // "stretch"
-    "APPLICATION_SIZE_ADJUSTMENT": "stretch",
+    //"APPLICATION_SIZE_ADJUSTMENT": "stretch",
 
     // One of "match_height", "match_width", "match_scale", or "match_none".
     // Defaults to "match_none".  This constrains the scale factor
@@ -55,7 +56,7 @@
     // than the APPLICATION_SIZE resolution.
     // "match_none" allows APPLICATION_SIZE_ADJUSTMENT to work as described
     // above.
-    "APPLICATION_CONTENT_SCALE": "match_none",
+    //"APPLICATION_CONTENT_SCALE": "match_none",
 
     // A list of features needed on the target platform.
     // Common features include:
@@ -70,12 +71,12 @@
     //   "opengles2"
     //   "touch_filter_move"
     //   "write_external_storage"
-    "FEATURES": [],
+    //"FEATURES": [],
 
     // Typically a reverse DNS identifier for the application
     // developer, e.g., "com.apportable".  It should match the
     // prefix of APPLICATION_IDENTIFIER above.
-    "VENDOR_PREFIX": "",
+    //"VENDOR_PREFIX": "",
 
     // Preferred way of handling URLs in the code.
     // Leave it null for most cases.
@@ -95,14 +96,14 @@
 
     // ID for reporting crashdumps for your app.
     // Supplied by Apportable.
-    "CRASHDUMP_APP_ID": "",
+    //"CRASHDUMP_APP_ID": "",
 
     // Secret key for encrypting and decrypting crashdumps
     // for your app.  Supplied by Apportable.
-    "CRASHDUMP_SECRET": "",
+    //"CRASHDUMP_SECRET": "",
 
     // Key to receive remote notifications on the device.
-    "REMOTE_NOTIFICATION_KEY": "",
+    //"REMOTE_NOTIFICATION_KEY": "",
 
     // The method for adjusting the splash screen (Default.png)
     // to fit the native device resolution.  Options are:
@@ -111,7 +112,7 @@
     //   "letterbox" (the default)
     //   "native"
     //   "stretch"
-    "SPLASH_SCREEN_TYPE": "letterbox",
+    //"SPLASH_SCREEN_TYPE": "letterbox",
 
     // Path to the image to use for the app's icon.
     // Usually something like "./Icon.png".
@@ -121,9 +122,9 @@
     // should be compressed when building the final app.
     // By default, text assets are not compressed.  Use
     // this to compress certain text assets.  For example,
-    // ".*\.plist$" will cause all files ending in ".plist"
+    // ".*.plist$" will cause all files ending in ".plist"
     // to be compressed.
-    "COMPRESSED_ASSETS_PATTERN": ""
+    //"COMPRESSED_ASSETS_PATTERN": ""
   },
 
   // Sometimes header include path ordering matters.  If so, put the ordering constraints into this
@@ -137,7 +138,8 @@
   // Edit this section to add and replace files and parameters to the generated settings for this project.
   // If the generated settings for a particular file are incorrect, simply add it here with the settings
   // you need and the final build parameters will only included the version specified here.
-  "add_params":   {
+  "add_params": 
+  {
     // A list of pch files to -include.
     // PCH files can be either a string, e.g., "./MyApp-Prefix.pch",
     // or a dictionary specifying the pch and the environment where
@@ -192,13 +194,14 @@
     // {"mom": "./android-mom.xcdatamodeld", "env": {"TARGET_OS": "android"}}
     "moms": []
   }
-,
+  ,
 
-  // Edit this section to remove files and parameters from the generated final_build_params.json for this project.
+  // Edit this section to remove files and parameters from the generated #{$build_params_file} for this project.
   // For this section, only specify the file name as a string in the cases where you could normally
   // also specify an array or a dictionary.  To override the generated settings for a particular
   // file, simply add it to the "add_params" list above with the settings you want.
-  "remove_params":   {
+  "remove_params": 
+  {
     // A list of pch files to -include.
     // PCH files can be either a string, e.g., "./MyApp-Prefix.pch",
     // or a dictionary specifying the pch and the environment where
@@ -253,5 +256,5 @@
     // {"mom": "./android-mom.xcdatamodeld", "env": {"TARGET_OS": "android"}}
     "moms": []
   }
-
+  
 }
