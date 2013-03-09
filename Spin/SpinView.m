@@ -12,12 +12,21 @@
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 
+#define HORIZ_SWIPE_DRAG_MIN    24
+#define VERT_SWIPE_DRAG_MAX     24
+#define TAP_MIN_DRAG            10
+
 @implementation SpinView {
     EAGLContext *context;
     GLuint defaultFramebuffer, colorRenderbuffer;
     float scale;
     float rotation;
     float rotationSpeed;
+    
+    BOOL zoomed;
+    BOOL moved;
+    CGPoint startTouchPosition;
+    CGFloat initialDistance;
 }
 
 + (Class)layerClass
@@ -217,6 +226,119 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
     glBindRenderbufferOES(GL_RENDERBUFFER_OES, colorRenderbuffer);
     
     [context presentRenderbuffer:GL_RENDERBUFFER_OES];
+}
+
+
+- (CGFloat)distanceBetweenTwoPoints:(CGPoint)fromPoint toPoint:(CGPoint)toPoint {
+	float x = toPoint.x - fromPoint.x;
+    float y = toPoint.y - fromPoint.y;
+    NSLog(@"distanceBetweenTwoPoints: toPoint = %d %d, fromPoint = %d %d, x = %d, y = %d, sqr = %d", (int)toPoint.x, (int)toPoint.y, (int)fromPoint.x, (int)fromPoint.y, (int)x, (int)y, (int)(x*x+y*y));
+    
+    return sqrt(x * x + y * y);
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    moved = NO;
+    switch ([touches count]) {
+        case 1:
+        {
+            // single touch
+            UITouch * touch = [touches anyObject];
+            startTouchPosition = [touch locationInView:self];
+            initialDistance = -1;
+            break;
+        }
+        default:
+        {
+            // multi touch
+            NSArray *touchArray = [touches allObjects];
+            NSLog(@"multi touch detected %d", [touches count]);
+            UITouch *touch1 = [touchArray objectAtIndex:0];
+            NSLog(@"touch1 %@", touch1);
+			UITouch *touch2 = [touchArray objectAtIndex:1];
+            NSLog(@"touch2 %@", touch2);
+            initialDistance = [self distanceBetweenTwoPoints:[touch1 locationInView:self]
+                                                     toPoint:[touch2 locationInView:self]];
+            NSLog(@"Multi touch start with initial distance %d", (int)initialDistance);
+            break;
+        }
+            
+    }
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch1 = [[touches allObjects] objectAtIndex:0];
+    
+    if (zoomed && ([touches count] == 1)) {
+        CGPoint pos = [touch1 locationInView:self];
+        self.transform = CGAffineTransformTranslate(self.transform, pos.x - startTouchPosition.x, pos.y - startTouchPosition.y);
+        moved = YES;
+        return;
+    }
+    
+    if ((initialDistance > 0) && ([touches count] > 1)) {
+        UITouch *touch2 = [[touches allObjects] objectAtIndex:1];
+        CGFloat currentDistance = [self distanceBetweenTwoPoints:[touch1 locationInView:self]
+                                                         toPoint:[touch2 locationInView:self]];
+        CGFloat movement = currentDistance - initialDistance;
+        NSLog(@"Touch moved: %d", (int)movement);
+        if (movement != 0) {
+            scale *= pow(2.0f, movement / 100);
+            if (scale > 2.0) scale = 2;
+            if (scale < 0.1) scale = 0.1;
+        }
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch1 = [[touches allObjects] objectAtIndex:0];
+    if ([touches count] == 1) {
+        if ([touch1 tapCount] > 1) {
+            NSLog(@"Double tap");
+            scale = 1.0f;
+            rotation = 3.0f;
+            return;
+        }
+        CGPoint currentTouchPosition = [touch1 locationInView:self];
+        
+        float deltaX = fabsf(startTouchPosition.x - currentTouchPosition.x);
+        float deltaY = fabsf(startTouchPosition.y - currentTouchPosition.y);
+        // If the swipe tracks correctly.
+        if ((deltaX >= HORIZ_SWIPE_DRAG_MIN) && (deltaY <= VERT_SWIPE_DRAG_MAX))
+        {
+            // It appears to be a swipe.
+            float movement = startTouchPosition.x - currentTouchPosition.x;
+            if (movement < 0)
+            {
+                NSLog(@"Swipe Right");
+                rotationSpeed += pow(2.0f, -movement / 100);
+            }
+            else
+            {
+                rotationSpeed -= pow(2.0f, movement / 100);
+                NSLog(@"Swipe Left");
+            }
+        }
+        else if (!moved && ((deltaX <= TAP_MIN_DRAG) && (deltaY <= TAP_MIN_DRAG)) )
+        {
+            // Process a tap event.
+            NSLog(@"Tap");
+        }
+    }
+    else {
+        // multi-touch
+        UITouch *touch2 = [[touches allObjects] objectAtIndex:1];
+        CGFloat finalDistance = [self distanceBetweenTwoPoints:[touch1 locationInView:self]
+                                                       toPoint:[touch2 locationInView:self]];
+        CGFloat movement = finalDistance - initialDistance;
+        NSLog(@"Final Distance: %d, movement=%d",(int)finalDistance,(int)movement);
+        if (movement != 0) {
+            NSLog(@"Movement: %d", (int)movement);
+        }
+    }
 }
 
 @end
