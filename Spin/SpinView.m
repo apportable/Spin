@@ -11,6 +11,7 @@
 #import <OpenGLES/EAGLDrawable.h>
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
+#include <sys/stat.h>
 
 #define HORIZ_SWIPE_DRAG_MIN    24
 #define VERT_SWIPE_DRAG_MAX     24
@@ -126,9 +127,29 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
     glFrustumf(xmin, xmax, ymin, ymax, zNear, zFar);
 }
 
+static NSString *_docsDir;
+static NSString *_lastFilePath;
+static int _lastSize;
 
 - (void)setup
 {
+	
+	_docsDir = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] retain];
+	NSMutableData *data = [[NSMutableData alloc] initWithCapacity:30000];
+	const char *f = "TEST_TEST_TEST_TEST_TEST_TEST_TEST_TEST_TEST_TEST\n";
+	int len = strlen(f);
+	for (int i = 0; i < 10000; i++) {
+		[data appendBytes:f length:len];
+	}
+	_lastFilePath = [[_docsDir stringByAppendingPathComponent:@"test.txt"] retain];
+	[data writeToFile:_lastFilePath atomically:YES];
+	[data release];
+	
+	struct stat s;
+	stat([_lastFilePath UTF8String], &s);
+	_lastSize = s.st_size;
+	DEBUG_LOG("ORIGINAL SIZE %i",_lastSize);
+	
     CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
     
     rotation = 0.1f;
@@ -199,6 +220,20 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
 
 - (void)render:(CADisplayLink *)link
 {
+	
+	NSString *newFileName = [_docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"test-%i.txt", arc4random()%100000]];
+	[[NSFileManager defaultManager] moveItemAtPath:_lastFilePath toPath:newFileName error:NULL];
+	
+	struct stat s;
+	stat([newFileName UTF8String], &s);
+	if (_lastSize != s.st_size) {
+		DEBUG_LOG("BOOM!");
+	}
+	_lastSize = s.st_size;
+	[_lastFilePath release];
+	_lastFilePath = [newFileName retain];
+	DEBUG_LOG("NEW SIZE %i",_lastSize);
+	
     glBindFramebufferOES(GL_FRAMEBUFFER_OES, defaultFramebuffer);
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

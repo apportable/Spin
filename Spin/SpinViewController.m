@@ -8,7 +8,8 @@
 #import "SpinViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface SpinViewController ()
+@interface SpinViewController () {
+}
 
 @end
 
@@ -18,7 +19,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
