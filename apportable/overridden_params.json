@@ -14,7 +14,7 @@
     // The unique identifier for the application.
     // Normally this is in reverse DNS notation, e.g.,
     // "com.apportable.Spin"
-    // "APPLICATION_IDENTIFIER": "",
+    "APPLICATION_IDENTIFIER": "com.apportable.Spin",
 
     // Short version name for the app, e.g., "1.0"
     // "SHORT_VERSION": "",
@@ -71,7 +71,9 @@
     //   "opengles2"
     //   "touch_filter_move"
     //   "write_external_storage"
-    //"FEATURES": [],
+    "FEATURES": [
+        "billing"
+    ],
 
     // Typically a reverse DNS identifier for the application
     // developer, e.g., "com.apportable".  It should match the
@@ -184,7 +186,9 @@
     // {"asset": "./Resources/cube_texture.pvr.ccz", "target_file": "Bundled Resources/cube_texture.pvr.gz", "env": {"TARGET_TEXTURE_FMT": "pvr"}}
     // You can specify all the contents of a directory with:
     // "./path/to/dir/*"
-    "assets": [],
+    "assets": [
+        { "asset": "apportable/SKProducts.plist", "target": "SKProducts.plist" }
+    ],
     // A list of Info.plist files.  The first one in the list will be the one we consider the main Info.plist.
     "infoplists": [],
     // A list of xcdatamodeld files that will need mom files in the final resource list.

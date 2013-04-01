@@ -19,6 +19,13 @@
         {
             "language": "objc", 
             "header_paths": [], 
+            "source": "Spin/SpinIAPView.m", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc", 
+            "header_paths": [], 
             "source": "Spin/SpinView.m", 
             "flags": [], 
             "defines": {}
@@ -35,35 +42,36 @@
         "./Spin/Spin-Info.plist"
     ], 
     "defines": {
-        "IBOutletCollection(ClassName)": "__attribute__((iboutletcollection(ClassName)))", 
         "__IPHONE_OS_VERSION_MIN_REQUIRED": 60000, 
-        "IBAction": "void)__attribute__((ibaction)", 
-        "NS_BLOCK_ASSERTIONS": 1, 
-        "IBOutlet": "__attribute__((iboutlet))"
+        "NS_BLOCK_ASSERTIONS": 1
     }, 
     "pchs": [
         "./Spin/Spin-Prefix.pch"
     ], 
     "assets": [
         {
-            "asset": "Spin/SpinViewController.xib", 
-            "target": null
-        }, 
-        {
             "asset": "Spin/Default.png", 
             "target": "Default.png"
-        }, 
-        {
-            "asset": "Spin/Default@2x.png", 
-            "target": "Default@2x.png"
         }, 
         {
             "asset": "Spin/Default-568h@2x.png", 
             "target": "Default-568h@2x.png"
         }, 
         {
+            "asset": "Spin/Default@2x.png", 
+            "target": "Default@2x.png"
+        }, 
+        {
             "asset": "Spin/en.lproj/InfoPlist.strings", 
             "target": "en.lproj/InfoPlist.strings"
+        }, 
+        {
+            "asset": "Spin/SpinViewController.xib", 
+            "target": null
+        }, 
+        {
+            "asset": "Spin/SpinIAPViewController.xib", 
+            "target": null
         }
     ], 
     "type": "app", 
@@ -91,6 +99,11 @@
                     "prefix": "Spin/", 
                     "suffix": "SpinAppDelegate.h", 
                     "key": "SpinAppDelegate.h"
+                }, 
+                "SpinIAPView.h": {
+                    "prefix": "Spin/", 
+                    "suffix": "SpinIAPView.h", 
+                    "key": "SpinIAPView.h"
                 }, 
                 "SpinView.h": {
                     "prefix": "Spin/", 
@@ -126,10 +139,6 @@
     "flags": [
         "-DNS_BLOCK_ASSERTIONS=1", 
         "-fwritable-strings", 
-        {
-            "flag": "-std=gnu++0x", 
-            "type": "c++"
-        }, 
         "-fasm-blocks", 
         "-fno-asm", 
         "-fpascal-strings", 
@@ -153,6 +162,7 @@
     ], 
     "deps": [
         "UIKit", 
+        "StoreKit", 
         "QuartzCore", 
         "UIKit", 
         "Foundation", 
@@ -160,10 +170,14 @@
         "OpenGLES"
     ], 
     "config": {
-        "APPLICATION_NAME": "Spin", 
-        "LONG_VERSION": "1.0", 
         "APPLICATION_IDENTIFIER": "com.apportable.Spin", 
-        "APPLICATION_FULL_NAME": "Spin", 
-        "SHORT_VERSION": "1.0"
+        "TEMPLATE_VALUES": {
+            "PRODUCT_NAME": "Spin", 
+            "EXECUTABLE_NAME": "Spin"
+        }, 
+        "LONG_VERSION": "1.0", 
+        "SHORT_VERSION": "1.0", 
+        "APPLICATION_NAME": "Spin", 
+        "APPLICATION_FULL_NAME": "Spin"
     }
 }

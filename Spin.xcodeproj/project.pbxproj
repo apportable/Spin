@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A5FF3611704E3740081EA88 /* SpinIAPView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5FF3601704E3740081EA88 /* SpinIAPView.m */; };
+		4A5FF3631704E3F50081EA88 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5FF3621704E3F50081EA88 /* StoreKit.framework */; };
+		4A5FF36A170522480081EA88 /* SpinIAPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A5FF369170522480081EA88 /* SpinIAPViewController.xib */; };
 		5B64E811164373C50043E296 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E810164373C50043E296 /* UIKit.framework */; };
 		5B64E813164373C50043E296 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E812164373C50043E296 /* Foundation.framework */; };
 		5B64E815164373C50043E296 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E814164373C50043E296 /* CoreGraphics.framework */; };
@@ -24,6 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A5FF35F1704E3740081EA88 /* SpinIAPView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinIAPView.h; sourceTree = "<group>"; };
+		4A5FF3601704E3740081EA88 /* SpinIAPView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinIAPView.m; sourceTree = "<group>"; };
+		4A5FF3621704E3F50081EA88 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		4A5FF369170522480081EA88 /* SpinIAPViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinIAPViewController.xib; sourceTree = "<group>"; };
 		5B64E80C164373C50043E296 /* Spin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B64E810164373C50043E296 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5B64E812164373C50043E296 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -52,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A5FF3631704E3F50081EA88 /* StoreKit.framework in Frameworks */,
 				5B64E8441643766E0043E296 /* QuartzCore.framework in Frameworks */,
 				5B64E811164373C50043E296 /* UIKit.framework in Frameworks */,
 				5B64E813164373C50043E296 /* Foundation.framework in Frameworks */,
@@ -63,9 +71,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A5FF36B170A243A0081EA88 /* ExtraTests */ = {
+			isa = PBXGroup;
+			children = (
+				4A5FF35F1704E3740081EA88 /* SpinIAPView.h */,
+				4A5FF3601704E3740081EA88 /* SpinIAPView.m */,
+				4A5FF369170522480081EA88 /* SpinIAPViewController.xib */,
+			);
+			name = ExtraTests;
+			sourceTree = "<group>";
+		};
 		5B64E801164373C50043E296 = {
 			isa = PBXGroup;
 			children = (
+				4A5FF3621704E3F50081EA88 /* StoreKit.framework */,
 				5B64E81A164373C50043E296 /* Spin */,
 				5B64E80F164373C50043E296 /* Frameworks */,
 				5B64E80D164373C50043E296 /* Products */,
@@ -102,6 +121,7 @@
 				5B64E83C164375D50043E296 /* SpinViewController.m */,
 				5B64E840164376430043E296 /* SpinView.h */,
 				5B64E841164376430043E296 /* SpinView.m */,
+				4A5FF36B170A243A0081EA88 /* ExtraTests */,
 				5B64E81B164373C50043E296 /* Supporting Files */,
 			);
 			path = Spin;
@@ -179,6 +199,7 @@
 				5B64E829164373C50043E296 /* Default@2x.png in Resources */,
 				5B64E82B164373C50043E296 /* Default-568h@2x.png in Resources */,
 				5B64E83F164376140043E296 /* SpinViewController.xib in Resources */,
+				4A5FF36A170522480081EA88 /* SpinIAPViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +214,7 @@
 				5B64E825164373C50043E296 /* SpinAppDelegate.m in Sources */,
 				5B64E83D164375D50043E296 /* SpinViewController.m in Sources */,
 				5B64E842164376430043E296 /* SpinView.m in Sources */,
+				4A5FF3611704E3740081EA88 /* SpinIAPView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
