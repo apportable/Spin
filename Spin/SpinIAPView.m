@@ -181,6 +181,8 @@
                 break;
             case SKPaymentTransactionStateRestored:
                 NSLog(@"SKPaymentTransactionStateRestored: %@", txn);
+                NSLog(@"Original transaction: %@", [txn originalTransaction]);
+                NSLog(@"Original transaction payment: %@", [[txn originalTransaction] payment]);
                 break;
             default:
                 NSLog(@"UNKNOWN SKPaymentTransactionState: %@", txn);
