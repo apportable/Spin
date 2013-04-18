@@ -173,7 +173,9 @@
     // dictionary specifying the file, any special flags, any defines, and the environment
     // where it should be compiled, e.g.,
     // {"source": "./PngImageLoader.m", "flags": ["-fstack-protector"], "defines": {"PNG": 1}, "env": {"TARGET_TEXTURE_FMT": "png"}}
-    "sources": [],
+    "sources": [
+        "Spin/HelloBridge.m",
+    ],
     // A list of assets to package with the application.
     // Assets can be either a string, e.g., "./Info.plist",
     // a dictionary specifying the asset, the target path it should be written to
@@ -192,7 +194,14 @@
     // or a dictionary specifying the mom and the environment where it should
     // be used, e.g.,
     // {"mom": "./android-mom.xcdatamodeld", "env": {"TARGET_OS": "android"}}
-    "moms": []
+    "moms": [],
+
+    "java_sources": [
+        "java/src/com/apportable/demo/HelloBridge.java",
+    ],
+    "java_sourcepaths": [
+        "java/src",
+    ],
   }
   ,
 
