@@ -5,13 +5,6 @@
         {
             "language": "objc", 
             "header_paths": [], 
-            "source": "Spin/main.m", 
-            "flags": [], 
-            "defines": {}
-        }, 
-        {
-            "language": "objc", 
-            "header_paths": [], 
             "source": "Spin/SpinAppDelegate.m", 
             "flags": [], 
             "defines": {}
@@ -19,7 +12,14 @@
         {
             "language": "objc", 
             "header_paths": [], 
-            "source": "Spin/SpinIAPView.m", 
+            "source": "Spin/main.m", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc", 
+            "header_paths": [], 
+            "source": "Spin/SpinViewController.m", 
             "flags": [], 
             "defines": {}
         }, 
@@ -33,7 +33,7 @@
         {
             "language": "objc", 
             "header_paths": [], 
-            "source": "Spin/SpinViewController.m", 
+            "source": "Spin/SpinIAPView.m", 
             "flags": [], 
             "defines": {}
         }
@@ -42,8 +42,11 @@
         "./Spin/Spin-Info.plist"
     ], 
     "defines": {
+        "IBOutletCollection(ClassName)": "__attribute__((iboutletcollection(ClassName)))", 
         "__IPHONE_OS_VERSION_MIN_REQUIRED": 60000, 
-        "NS_BLOCK_ASSERTIONS": 1
+        "IBAction": "void)__attribute__((ibaction)", 
+        "NS_BLOCK_ASSERTIONS": 1, 
+        "IBOutlet": "__attribute__((iboutlet))"
     }, 
     "pchs": [
         "./Spin/Spin-Prefix.pch"
@@ -54,12 +57,12 @@
             "target": "Default.png"
         }, 
         {
-            "asset": "Spin/Default-568h@2x.png", 
-            "target": "Default-568h@2x.png"
-        }, 
-        {
             "asset": "Spin/Default@2x.png", 
             "target": "Default@2x.png"
+        }, 
+        {
+            "asset": "Spin/Default-568h@2x.png", 
+            "target": "Default-568h@2x.png"
         }, 
         {
             "asset": "Spin/en.lproj/InfoPlist.strings", 
@@ -72,6 +75,10 @@
         {
             "asset": "Spin/SpinIAPViewController.xib", 
             "target": null
+        }, 
+        {
+            "asset": "apportable/SKProducts.plist", 
+            "target": "SKProducts.plist"
         }
     ], 
     "type": "app", 
@@ -139,6 +146,10 @@
     "flags": [
         "-DNS_BLOCK_ASSERTIONS=1", 
         "-fwritable-strings", 
+        {
+            "flag": "-std=gnu++0x", 
+            "type": "c++"
+        }, 
         "-fasm-blocks", 
         "-fno-asm", 
         "-fpascal-strings", 

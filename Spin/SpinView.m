@@ -16,6 +16,11 @@
 #define VERT_SWIPE_DRAG_MAX     24
 #define TAP_MIN_DRAG            10
 
+@interface SpinView ()
+@property (nonatomic, retain) SKProductsRequest *productsRequest;
+@property (nonatomic, retain) SKProductsResponse *productsList;
+@end
+
 @implementation SpinView {
     EAGLContext *context;
     GLuint defaultFramebuffer, colorRenderbuffer;
@@ -168,6 +173,14 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
     
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE, GL_SRC_COLOR);
+
+    double delayInSeconds = 1.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+        [self requestProductData];
+    });
+
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -326,6 +339,7 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
         {
             // Process a tap event.
             NSLog(@"Tap");
+            [self purchaseFirstItem];
         }
     }
     else {
@@ -338,6 +352,100 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
         if (movement != 0) {
             NSLog(@"Movement: %d", (int)movement);
         }
+    }
+}
+
+
+- (void)requestProductData
+{
+    NSSet *productIdentifiers = [NSSet setWithObjects:@"com.apportable.spin.consumable1", @"com.apportable.spin.nonconsumable1", nil];
+    [self setProductsRequest: [[SKProductsRequest alloc] initWithProductIdentifiers:productIdentifiers]];
+    [[self productsRequest] setDelegate:self];
+
+    NSLog(@"Requesting IAP product data...");
+    [[self productsRequest] start];
+}
+
+- (void)purchaseFirstItem
+{
+    NSArray *products = [[self productsList] products];
+    if ([products count]) {
+        NSLog(@"purchasing first item");
+        SKPayment *payment = [SKPayment paymentWithProduct:[products objectAtIndex:0]];
+        [[SKPaymentQueue defaultQueue] addPayment:payment];
+    } else {
+        NSLog(@"NOT purchasing first item, products count:%u", [products count]);
+    }
+}
+
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
+{
+    NSLog(@"----------------------------paymentQueue:updatedTransactions:");
+
+    for (SKPaymentTransaction *txn in transactions) {
+        switch (txn.transactionState) {
+            case SKPaymentTransactionStatePurchasing:
+                NSLog(@"SKPaymentTransactionStatePurchasing txn: %@", txn);
+                break;
+            case SKPaymentTransactionStatePurchased:
+                NSLog(@"SKPaymentTransactionStatePurchased: %@", txn);
+                break;
+            case SKPaymentTransactionStateFailed:
+                NSLog(@"SKPaymentTransactionStateFailed: %@", txn);
+                break;
+            case SKPaymentTransactionStateRestored:
+                NSLog(@"SKPaymentTransactionStateRestored: %@", txn);
+                NSLog(@"Original transaction: %@", [txn originalTransaction]);
+                NSLog(@"Original transaction payment: %@", [[txn originalTransaction] payment]);
+                break;
+            default:
+                NSLog(@"UNKNOWN SKPaymentTransactionState: %@", txn);
+                break;
+        }
+        [[SKPaymentQueue defaultQueue] finishTransaction:txn];
+    }
+}
+
+- (void)paymentQueue:(SKPaymentQueue *)queue removedTransactions:(NSArray *)transactions
+{
+    NSLog(@"----------------------------paymentQueue:removedTransactions:");
+    for (SKPaymentTransaction *txn in transactions) {
+        NSLog(@"removed transaction: %@", txn);
+    }
+}
+
+- (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error
+{
+    NSLog(@"----------------------------paymentQueue:restoreCompletedTransactionsFailedWithError: %@", error);
+}
+
+- (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
+{
+    NSLog(@"----------------------------paymentQueueRestoreCompletedTransactionsFinished:");
+}
+
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedDownloads:(NSArray *)downloads
+{
+    NSLog(@"----------------------------paymentQueue:updatedDownloads:");
+}
+
+- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
+{
+    [self setProductsList:response];
+    NSArray *products = response.products;
+    for (int i=0; i < [products count]; ++i) {
+        SKProduct *product = [products objectAtIndex:i];
+        if (product) {
+            NSLog(@"Product id: %@" , product.productIdentifier);
+            NSLog(@"Product title: %@" , product.localizedTitle);
+            NSLog(@"Product description: %@" , product.localizedDescription);
+            NSLog(@"Product price: %@" , product.price);
+            NSLog(@"Product price locale: %@" , product.priceLocale);
+        }
+    }
+
+    for (NSString *invalidProductId in response.invalidProductIdentifiers) {
+        NSLog(@"INVALID PRODUCT ID: %@" , invalidProductId);
     }
 }
 

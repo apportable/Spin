@@ -5,12 +5,8 @@
     ], 
     "assets": [
         {
-            "asset": "Spin/Default.png", 
-            "target": "Default.png"
-        }, 
-        {
-            "asset": "Spin/Default-568h@2x.png", 
-            "target": "Default-568h@2x.png"
+            "asset": "Spin/SpinIAPViewController.xib", 
+            "target": null
         }, 
         {
             "asset": "Spin/Default@2x.png", 
@@ -21,16 +17,20 @@
             "target": "en.lproj/InfoPlist.strings"
         }, 
         {
-            "asset": "Spin/SpinViewController.xib", 
-            "target": null
+            "asset": "Spin/Default.png", 
+            "target": "Default.png"
         }, 
         {
-            "asset": "Spin/SpinIAPViewController.xib", 
+            "asset": "Spin/SpinViewController.xib", 
             "target": null
         }, 
         {
             "asset": "apportable/SKProducts.plist", 
             "target": "SKProducts.plist"
+        }, 
+        {
+            "asset": "Spin/Default-568h@2x.png", 
+            "target": "Default-568h@2x.png"
         }
     ], 
     "moms": [], 
@@ -111,13 +111,6 @@
     "modules": [], 
     "sources": [
         {
-            "source": "Spin/main.m", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc", 
-            "defines": {}
-        }, 
-        {
             "source": "Spin/SpinAppDelegate.m", 
             "header_paths": [], 
             "flags": [], 
@@ -125,7 +118,14 @@
             "defines": {}
         }, 
         {
-            "source": "Spin/SpinIAPView.m", 
+            "source": "Spin/main.m", 
+            "header_paths": [], 
+            "flags": [], 
+            "language": "objc", 
+            "defines": {}
+        }, 
+        {
+            "source": "Spin/SpinViewController.m", 
             "header_paths": [], 
             "flags": [], 
             "language": "objc", 
@@ -139,7 +139,7 @@
             "defines": {}
         }, 
         {
-            "source": "Spin/SpinViewController.m", 
+            "source": "Spin/SpinIAPView.m", 
             "header_paths": [], 
             "flags": [], 
             "language": "objc", 
@@ -149,6 +149,10 @@
     "flags": [
         "-DNS_BLOCK_ASSERTIONS=1", 
         "-fwritable-strings", 
+        {
+            "flag": "-std=gnu++0x", 
+            "type": "c++"
+        }, 
         "-fasm-blocks", 
         "-fno-asm", 
         "-fpascal-strings", 
@@ -184,7 +188,10 @@
     ], 
     "type": "app", 
     "defines": {
+        "IBOutletCollection(ClassName)": "__attribute__((iboutletcollection(ClassName)))", 
         "__IPHONE_OS_VERSION_MIN_REQUIRED": 60000, 
-        "NS_BLOCK_ASSERTIONS": 1
+        "IBAction": "void)__attribute__((ibaction)", 
+        "NS_BLOCK_ASSERTIONS": 1, 
+        "IBOutlet": "__attribute__((iboutlet))"
     }
 }

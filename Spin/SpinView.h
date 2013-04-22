@@ -6,7 +6,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <StoreKit/StoreKit.h>
 
-@interface SpinView : UIView
+@interface SpinView : UIView <SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
 @end
