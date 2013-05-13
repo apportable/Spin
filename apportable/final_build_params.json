@@ -5,6 +5,10 @@
     ], 
     "assets": [
         {
+            "asset": "Spin/Default@2x.png", 
+            "target": "Default@2x.png"
+        }, 
+        {
             "asset": "Spin/Default.png", 
             "target": "Default.png"
         }, 
@@ -13,19 +17,15 @@
             "target": "Default-568h@2x.png"
         }, 
         {
-            "asset": "Spin/Default@2x.png", 
-            "target": "Default@2x.png"
-        }, 
-        {
             "asset": "Spin/en.lproj/InfoPlist.strings", 
             "target": "en.lproj/InfoPlist.strings"
         }, 
         {
-            "asset": "Spin/SpinViewController.xib", 
+            "asset": "Spin/SpinIAPViewController.xib", 
             "target": null
         }, 
         {
-            "asset": "Spin/SpinIAPViewController.xib", 
+            "asset": "Spin/SpinViewController.xib", 
             "target": null
         }, 
         {
@@ -38,7 +38,7 @@
         "FEATURES": [
             "billing"
         ], 
-        "APPLICATION_IDENTIFIER": "com.apportable.Spin", 
+        "APPLICATION_IDENTIFIER": "com.zbowling.Spin", 
         "TEMPLATE_VALUES": {
             "PRODUCT_NAME": "Spin", 
             "EXECUTABLE_NAME": "Spin"
@@ -111,7 +111,7 @@
     "modules": [], 
     "sources": [
         {
-            "source": "Spin/main.m", 
+            "source": "Spin/SpinIAPView.m", 
             "header_paths": [], 
             "flags": [], 
             "language": "objc", 
@@ -125,7 +125,7 @@
             "defines": {}
         }, 
         {
-            "source": "Spin/SpinIAPView.m", 
+            "source": "Spin/SpinViewController.m", 
             "header_paths": [], 
             "flags": [], 
             "language": "objc", 
@@ -139,7 +139,7 @@
             "defines": {}
         }, 
         {
-            "source": "Spin/SpinViewController.m", 
+            "source": "Spin/main.m", 
             "header_paths": [], 
             "flags": [], 
             "language": "objc", 
@@ -149,6 +149,10 @@
     "flags": [
         "-DNS_BLOCK_ASSERTIONS=1", 
         "-fwritable-strings", 
+        {
+            "flag": "-std=gnu++0x", 
+            "type": "c++"
+        }, 
         "-fasm-blocks", 
         "-fno-asm", 
         "-fpascal-strings", 
