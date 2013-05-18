@@ -1,5 +1,6 @@
-
 {
+  "configuration_format_version": 2,
+
   // Dictionary of global configuration parameters.
   // These parameters are not taken from the xcode project,
   // so they need to be supplied by the user.
@@ -124,7 +125,10 @@
     // this to compress certain text assets.  For example,
     // ".*.plist$" will cause all files ending in ".plist"
     // to be compressed.
-    //"COMPRESSED_ASSETS_PATTERN": ""
+    //"COMPRESSED_ASSETS_PATTERN": "",
+
+    // Rename the file from a matched in the APK to be
+    //"RENAME_TARGET" : true
   },
 
   // Sometimes header include path ordering matters.  If so, put the ordering constraints into this
@@ -138,8 +142,7 @@
   // Edit this section to add and replace files and parameters to the generated settings for this project.
   // If the generated settings for a particular file are incorrect, simply add it here with the settings
   // you need and the final build parameters will only included the version specified here.
-  "add_params": 
-  {
+  "add_params": {
     // A list of pch files to -include.
     // PCH files can be either a string, e.g., "./MyApp-Prefix.pch",
     // or a dictionary specifying the pch and the environment where
@@ -147,6 +150,7 @@
     // {"pch": "./prefix-android.pch", "env": {"TARGET_OS": "android"}}
     "pchs": [],
     // A list of header search paths
+    // e.g. "./External/facebook-sdk/include"
     "header_paths": [],
     // A list of global compile flags for the project.
     // Flags can be either a string, e.g. "-Werror-shadow",
@@ -158,7 +162,7 @@
     // Defines can be a simple key-value pair, e.g., "DEBUG": 1,
     // or the value can be a dictionary specifying the value and the
     // environment that it should be used in, e.g.,
-    // "SOME_DEFINE": {"value": ""yep its building on android"", "env": {"TARGET_OS": "android"}}
+    // "SOME_DEFINE": {"value": "\"yep its building on android\"", "env": {"TARGET_OS": "android"}}
     "defines": {},
     // A list of dependencies.  Typically these correspond to
     // frameworks in the xcode project.  Dependencies can be either
@@ -166,25 +170,31 @@
     // and the environment that it should be used in, e.g.,
     // {"dep": "SomeOtherSystemLib", "env": {"TARGET_OS" : "android"}}
     "deps": [],
-    // A list of .m, .mm, .c, .cc, and .cpp files to build.
-    // Source files can be a string, e.g. "./main.c",
-    // a list consisting of the file path and any special compile flags for that file,
-    // e.g., ["./AppDelegate.m", "-fobjc-arc", "-Werror-shadow"], or a
-    // dictionary specifying the file, any special flags, any defines, and the environment
+    // A list of source files (e.g. .m, .mm, .c, .cc, and .cpp) files to build.
+    // Source files can be a string, e.g. "./main.c", or a dictionary specifying
+    // the file, any special flags, any defines, and the environment
     // where it should be compiled, e.g.,
     // {"source": "./PngImageLoader.m", "flags": ["-fstack-protector"], "defines": {"PNG": 1}, "env": {"TARGET_TEXTURE_FMT": "png"}}
     "sources": [],
+    // A list of glob inclusion filters for additional files.
+    // This can also be used to replace flags on multiple files.
+    // e.g. {"source":"./Server/Level_[0-9].m","flags": ["-fno-objc-arc"],  "defines": {"NDEBUG": 1}}
+    "sources_glob":[],
     // A list of assets to package with the application.
     // Assets can be either a string, e.g., "./Info.plist",
-    // a dictionary specifying the asset, the target path it should be written to
+    // or a dictionary specifying the asset and the target path it should be written to
     // in the app, and the environment it should be included with, e.g.,
     // {"asset": "./Resources/cube_texture.pvr.ccz", "target_path": "Bundled Resources/", "env": {"TARGET_TEXTURE_FMT": "pvr"}}
     // or a dictionary like above, but instead specifying the full target file name
     // for the asset, e.g.,
     // {"asset": "./Resources/cube_texture.pvr.ccz", "target_file": "Bundled Resources/cube_texture.pvr.gz", "env": {"TARGET_TEXTURE_FMT": "pvr"}}
-    // You can specify all the contents of a directory with:
-    // "./path/to/dir/*"
     "assets": [],
+    // A list of glob inclusion filters for additional files.
+    // Can be either simple strings, e.g. "./Resource/*.png"
+    // or a dictionary with the asset glob and the target path you want you want to copy to:
+    // e.g. {"asset": "./Resources/*.pvr.ccz", "target_path": "Bundled Resources/", "env": {"TARGET_TEXTURE_FMT": "pvr"}}
+    // This can also be used to mass move all already included assests to a new path in the target
+    "assets_glob": [],
     // A list of Info.plist files.  The first one in the list will be the one we consider the main Info.plist.
     "infoplists": [],
     // A list of xcdatamodeld files that will need mom files in the final resource list.
@@ -193,22 +203,21 @@
     // be used, e.g.,
     // {"mom": "./android-mom.xcdatamodeld", "env": {"TARGET_OS": "android"}}
     "moms": []
-  }
-  ,
+  },
 
   // Edit this section to remove files and parameters from the generated #{$build_params_file} for this project.
   // For this section, only specify the file name as a string in the cases where you could normally
   // also specify an array or a dictionary.  To override the generated settings for a particular
   // file, simply add it to the "add_params" list above with the settings you want.
-  "remove_params": 
-  {
-    // A list of pch files to -include.
+  "remove_params": {
+    // A list of pch files to remove from -include.
     // PCH files can be either a string, e.g., "./MyApp-Prefix.pch",
     // or a dictionary specifying the pch and the environment where
     // it should be used, e.g.,
     // {"pch": "./prefix-android.pch", "env": {"TARGET_OS": "android"}}
     "pchs": [],
-    // A list of header search paths
+    // A list of header search paths.
+    // e.g. "./External/facebook-sdk/include"
     "header_paths": [],
     // A list of global compile flags for the project.
     // Flags can be either a string, e.g. "-Werror-shadow",
@@ -220,7 +229,7 @@
     // Defines can be a simple key-value pair, e.g., "DEBUG": 1,
     // or the value can be a dictionary specifying the value and the
     // environment that it should be used in, e.g.,
-    // "SOME_DEFINE": {"value": ""yep its building on android"", "env": {"TARGET_OS": "android"}}
+    // "SOME_DEFINE": {"value": "\"yep its building on android\"", "env": {"TARGET_OS": "android"}}
     "defines": {},
     // A list of dependencies.  Typically these correspond to
     // frameworks in the xcode project.  Dependencies can be either
@@ -228,14 +237,12 @@
     // and the environment that it should be used in, e.g.,
     // {"dep": "SomeOtherSystemLib", "env": {"TARGET_OS" : "android"}}
     "deps": [],
-    // A list of .m, .mm, .c, .cc, and .cpp files to build.
-    // Source files can be a string, e.g. "./main.c",
-    // a list consisting of the file path and any special compile flags for that file,
-    // e.g., ["./AppDelegate.m", "-fobjc-arc", "-Werror-shadow"], or a
-    // dictionary specifying the file, any special flags, any defines, and the environment
-    // where it should be compiled, e.g.,
-    // {"source": "./PngImageLoader.m", "flags": ["-fstack-protector"], "defines": {"PNG": 1}, "env": {"TARGET_TEXTURE_FMT": "png"}}
+    // A list of source files (e.g. .m, .mm, .c, .cc, and .cpp) files to remove from the build.
+    // e.g. "./External/Reachabilty/Reachability.m"
     "sources": [],
+    // A list of glob removal filters to filter out source files.
+    // e.g. "./Server/Level_[0-9].m"
+    "sources_glob":[],
     // A list of assets to package with the application.
     // Assets can be either a string, e.g., "./Info.plist",
     // a dictionary specifying the asset, the target path it should be written to
@@ -244,9 +251,11 @@
     // or a dictionary like above, but instead specifying the full target file name
     // for the asset, e.g.,
     // {"asset": "./Resources/cube_texture.pvr.ccz", "target_file": "Bundled Resources/cube_texture.pvr.gz", "env": {"TARGET_TEXTURE_FMT": "pvr"}}
-    // You can specify all the contents of a directory with:
-    // "./path/to/dir/*"
     "assets": [],
+    // A list of glob removal filters for additional files.
+    // e.g. "./Resources/*.pvr.ccz"
+    // e.g. {"asset": "./Resources/*.pvr.ccz", "target_path": "Bundled Resources/", "env": {"TARGET_TEXTURE_FMT": "pvr"}}
+    "assets_glob": [],
     // A list of Info.plist files.  The first one in the list will be the one we consider the main Info.plist.
     "infoplists": [],
     // A list of xcdatamodeld files that will need mom files in the final resource list.
@@ -256,5 +265,4 @@
     // {"mom": "./android-mom.xcdatamodeld", "env": {"TARGET_OS": "android"}}
     "moms": []
   }
-  
 }
