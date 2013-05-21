@@ -4,6 +4,13 @@
         {
             "language": "objc", 
             "header_paths": [], 
+            "source": "Spin/SpinAppDelegate.m", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc", 
+            "header_paths": [], 
             "source": "Spin/SpinView.m", 
             "flags": [], 
             "defines": {}
@@ -12,13 +19,6 @@
             "language": "objc", 
             "header_paths": [], 
             "source": "Spin/SpinViewController.m", 
-            "flags": [], 
-            "defines": {}
-        }, 
-        {
-            "language": "objc", 
-            "header_paths": [], 
-            "source": "Spin/SpinAppDelegate.m", 
             "flags": [], 
             "defines": {}
         }, 
@@ -42,20 +42,20 @@
     ], 
     "assets": [
         {
-            "asset": "Spin/Default@2x.png", 
-            "target": "Default@2x.png"
+            "asset": "Spin/Default.png", 
+            "target": "Default.png"
         }, 
         {
-            "asset": "Spin/Default-568h@2x.png", 
-            "target": "Default-568h@2x.png"
+            "asset": "Spin/Default@2x.png", 
+            "target": "Default@2x.png"
         }, 
         {
             "asset": "Spin/SpinViewController.xib", 
             "target": null
         }, 
         {
-            "asset": "Spin/Default.png", 
-            "target": "Default.png"
+            "asset": "Spin/Default-568h@2x.png", 
+            "target": "Default-568h@2x.png"
         }, 
         {
             "asset": "Spin/en.lproj/InfoPlist.strings", 
@@ -116,21 +116,10 @@
         {
             "type": "iquote", 
             "header_path": "Spin"
-        }, 
-        {
-            "type": "iquote", 
-            "header_path": "Spin.approj"
-        }, 
-        {
-            "type": "iquote", 
-            "header_path": "Spin.approj/targets"
-        }, 
-        {
-            "type": "iquote", 
-            "header_path": "Spin.approj/targets/Spin"
         }
     ], 
     "modules": [], 
+    "version": "1", 
     "flags": [
         "-DNS_BLOCK_ASSERTIONS=1", 
         "-fwritable-strings", 

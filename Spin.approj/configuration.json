@@ -1,16 +1,20 @@
 {
   "configuration_format_version": 2,
+
   "default_target": {"project": "Spin", "project_config": "Release", "target": "Spin"},
+
 
   // Dictionary of global configuration parameters.
   // These parameters are not taken from the xcode project,
   // so they need to be supplied by the user.
   "config": {
 
-    // The name of the application.
+    // A short name to identify the application.
+    // Used to decide the APK filename, but not shown
+    // anywhere in the app.
     // "APPLICATION_NAME": "",
 
-    // The full name of the application, if different from above.
+    // The name of the application to display in the launcher
     // "APPLICATION_FULL_NAME": "",
 
     // The unique identifier for the application.
@@ -21,80 +25,43 @@
     // Short version name for the app, e.g., "1.0"
     // "SHORT_VERSION": "",
 
-    // Optional long version name for the app.
-    // "LONG_VERSION": "",
-
-    // Major version number for the app, e.g., 1
-    //"MAJOR_VERSION": 1,
-
-    // Minor version number for the app, e.g., 0
-    // or 0.1
-    //"MINOR_VERSION": 0,
-
-    // Short description of the app.
-    //"APPLICATION_DESCRIPTION": "",
-
-    // One of "iPhone", "iPhonePortrait", "iPad", or "Native".
-    // Determines the screen bounds returned by [UIScreen bounds].
-    //"APPLICATION_SIZE": "iPhone",
-
-    // One of "stretch" or "scale".  Determines how the APPLICATION_SIZE
-    // is adjusted to match the native screen bounds.  Defaults to
-    // "stretch"
-    //"APPLICATION_SIZE_ADJUSTMENT": "stretch",
-
-    // One of "match_height", "match_width", "match_scale", or "match_none".
-    // Defaults to "match_none".  This constrains the scale factor
-    // on the device.  "match_height" will cause [UIScreen adjustedBounds]
-    // to return a height that matches the APPLICATION_SIZE height, and
-    // a width that uniformly scales the device's native width by the same
-    // scale factor necessary to match the height.  This means that
-    // [UIScreen adjustedBounds] will return a uniformly scaled rectangle
-    // for all devices, but the app can depend on having a known height.
-    // "match_width" does the same, but bases the scale on matching the
-    // native width to the APPLICATION_SIZE width.
-    // "match_scale" will always return 1 or 2 for [UIScreen scale],
-    // depending on whether the native resolution is sufficiently larger
-    // than the APPLICATION_SIZE resolution.
-    // "match_none" allows APPLICATION_SIZE_ADJUSTMENT to work as described
-    // above.
-    //"APPLICATION_CONTENT_SCALE": "match_none",
-
     // A list of features needed on the target platform.
     // Common features include:
+    //   "accelerometer"
     //   "access_network_state"
     //   "access_wifi_state"
+    //   "atc_slow_surface"
     //   "billing"
+    //   "c2dm_receive"
+    //   "check_license"
     //   "get_accounts"
-    //   "internet"
     //   "large_heap"
+    //   "large_heap"
+    //   "live_wallpaper"
     //   "multitouch"
     //   "multitouch_distinct"
+    //   "multitouch_jazzhand"
+    //   "NFC"
+    //   "no_internet"
+    //   "notifications"
     //   "opengles2"
+    //   "portrait"
+    //   "prefer_external_storage"
+    //   "read_phone_state"
+    //   "stencil_buffer"
     //   "touch_filter_move"
+    //   "touchscreen"
+    //   "true_color"
+    //   "vibrate"
+    //   "wake_lock"
     //   "write_external_storage"
-    //"FEATURES": [],
-
-    // Typically a reverse DNS identifier for the application
-    // developer, e.g., "com.apportable".  It should match the
-    // prefix of APPLICATION_IDENTIFIER above.
-    //"VENDOR_PREFIX": "",
+    //   "write_settings"
+    //   "xperia"
+    "FEATURES": ["unspecified_orientation"],
 
     // Preferred way of handling URLs in the code.
     // Leave it null for most cases.
     //"URL_SCHEME": null,
-
-    // Default format for textures used in the app.
-    // Any pvr textures encountered in the assets list will
-    // have their extension changed to this value, so the
-    // corresponding file needs to exist.
-    // For example, setting this to "png" will make an app
-    // that can run on any device (assuming your app includes
-    // a png decoder path for all textures), but you will need
-    // png versions of all of your pvr textures in the same
-    // locations as the pvrs.
-    // Defaults to "pvr".
-    // "TARGET_TEXTURE_FMT": "pvr",
 
     // ID for reporting crashdumps for your app.
     // Supplied by Apportable.
@@ -127,9 +94,7 @@
     // ".*.plist$" will cause all files ending in ".plist"
     // to be compressed.
     //"COMPRESSED_ASSETS_PATTERN": "",
-
-    // Rename the file from a matched in the APK to be
-    //"RENAME_TARGET" : true
+    //"UNCOMPRESSED_ASSETS_PATTERN": "",
   },
 
   // Sometimes header include path ordering matters.  If so, put the ordering constraints into this
@@ -166,10 +131,7 @@
     // "SOME_DEFINE": {"value": "\"yep its building on android\"", "env": {"TARGET_OS": "android"}}
     "defines": {},
     // A list of dependencies.  Typically these correspond to
-    // frameworks in the xcode project.  Dependencies can be either
-    // a string, e.g., "UIKit", or a dictionary specifying the dependency
-    // and the environment that it should be used in, e.g.,
-    // {"dep": "SomeOtherSystemLib", "env": {"TARGET_OS" : "android"}}
+    // frameworks in the xcode project.
     "deps": [],
     // A list of source files (e.g. .m, .mm, .c, .cc, and .cpp) files to build.
     // Source files can be a string, e.g. "./main.c", or a dictionary specifying
@@ -190,20 +152,8 @@
     // for the asset, e.g.,
     // {"asset": "./Resources/cube_texture.pvr.ccz", "target_file": "Bundled Resources/cube_texture.pvr.gz", "env": {"TARGET_TEXTURE_FMT": "pvr"}}
     "assets": [],
-    // A list of glob inclusion filters for additional files.
-    // Can be either simple strings, e.g. "./Resource/*.png"
-    // or a dictionary with the asset glob and the target path you want you want to copy to:
-    // e.g. {"asset": "./Resources/*.pvr.ccz", "target_path": "Bundled Resources/", "env": {"TARGET_TEXTURE_FMT": "pvr"}}
-    // This can also be used to mass move all already included assests to a new path in the target
-    "assets_glob": [],
     // A list of Info.plist files.  The first one in the list will be the one we consider the main Info.plist.
     "infoplists": [],
-    // A list of xcdatamodeld files that will need mom files in the final resource list.
-    // MOM files can be either a string, e.g., "./datamodels/my_data.xcdatamodeld",
-    // or a dictionary specifying the mom and the environment where it should
-    // be used, e.g.,
-    // {"mom": "./android-mom.xcdatamodeld", "env": {"TARGET_OS": "android"}}
-    "moms": []
   },
 
   // Edit this section to remove files and parameters from the generated #{$build_params_file} for this project.
@@ -233,10 +183,7 @@
     // "SOME_DEFINE": {"value": "\"yep its building on android\"", "env": {"TARGET_OS": "android"}}
     "defines": {},
     // A list of dependencies.  Typically these correspond to
-    // frameworks in the xcode project.  Dependencies can be either
-    // a string, e.g., "UIKit", or a dictionary specifying the dependency
-    // and the environment that it should be used in, e.g.,
-    // {"dep": "SomeOtherSystemLib", "env": {"TARGET_OS" : "android"}}
+    // frameworks in the xcode project.
     "deps": [],
     // A list of source files (e.g. .m, .mm, .c, .cc, and .cpp) files to remove from the build.
     // e.g. "./External/Reachabilty/Reachability.m"
@@ -253,17 +200,7 @@
     // for the asset, e.g.,
     // {"asset": "./Resources/cube_texture.pvr.ccz", "target_file": "Bundled Resources/cube_texture.pvr.gz", "env": {"TARGET_TEXTURE_FMT": "pvr"}}
     "assets": [],
-    // A list of glob removal filters for additional files.
-    // e.g. "./Resources/*.pvr.ccz"
-    // e.g. {"asset": "./Resources/*.pvr.ccz", "target_path": "Bundled Resources/", "env": {"TARGET_TEXTURE_FMT": "pvr"}}
-    "assets_glob": [],
     // A list of Info.plist files.  The first one in the list will be the one we consider the main Info.plist.
     "infoplists": [],
-    // A list of xcdatamodeld files that will need mom files in the final resource list.
-    // MOM files can be either a string, e.g., "./datamodels/my_data.xcdatamodeld",
-    // or a dictionary specifying the mom and the environment where it should
-    // be used, e.g.,
-    // {"mom": "./android-mom.xcdatamodeld", "env": {"TARGET_OS": "android"}}
-    "moms": []
   }
 }
