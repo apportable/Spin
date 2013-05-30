@@ -48,4 +48,30 @@
     return UIInterfaceOrientationMaskAll;
 }
 
+//Back button support
+#ifdef APPORTABLE
+
+- (BOOL) canBecomeFirstResponder
+{
+    return YES;
+}
+
+- (void)buttonUpWithEvent:(UIEvent *)event
+{
+    switch (event.buttonCode)
+    {
+        case UIEventButtonCodeBack:
+            // handle back button if possible, otherwise exit(0)
+            exit(0);
+            break;
+        case UIEventButtonCodeMenu:
+            // show menu if possible.
+            break;
+        default:
+            break;
+    }
+}
+
+#endif
+
 @end

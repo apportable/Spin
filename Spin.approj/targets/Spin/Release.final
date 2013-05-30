@@ -1,5 +1,6 @@
 {
     "xcode_project": "Spin.xcodeproj", 
+    "java_sources": [], 
     "pchs": [
         "./Spin/Spin-Prefix.pch"
     ], 
@@ -25,6 +26,7 @@
             "target": "en.lproj/InfoPlist.strings"
         }
     ], 
+    "link_flags": [], 
     "config": {
         "FEATURES": [
             "unspecified_orientation"
@@ -169,7 +171,11 @@
         "CoreGraphics", 
         "OpenGLES"
     ], 
+    "libs": [], 
+    "java_sourcepaths": [], 
+    "java_res_dirs": [], 
     "type": "app", 
+    "java_libs": [], 
     "defines": {
         "__IPHONE_OS_VERSION_MIN_REQUIRED": 60000, 
         "NS_BLOCK_ASSERTIONS": 1
