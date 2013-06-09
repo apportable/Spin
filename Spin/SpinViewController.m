@@ -30,6 +30,7 @@
     link.frameInterval = 1;
     [link addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 	// Do any additional setup after loading the view.
+    [self becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
