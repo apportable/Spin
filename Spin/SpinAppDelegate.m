@@ -29,7 +29,19 @@
     self.viewController = [[[SpinViewController alloc] initWithNibName:@"SpinViewController" bundle:nil] autorelease];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];
+    
     return YES;
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Error registering for remote notifications: %@", error);
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSLog(@"Remote notification device token: %@", deviceToken);
+    NSLog(@"Remote notification device token string: %@", [NSString stringWithUTF8String:[deviceToken bytes]]);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

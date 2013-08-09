@@ -28,8 +28,10 @@
     ], 
     "link_flags": [], 
     "config": {
+        "C2DM_SENDER": "gcm:1012014044429", 
         "FEATURES": [
-            "unspecified_orientation"
+            "unspecified_orientation", 
+            "c2dm_receive"
         ], 
         "SHORT_VERSION": "1.0", 
         "APPLICATION_NAME": "Spin", 

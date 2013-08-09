@@ -57,7 +57,7 @@
     //   "write_external_storage"
     //   "write_settings"
     //   "xperia"
-    "FEATURES": ["unspecified_orientation"],
+    "FEATURES": ["unspecified_orientation", "c2dm_receive"],
 
     // Preferred way of handling URLs in the code.
     // Leave it null for most cases.
@@ -72,7 +72,7 @@
     //"CRASHDUMP_SECRET": "",
 
     // Key to receive remote notifications on the device.
-    //"REMOTE_NOTIFICATION_KEY": "",
+    "C2DM_SENDER": "gcm:1012014044429",
 
     // The method for adjusting the splash screen (Default.png)
     // to fit the native device resolution.  Options are:
