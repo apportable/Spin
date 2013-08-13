@@ -7,6 +7,7 @@
 
 #import "SpinViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "MediaQuery.h"
 
 @interface SpinViewController ()
 
@@ -18,7 +19,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [MediaQuery hasMusicFileWithArtist:@"" album:@"" artist:@""];
     }
     return self;
 }

@@ -33,6 +33,7 @@
     "infoplists": [
         "./Spin/Spin-Info.plist"
     ], 
+    "libs": [], 
     "defines": {
         "__IPHONE_OS_VERSION_MIN_REQUIRED": 60000, 
         "NS_BLOCK_ASSERTIONS": 1
@@ -41,10 +42,6 @@
         "./Spin/Spin-Prefix.pch"
     ], 
     "assets": [
-        {
-            "asset": "Spin/Default.png", 
-            "target": "Default.png"
-        }, 
         {
             "asset": "Spin/Default@2x.png", 
             "target": "Default@2x.png"
@@ -56,6 +53,10 @@
         {
             "asset": "Spin/Default-568h@2x.png", 
             "target": "Default-568h@2x.png"
+        }, 
+        {
+            "asset": "Spin/Default.png", 
+            "target": "Default.png"
         }, 
         {
             "asset": "Spin/en.lproj/InfoPlist.strings", 
@@ -111,11 +112,11 @@
         }, 
         {
             "type": "iquote", 
-            "header_path": "apportable"
+            "header_path": "Spin"
         }, 
         {
             "type": "iquote", 
-            "header_path": "Spin"
+            "header_path": "Spin/External"
         }
     ], 
     "modules": [], 

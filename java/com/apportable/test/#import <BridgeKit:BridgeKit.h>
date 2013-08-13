@@ -1,0 +1,7 @@
+#import <BridgeKit/BridgeKit.h>
+
+@interface MediaQuery : JavaObject 
+
++(int)hasMusicFileWithArtist:(NSString *)artist album:(NSString *)album title:(NSString *)title;
+
+@end

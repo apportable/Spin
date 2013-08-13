@@ -1,14 +1,15 @@
 {
     "xcode_project": "Spin.xcodeproj", 
-    "java_sources": [], 
+    "java_sources": [
+        {
+            "source": "java/com/apportable/test/MediaQueryApi.java", 
+            "language": "unknown"
+        }
+    ], 
     "pchs": [
         "./Spin/Spin-Prefix.pch"
     ], 
     "assets": [
-        {
-            "asset": "Spin/Default.png", 
-            "target": "Default.png"
-        }, 
         {
             "asset": "Spin/Default@2x.png", 
             "target": "Default@2x.png"
@@ -22,6 +23,10 @@
             "target": "Default-568h@2x.png"
         }, 
         {
+            "asset": "Spin/Default.png", 
+            "target": "Default.png"
+        }, 
+        {
             "asset": "Spin/en.lproj/InfoPlist.strings", 
             "target": "en.lproj/InfoPlist.strings"
         }
@@ -29,7 +34,7 @@
     "link_flags": [], 
     "config": {
         "FEATURES": [
-            "unspecified_orientation"
+            "portrait"
         ], 
         "SHORT_VERSION": "1.0", 
         "APPLICATION_NAME": "Spin", 
@@ -88,18 +93,22 @@
             "type": "iquote"
         }, 
         {
-            "header_path": "apportable", 
+            "header_path": "Spin", 
             "type": "iquote"
         }, 
         {
-            "header_path": "Spin", 
+            "header_path": "Spin/External", 
             "type": "iquote"
         }
     ], 
     "modules": [], 
     "sources": [
         {
-            "source": "Spin/SpinAppDelegate.m", 
+            "source": "Spin/MediaQuery.m", 
+            "language": "objc"
+        }, 
+        {
+            "source": "Spin/SpinViewController.m", 
             "header_paths": [], 
             "flags": [], 
             "language": "objc", 
@@ -113,14 +122,14 @@
             "defines": {}
         }, 
         {
-            "source": "Spin/SpinViewController.m", 
+            "source": "Spin/main.m", 
             "header_paths": [], 
             "flags": [], 
             "language": "objc", 
             "defines": {}
         }, 
         {
-            "source": "Spin/main.m", 
+            "source": "Spin/SpinAppDelegate.m", 
             "header_paths": [], 
             "flags": [], 
             "language": "objc", 
@@ -169,10 +178,13 @@
         "UIKit", 
         "Foundation", 
         "CoreGraphics", 
-        "OpenGLES"
+        "OpenGLES", 
+        "BridgeKit"
     ], 
     "libs": [], 
-    "java_sourcepaths": [], 
+    "java_sourcepaths": [
+        "java"
+    ], 
     "java_res_dirs": [], 
     "type": "app", 
     "java_libs": [], 
