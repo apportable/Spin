@@ -1,0 +1,14 @@
+{
+    "com.apportable.spin.consumable1" : {
+        "itemType": "CONSUMABLE",
+        "price": 0.99,
+        "title": "consumable1",
+        "description": "consumable1"
+    },
+    "com.apportable.spin.nonconsumable1" : {
+        "itemType": "ENTITLED",
+        "price": 2.99,
+        "title": "nonconsumable1",
+        "description": "nonconsumable1"
+    }
+}

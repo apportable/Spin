@@ -7,12 +7,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class SpinViewController;
+@class SpinIAPViewController;
 
 @interface SpinAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) SpinViewController *viewController;
+@property (strong, nonatomic) SpinIAPViewController *viewController;
 
 @end

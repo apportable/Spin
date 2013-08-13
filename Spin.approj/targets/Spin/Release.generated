@@ -1,14 +1,6 @@
 {
     "xcode_project": "Spin.xcodeproj", 
-    "moms": [], 
     "sources": [
-        {
-            "language": "objc", 
-            "header_paths": [], 
-            "source": "Spin/main.m", 
-            "flags": [], 
-            "defines": {}
-        }, 
         {
             "language": "objc", 
             "header_paths": [], 
@@ -26,14 +18,14 @@
         {
             "language": "objc", 
             "header_paths": [], 
-            "source": "Spin/SpinView.m", 
+            "source": "Spin/SpinIAPViewController.m", 
             "flags": [], 
             "defines": {}
         }, 
         {
             "language": "objc", 
             "header_paths": [], 
-            "source": "Spin/SpinViewController.m", 
+            "source": "Spin/main.m", 
             "flags": [], 
             "defines": {}
         }
@@ -41,6 +33,7 @@
     "infoplists": [
         "./Spin/Spin-Info.plist"
     ], 
+    "libs": [], 
     "defines": {
         "__IPHONE_OS_VERSION_MIN_REQUIRED": 60000, 
         "NS_BLOCK_ASSERTIONS": 1
@@ -50,6 +43,10 @@
     ], 
     "assets": [
         {
+            "asset": "Spin/Default@2x.png", 
+            "target": "Default@2x.png"
+        }, 
+        {
             "asset": "Spin/Default.png", 
             "target": "Default.png"
         }, 
@@ -58,20 +55,12 @@
             "target": "Default-568h@2x.png"
         }, 
         {
-            "asset": "Spin/Default@2x.png", 
-            "target": "Default@2x.png"
+            "asset": "Spin/SpinIAPViewController.xib", 
+            "target": null
         }, 
         {
             "asset": "Spin/en.lproj/InfoPlist.strings", 
             "target": "en.lproj/InfoPlist.strings"
-        }, 
-        {
-            "asset": "Spin/SpinViewController.xib", 
-            "target": null
-        }, 
-        {
-            "asset": "Spin/SpinIAPViewController.xib", 
-            "target": null
         }
     ], 
     "type": "app", 
@@ -95,30 +84,25 @@
             "type": "iquote", 
             "header_path": "Spin-project-headers.hmap", 
             "hmap": {
-                "SpinAppDelegate.h": {
-                    "prefix": "Spin/", 
-                    "suffix": "SpinAppDelegate.h", 
-                    "key": "SpinAppDelegate.h"
-                }, 
                 "SpinIAPView.h": {
                     "prefix": "Spin/", 
                     "suffix": "SpinIAPView.h", 
                     "key": "SpinIAPView.h"
                 }, 
-                "SpinView.h": {
+                "SpinIAPViewController.h": {
                     "prefix": "Spin/", 
-                    "suffix": "SpinView.h", 
-                    "key": "SpinView.h"
-                }, 
-                "SpinViewController.h": {
-                    "prefix": "Spin/", 
-                    "suffix": "SpinViewController.h", 
-                    "key": "SpinViewController.h"
+                    "suffix": "SpinIAPViewController.h", 
+                    "key": "SpinIAPViewController.h"
                 }, 
                 "Spin-Prefix.pch": {
                     "prefix": "Spin/", 
                     "suffix": "Spin-Prefix.pch", 
                     "key": "Spin-Prefix.pch"
+                }, 
+                "SpinAppDelegate.h": {
+                    "prefix": "Spin/", 
+                    "suffix": "SpinAppDelegate.h", 
+                    "key": "SpinAppDelegate.h"
                 }
             }
         }, 
@@ -128,18 +112,39 @@
         }, 
         {
             "type": "iquote", 
-            "header_path": "apportable"
+            "header_path": "Spin"
         }, 
         {
             "type": "iquote", 
-            "header_path": "Spin"
+            "header_path": "Spin.approj"
+        }, 
+        {
+            "type": "iquote", 
+            "header_path": "Spin.approj/assets"
+        }, 
+        {
+            "type": "iquote", 
+            "header_path": "Spin.approj/targets"
+        }, 
+        {
+            "type": "iquote", 
+            "header_path": "Spin.approj/targets/Spin"
         }
     ], 
     "modules": [], 
+    "version": "1", 
     "flags": [
         "-DNS_BLOCK_ASSERTIONS=1", 
         "-fwritable-strings", 
         "-fasm-blocks", 
+        {
+            "flag": "-std=gnu99", 
+            "not_type": "c++"
+        }, 
+        {
+            "flag": "-fgnu-keywords", 
+            "not_type": "c++"
+        }, 
         "-fno-asm", 
         "-fpascal-strings", 
         "-Wempty-body", 

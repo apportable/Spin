@@ -12,6 +12,10 @@
 
 int main(int argc, char *argv[]) {
     @autoreleasepool {
+#ifdef APPORTABLE
+        [UIScreen mainScreen].currentMode =
+        [UIScreenMode emulatedMode:UIScreenBestEmulatedMode];
+#endif
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([SpinAppDelegate class]));
     }
 }

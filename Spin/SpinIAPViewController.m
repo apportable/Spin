@@ -1,99 +1,53 @@
 //
-//  SpinIAPView.m
+//  SpinIAPViewController.m
 //  Spin
 //
+//  Created by Glenna Buford on 8/12/13.
 //  Copyright (c) 2013 Apportable. All rights reserved.
 //
 
-// For testing IAP
+#import "SpinIAPViewController.h"
+#import <StoreKit/StoreKit.h>
 
-#import "SpinIAPView.h"
+@interface SpinIAPViewController () <SKPaymentTransactionObserver, SKProductsRequestDelegate>
 
-@interface SpinIAPView()
-    
 @property (nonatomic, retain) SKProductsRequest *productsRequest;
 @property (nonatomic, retain) SKProductsResponse *productsList;
+@property (retain, nonatomic) IBOutlet UIButton *nonConsumable;
 
 @end
 
-@implementation SpinIAPView
+@implementation SpinIAPViewController
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Initialization code
-        [self initView];
+        // Custom initialization
     }
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)decoder
+- (void)viewDidLoad
 {
-    self = [super initWithCoder:decoder];
-    if (self) {
-        // Initialization code
-        [self initView];
-    }
-    return self;
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    [self requestProductData];
 }
 
-- (void)dealloc {
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc
+{
     [_productsRequest release];
     [_productsList release];
+    [_nonConsumable release];
     [super dealloc];
-}
-
-- (void)initView
-{    
-    [self setBackgroundColor:[UIColor grayColor]];
-    NSLog(@"-------------------------initWithView");
-    
-    UIButton *restoreButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    NSString *str1 = @"restore purchases";
-    [restoreButton setTitle:str1 forState:UIControlStateNormal];
-    [restoreButton setTitle:str1 forState:UIControlStateHighlighted];
-    [restoreButton setTitle:str1 forState:UIControlStateSelected];
-    [restoreButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [restoreButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-    [restoreButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [restoreButton setFrame:CGRectMake(10.0, 10.0, 250, 44)];
-    [restoreButton setBackgroundColor:[UIColor redColor]];
-    [self addSubview:restoreButton];
-    [restoreButton addTarget:self action:@selector(restorePurchases) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton *purchaseFirst = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    NSString *str2 = @"purchase item 1";
-    [purchaseFirst setTitle:str2 forState:UIControlStateNormal];
-    [purchaseFirst setTitle:str2 forState:UIControlStateHighlighted];
-    [purchaseFirst setTitle:str2 forState:UIControlStateSelected];
-    [purchaseFirst setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [purchaseFirst setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-    [purchaseFirst setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [purchaseFirst setFrame:CGRectMake(10.0, 70.0, 250, 44)];
-    [purchaseFirst setBackgroundColor:[UIColor redColor]];
-    [self addSubview:purchaseFirst];
-    [purchaseFirst addTarget:self action:@selector(purchaseFirstItem) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton *purchaseSecond = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    NSString *str3 = @"purchase item 2";
-    [purchaseSecond setTitle:str3 forState:UIControlStateNormal];
-    [purchaseSecond setTitle:str3 forState:UIControlStateHighlighted];
-    [purchaseSecond setTitle:str3 forState:UIControlStateSelected];
-    [purchaseSecond setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [purchaseSecond setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-    [purchaseSecond setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [purchaseSecond setFrame:CGRectMake(10.0, 130.0, 250, 44)];
-    [purchaseSecond setBackgroundColor:[UIColor redColor]];
-    [self addSubview:purchaseSecond];
-    [purchaseSecond addTarget:self action:@selector(purchaseSecondItem) forControlEvents:UIControlEventTouchUpInside];
-    
-    double delayInSeconds = 0.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-        [self requestProductData];
-    });
 }
 
 - (void)requestProductData
@@ -106,31 +60,31 @@
     [[self productsRequest] start];
 }
 
-- (void)purchaseFirstItem
+- (IBAction)purchaseConsumableItem:(id)sender
 {
     NSArray *products = [[self productsList] products];
     if ([products count]) {
         NSLog(@"purchasing first item");
-        SKPayment *payment = [SKPayment paymentWithProduct:[products objectAtIndex:0]];
+        SKPayment *payment = [SKPayment paymentWithProductIdentifier:@"com.apportable.spin.consumable1"];
         [[SKPaymentQueue defaultQueue] addPayment:payment];
     } else {
         NSLog(@"NOT purchasing first item, products count:%u", [products count]);
     }
 }
 
-- (void)purchaseSecondItem
+- (IBAction)purchaseNonConsumableItem:(id)sender
 {
     NSArray *products = [[self productsList] products];
     if ([products count] > 1) {
         NSLog(@"purchasing second item");
-        SKPayment *payment = [SKPayment paymentWithProduct:[products objectAtIndex:1]];
+        SKPayment *payment = [SKPayment paymentWithProductIdentifier:@"com.apportable.spin.nonconsumable1"];
         [[SKPaymentQueue defaultQueue] addPayment:payment];
     } else {
         NSLog(@"NOT purchasing second item, products count:%u", [products count]);
     }
 }
 
-- (void)restorePurchases
+- (IBAction)restorePurchases:(id)sender
 {
     NSLog(@"restoring purchases");
     [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
@@ -183,6 +137,10 @@
                 NSLog(@"SKPaymentTransactionStateRestored: %@", txn);
                 NSLog(@"Original transaction: %@", [txn originalTransaction]);
                 NSLog(@"Original transaction payment: %@", [[txn originalTransaction] payment]);
+                if ([txn.payment.productIdentifier isEqualToString:@"com.apportable.spin.nonconsumable1"]) {
+                    [self.nonConsumable setBackgroundColor:[UIColor grayColor]];
+                    self.nonConsumable.enabled = NO;
+                }
                 break;
             default:
                 NSLog(@"UNKNOWN SKPaymentTransactionState: %@", txn);
@@ -216,12 +174,12 @@
 }
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+ // Drawing code
+ }
+ */
 
 @end
