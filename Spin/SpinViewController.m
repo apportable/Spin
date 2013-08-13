@@ -50,14 +50,14 @@
 }
 
 //Back button support
-#ifdef APPORTABLE
+#ifdef NOPE
 
 - (BOOL) canBecomeFirstResponder
 {
     return YES;
 }
 
-- (void)buttonUpWithEvent:(UIEvent *)event
+- (void) buttonUpWithEvent:(UIEvent *)event
 {
     switch (event.buttonCode)
     {

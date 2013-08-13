@@ -6,6 +6,14 @@
     ], 
     "assets": [
         {
+            "asset": "Spin/SpinViewController.xib", 
+            "target": null
+        }, 
+        {
+            "asset": "Spin/Default-568h@2x.png", 
+            "target": "Default-568h@2x.png"
+        }, 
+        {
             "asset": "Spin/Default.png", 
             "target": "Default.png"
         }, 
@@ -14,12 +22,8 @@
             "target": "Default@2x.png"
         }, 
         {
-            "asset": "Spin/SpinViewController.xib", 
-            "target": null
-        }, 
-        {
-            "asset": "Spin/Default-568h@2x.png", 
-            "target": "Default-568h@2x.png"
+            "asset": "Spin/cats.mp4", 
+            "target": "cats.mp4"
         }, 
         {
             "asset": "Spin/en.lproj/InfoPlist.strings", 
@@ -93,6 +97,22 @@
         }, 
         {
             "header_path": "Spin", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Spin.approj", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Spin.approj/assets", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Spin.approj/targets", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Spin.approj/targets/Spin", 
             "type": "iquote"
         }
     ], 

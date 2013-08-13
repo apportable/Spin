@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1AFCF49117BA272E0085CA15 /* cats.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1AFCF49017BA272E0085CA15 /* cats.mp4 */; };
 		5B64E811164373C50043E296 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E810164373C50043E296 /* UIKit.framework */; };
 		5B64E813164373C50043E296 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E812164373C50043E296 /* Foundation.framework */; };
 		5B64E815164373C50043E296 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E814164373C50043E296 /* CoreGraphics.framework */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1AFCF49017BA272E0085CA15 /* cats.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = cats.mp4; sourceTree = "<group>"; };
 		5B64E80C164373C50043E296 /* Spin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B64E810164373C50043E296 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5B64E812164373C50043E296 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -96,6 +98,7 @@
 		5B64E81A164373C50043E296 /* Spin */ = {
 			isa = PBXGroup;
 			children = (
+				1AFCF49017BA272E0085CA15 /* cats.mp4 */,
 				5B64E823164373C50043E296 /* SpinAppDelegate.h */,
 				5B64E824164373C50043E296 /* SpinAppDelegate.m */,
 				5B64E83B164375D40043E296 /* SpinViewController.h */,
@@ -179,6 +182,7 @@
 				5B64E829164373C50043E296 /* Default@2x.png in Resources */,
 				5B64E82B164373C50043E296 /* Default-568h@2x.png in Resources */,
 				5B64E83F164376140043E296 /* SpinViewController.xib in Resources */,
+				1AFCF49117BA272E0085CA15 /* cats.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

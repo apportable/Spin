@@ -16,6 +16,27 @@
 #define VERT_SWIPE_DRAG_MAX     24
 #define TAP_MIN_DRAG            10
 
+#ifdef APPORTABLE
+#ifndef GL_TEXTURE_EXTERNAL_OES
+#define GL_TEXTURE_EXTERNAL_OES 0x8D65
+#endif
+#import <BridgeKit/AndroidSurfaceTexture.h>
+#import <BridgeKit/media/AndroidMediaPlayer.h>
+#import <BridgeKit/AndroidSurface.h>
+#import <BridgeKit/AndroidActivity.h>
+#import <BridgeKit/AndroidURI.h>
+
+@interface SpinView () <AndroidMediaPlayerDelegate>
+{
+    AndroidMediaPlayer *_moviePlayer;
+    AndroidSurfaceTexture *_surfaceTexture;
+    AndroidSurface *_surface;
+    GLuint _movieTex;
+    BOOL _prepared;
+}
+@end
+#endif
+
 @implementation SpinView {
     EAGLContext *context;
     GLuint defaultFramebuffer, colorRenderbuffer;
@@ -153,8 +174,8 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
     
     [context renderbufferStorage:GL_RENDERBUFFER_OES fromDrawable:eaglLayer];
     
-    int width = self.frame.size.width;
-    int height = self.frame.size.width;
+    int width, height;
+    width = height = MIN([UIScreen mainScreen].bounds.size.height,[UIScreen mainScreen].bounds.size.width);
     
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
@@ -166,6 +187,29 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
     
     glClearColor(spinClear * .1, spinClear * .1, spinClear * .1, 1.f);
     
+#ifdef APPORTABLE
+    NSString *mediaPath = [[NSBundle mainBundle] pathForResource:@"cats" ofType:@"mp4"];
+    mediaPath = [mediaPath substringFromIndex:[[NSBundle mainBundle] bundlePath].length +1];
+    
+    _movieTex = 0;
+    glGenTextures(1, &_movieTex);
+    glBindTexture(GL_TEXTURE_EXTERNAL_OES, _movieTex);
+    glTexParameterf(GL_TEXTURE_EXTERNAL_OES, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameterf(GL_TEXTURE_EXTERNAL_OES, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    
+    glTexParameterf( GL_TEXTURE_EXTERNAL_OES, GL_TEXTURE_WRAP_S, GL_REPEAT );
+    glTexParameterf( GL_TEXTURE_EXTERNAL_OES, GL_TEXTURE_WRAP_T, GL_REPEAT );
+    
+    _surfaceTexture = [[AndroidSurfaceTexture alloc] initWithDelegate:self texName:_movieTex];
+    _surface = [[AndroidSurface alloc] initWithSurfaceTexture:_surfaceTexture];
+    _moviePlayer = [AndroidMediaPlayer new];
+    
+    [_moviePlayer setDelegate:self];
+    [_moviePlayer setContentUriWithContext:[AndroidActivity currentActivity] contentUri:mediaPath];
+    [_moviePlayer setSurface:_surface];
+    [_moviePlayer prepare];
+    
+#endif
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE, GL_SRC_COLOR);
 }
@@ -214,6 +258,25 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_COLOR_ARRAY);
     
+#ifdef APPORTABLE
+    if (_prepared) {
+        if (_surfaceTexture->_isReadyToDraw) {
+            [_surfaceTexture updateTexImage];
+        }
+
+        glEnableClientState(GL_TEXTURE_COORD_ARRAY);        
+        glMatrixMode(GL_TEXTURE);
+        AndroidSurfaceTextureMatrix4 transform = [_surfaceTexture transformMatrix];
+        glLoadMatrixf(&transform);
+        
+        glDisable(GL_TEXTURE_2D);
+        glEnable(GL_TEXTURE_EXTERNAL_OES);
+        glBindTexture(GL_TEXTURE_EXTERNAL_OES, _movieTex);
+        glTexCoordPointer(2, GL_FLOAT, 0, textcoords);
+    
+        glDisableClientState(GL_COLOR_ARRAY);
+    }
+#endif
     glVertexPointer(3, GL_FLOAT, 0, vertices);
     glColorPointer(4, GL_UNSIGNED_BYTE, 0, colors);
     
@@ -340,5 +403,24 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
         }
     }
 }
+
+#ifdef APPORTABLE
+// AndroidMediaPlayerDelegate
+- (void)mediaPlayer:(AndroidMediaPlayer *)player videoSizeChangedWithWidth:(int)width height:(int)height {}
+- (void)mediaPlayerDidCompleteSeek:(AndroidMediaPlayer *)player {}
+- (void)mediaPlayer:(AndroidMediaPlayer *)player infoWithWarning:(int)warning extra:(int)extra {}
+- (void)mediaPlayer:(AndroidMediaPlayer *)player didError:(int)warning extra:(int)extra{}
+- (void)mediaPlayer:(AndroidMediaPlayer *)player bufferPecentage:(int)warning {}
+- (void)mediaPlayerDidComplete:(AndroidMediaPlayer *)player
+{
+    [player start];
+}
+
+- (void)mediaPlayerPrepared:(AndroidMediaPlayer *)player
+{
+    _prepared = YES;
+    [player start];
+}
+#endif
 
 @end
