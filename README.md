@@ -1,4 +1,4 @@
 Spin
 ====
 
-A simple OpenGL ES 1 spining square. 
+A simple OpenGL ES 1 spinning square. 
