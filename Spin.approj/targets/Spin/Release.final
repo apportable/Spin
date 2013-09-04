@@ -6,6 +6,10 @@
     ], 
     "assets": [
         {
+            "asset": "Spin/Default-568h@2x.png", 
+            "target": "Default-568h@2x.png"
+        }, 
+        {
             "asset": "Spin/Default.png", 
             "target": "Default.png"
         }, 
@@ -16,10 +20,6 @@
         {
             "asset": "Spin/SpinViewController.xib", 
             "target": null
-        }, 
-        {
-            "asset": "Spin/Default-568h@2x.png", 
-            "target": "Default-568h@2x.png"
         }, 
         {
             "asset": "Spin/en.lproj/InfoPlist.strings", 
@@ -88,11 +88,23 @@
             "type": "iquote"
         }, 
         {
-            "header_path": "apportable", 
+            "header_path": "Spin", 
             "type": "iquote"
         }, 
         {
-            "header_path": "Spin", 
+            "header_path": "Spin.approj", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Spin.approj/assets", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Spin.approj/targets", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Spin.approj/targets/Spin", 
             "type": "iquote"
         }
     ], 
@@ -165,6 +177,7 @@
     ], 
     "deps": [
         "UIKit", 
+        "GameController", 
         "QuartzCore", 
         "UIKit", 
         "Foundation", 

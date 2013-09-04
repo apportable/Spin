@@ -13,12 +13,47 @@
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
+@synthesize controllerArray = _controllerArray;
+@synthesize myController = _myController;
 
 - (void)dealloc
 {
     [_window release];
     [_viewController release];
+    [_controllerArray release];
     [super dealloc];
+}
+
+- (void)setupControllers:(NSNotification *)notification
+{
+    // Get Controllers
+    self.controllerArray = [GCController controllers];
+    if (self.controllerArray) {
+        NSLog(@"Array of controllers is not nil.");
+    }
+    else {
+        NSLog(@"Array of controllers is nil!");
+    }
+    
+    if ([notification object])
+    {
+        NSLog(@"Controller retrieved from notification object!");
+        self.myController = [notification object];
+        
+        GCGamepad *profile = self.myController.gamepad;
+        if (profile) {
+            profile.buttonA.valueChangedHandler = ^(GCControllerButtonInput *button, float value, BOOL pressed)
+            {
+                if (pressed) {
+                    exit(0);
+                }
+            };
+        }
+    }
+    else {
+        NSLog(@"No controller retrieved from notification object...");
+    }
+    
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -29,6 +64,11 @@
     self.viewController = [[[SpinViewController alloc] initWithNibName:@"SpinViewController" bundle:nil] autorelease];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
+    NSNotificationCenter* center = [NSNotificationCenter defaultCenter];
+    // Set up connect notification
+    [center addObserver:self selector:@selector(setupControllers:)
+                    name:GCControllerDidConnectNotification object:nil];
     return YES;
 }
 

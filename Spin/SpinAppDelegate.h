@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GameController/GameController.h>
 
 @class SpinViewController;
 
@@ -14,5 +15,9 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) SpinViewController *viewController;
+
+@property(strong, nonatomic) NSArray *controllerArray;
+
+@property(strong, nonatomic) GCController *myController;
 
 @end

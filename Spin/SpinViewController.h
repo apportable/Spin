@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GameController/GameController.h>
 
 @interface SpinViewController : UIViewController
 

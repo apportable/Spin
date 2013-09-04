@@ -33,6 +33,7 @@
     "infoplists": [
         "./Spin/Spin-Info.plist"
     ], 
+    "libs": [], 
     "defines": {
         "__IPHONE_OS_VERSION_MIN_REQUIRED": 60000, 
         "NS_BLOCK_ASSERTIONS": 1
@@ -41,6 +42,10 @@
         "./Spin/Spin-Prefix.pch"
     ], 
     "assets": [
+        {
+            "asset": "Spin/Default-568h@2x.png", 
+            "target": "Default-568h@2x.png"
+        }, 
         {
             "asset": "Spin/Default.png", 
             "target": "Default.png"
@@ -52,10 +57,6 @@
         {
             "asset": "Spin/SpinViewController.xib", 
             "target": null
-        }, 
-        {
-            "asset": "Spin/Default-568h@2x.png", 
-            "target": "Default-568h@2x.png"
         }, 
         {
             "asset": "Spin/en.lproj/InfoPlist.strings", 
@@ -111,11 +112,23 @@
         }, 
         {
             "type": "iquote", 
-            "header_path": "apportable"
+            "header_path": "Spin"
         }, 
         {
             "type": "iquote", 
-            "header_path": "Spin"
+            "header_path": "Spin.approj"
+        }, 
+        {
+            "type": "iquote", 
+            "header_path": "Spin.approj/assets"
+        }, 
+        {
+            "type": "iquote", 
+            "header_path": "Spin.approj/targets"
+        }, 
+        {
+            "type": "iquote", 
+            "header_path": "Spin.approj/targets/Spin"
         }
     ], 
     "modules": [], 
@@ -154,6 +167,7 @@
     ], 
     "deps": [
         "UIKit", 
+        "GameController", 
         "QuartzCore", 
         "UIKit", 
         "Foundation", 
