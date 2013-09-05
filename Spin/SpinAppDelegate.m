@@ -39,14 +39,88 @@
     {
         NSLog(@"Controller retrieved from notification object!");
         self.myController = [notification object];
-        
-        GCGamepad *profile = self.myController.gamepad;
+
+        GCExtendedGamepad *profile = self.myController.extendedGamepad;
         if (profile) {
-            profile.buttonA.valueChangedHandler = ^(GCControllerButtonInput *button, float value, BOOL pressed)
+            NSLog(@"profile found, setting up handler");
+
+            //Two different styles of registering callbacks, both are valid
+//            profile.buttonA.valueChangedHandler = ^(GCControllerButtonInput *button, float value, BOOL pressed)
+//            {
+//                if (pressed)
+//                {
+//                    NSLog(@"A button pressed");
+//                }
+//            };
+//            profile.leftShoulder.valueChangedHandler =^(GCControllerButtonInput *button, float value, BOOL pressed)
+//            {
+//                NSLog(@"left shoulder changed");
+//                if (pressed)
+//                {
+//                    NSLog(@"left shoulder bumped");
+//                }
+//            };
+            
+            profile.valueChangedHandler = ^(GCExtendedGamepad *gamepad, GCControllerElement *element)
             {
-                if (pressed) {
-                    exit(0);
+                if (gamepad.rightTrigger == element && gamepad.rightTrigger.isPressed)
+                {
+                    NSLog(@"right trigger pulled!");
                 }
+                if (gamepad.leftTrigger == element && gamepad.leftTrigger.isPressed)
+                {
+                    NSLog(@"left trigger pulled!");
+                }
+                if (gamepad.leftShoulder == element && gamepad.leftShoulder.isPressed)
+                {
+                    NSLog(@"Left shoulder bumped");
+                }
+                if (gamepad.rightShoulder == element && gamepad.rightShoulder.isPressed)
+                {
+                    NSLog(@"right shoulder bumped");
+                }
+                if (gamepad.buttonA == element && gamepad.buttonA.isPressed)
+                {
+                    NSLog(@"A Button Pressed");
+                }
+                if (gamepad.buttonB == element && gamepad.buttonB.isPressed)
+                {
+                    NSLog(@"B Button Pressed");
+                }
+                if (gamepad.buttonX == element && gamepad.buttonX.isPressed)
+                {
+                    NSLog(@"X Button Pressed");
+                }
+                if (gamepad.buttonY == element && gamepad.buttonY.isPressed)
+                {
+                    NSLog(@"WHYYYY Button Pressed");
+                }
+                
+                if (gamepad.dpad.down == element && gamepad.dpad.down.isPressed)
+                {
+                    NSLog(@"Directional Pad pressed down!");
+                }
+                if (gamepad.dpad.up == element && gamepad.dpad.up.isPressed)
+                {
+                    NSLog(@"Directional Pad pressed up!");
+                }
+                if (gamepad.dpad.left == element && gamepad.dpad.left.isPressed)
+                {
+                    NSLog(@"Directional Pad pressed left!");
+                }
+                if (gamepad.dpad.right == element && gamepad.dpad.right.isPressed)
+                {
+                    NSLog(@"Directional Pad pressed right!");
+                }
+                if (gamepad.leftThumbstick.xAxis == element || gamepad.leftThumbstick.yAxis == element)
+                {
+                    NSLog(@"Left thumbstick x:%f, y:%f", gamepad.leftThumbstick.xAxis.value, gamepad.leftThumbstick.yAxis.value);
+                }
+                if (gamepad.rightThumbstick.xAxis == element || gamepad.rightThumbstick.yAxis == element)
+                {
+                    NSLog(@"Right thumbstick x:%f, y:%f", gamepad.rightThumbstick.xAxis.value, gamepad.rightThumbstick.yAxis.value);
+                }
+
             };
         }
     }
