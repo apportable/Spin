@@ -34,11 +34,14 @@
     else {
         NSLog(@"Array of controllers is nil!");
     }
-    
-    if ([notification object])
+    int controllers_count = [[GCController controllers] count];
+    if (controllers_count == 0)
     {
-        NSLog(@"Controller retrieved from notification object!");
-        self.myController = [notification object];
+        NSLog(@"no controllers connected....this shouldnt happen.");
+    }
+    for (int i = 0; i < controllers_count; ++i)
+    {
+        self.myController = [GCController controllers][i];
 
         GCExtendedGamepad *profile = self.myController.extendedGamepad;
         if (profile) {
@@ -124,9 +127,6 @@
             };
         }
     }
-    else {
-        NSLog(@"No controller retrieved from notification object...");
-    }
     
 }
 
@@ -139,10 +139,17 @@
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     
+    [self setupControllers:nil];//call in case controller is already connected
+    
     NSNotificationCenter* center = [NSNotificationCenter defaultCenter];
     // Set up connect notification
     [center addObserver:self selector:@selector(setupControllers:)
                     name:GCControllerDidConnectNotification object:nil];
+    
+    [GCController startWirelessControllerDiscoveryWithCompletionHandler:^(void){
+        NSLog(@"GCController startWirelessControllerDiscoveryWithCompletionHandler done\n");
+    }];
+    
     return YES;
 }
 
