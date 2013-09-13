@@ -57,7 +57,9 @@
     //   "write_external_storage"
     //   "write_settings"
     //   "xperia"
-    "FEATURES": ["unspecified_orientation"],
+    "FEATURES": [
+        "portrait",
+    ],
 
     // Preferred way of handling URLs in the code.
     // Leave it null for most cases.
@@ -95,6 +97,10 @@
     // to be compressed.
     //"COMPRESSED_ASSETS_PATTERN": "",
     //"UNCOMPRESSED_ASSETS_PATTERN": "",
+
+    // Required in ParseApplication.onCreate() for early configuration
+    "PARSE_APPLICATION_ID": "PLEASE ENTER YOUR applicationId HERE",
+    "PARSE_CLIENT_KEY": "PLEASE ENTER YOUR clientKey HERE",
   },
 
   // Sometimes header include path ordering matters.  If so, put the ordering constraints into this

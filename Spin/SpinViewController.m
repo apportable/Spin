@@ -6,9 +6,9 @@
 //
 
 #import "SpinViewController.h"
-#import <QuartzCore/QuartzCore.h>
+#import "SpinParseView.h"
 
-@interface SpinViewController ()
+@interface SpinViewController () <UITextFieldDelegate>
 
 @end
 
@@ -26,11 +26,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    CADisplayLink *link = [CADisplayLink displayLinkWithTarget:self.view selector:@selector(render:)];
-    link.frameInterval = 1;
-    [link addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 	// Do any additional setup after loading the view.
     [self becomeFirstResponder];
+    
+    SpinParseView *view = (SpinParseView*)[self view];
+    [[view cloudValueInput] setDelegate:self];
+    [view setupView];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,7 +59,7 @@
     return YES;
 }
 
-- (void)buttonUpWithEvent:(UIEvent *)event
+- (void) buttonUpWithEvent:(UIEvent *)event
 {
     switch (event.buttonCode)
     {
@@ -75,4 +77,12 @@
 
 #endif
 
+#pragma -
+#pragma UITextFieldDelegate methods
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    SpinParseView *view = (SpinParseView*)[self view];
+    [[view cloudValueInput] resignFirstResponder];
+    return NO;
+}
 @end

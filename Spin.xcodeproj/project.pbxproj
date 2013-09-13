@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A661AAE17C7E60C00936386 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A661AAD17C7E60C00936386 /* Parse.framework */; };
+		4A661ABB17C7E77B00936386 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A661AAF17C7E6C800936386 /* AudioToolbox.framework */; };
+		4A661ABC17C7E79400936386 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A661AB117C7E6D400936386 /* CFNetwork.framework */; };
+		4A661ABE17C7E7B700936386 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A661ABD17C7E7B700936386 /* SystemConfiguration.framework */; };
+		4A661ABF17C7E7C700936386 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A661AB917C7E72E00936386 /* Security.framework */; };
+		4A661AC017C7E80900936386 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A661AB317C7E6EA00936386 /* CoreLocation.framework */; };
+		4A661AC217C7E86700936386 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A661AC117C7E86700936386 /* MobileCoreServices.framework */; };
+		4A69053E17D5439300F767BE /* SpinParseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A69053D17D5439300F767BE /* SpinParseView.m */; };
 		5B64E811164373C50043E296 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E810164373C50043E296 /* UIKit.framework */; };
 		5B64E813164373C50043E296 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E812164373C50043E296 /* Foundation.framework */; };
 		5B64E815164373C50043E296 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E814164373C50043E296 /* CoreGraphics.framework */; };
@@ -19,11 +27,19 @@
 		5B64E82B164373C50043E296 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B64E82A164373C50043E296 /* Default-568h@2x.png */; };
 		5B64E83D164375D50043E296 /* SpinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64E83C164375D50043E296 /* SpinViewController.m */; };
 		5B64E83F164376140043E296 /* SpinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B64E83E164376140043E296 /* SpinViewController.xib */; };
-		5B64E842164376430043E296 /* SpinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64E841164376430043E296 /* SpinView.m */; };
 		5B64E8441643766E0043E296 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E8431643766E0043E296 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A661AAD17C7E60C00936386 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		4A661AAF17C7E6C800936386 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		4A661AB117C7E6D400936386 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		4A661AB317C7E6EA00936386 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4A661AB917C7E72E00936386 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		4A661ABD17C7E7B700936386 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4A661AC117C7E86700936386 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		4A69053D17D5439300F767BE /* SpinParseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinParseView.m; sourceTree = "<group>"; };
+		4A69053F17D543ED00F767BE /* SpinParseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinParseView.h; sourceTree = "<group>"; };
 		5B64E80C164373C50043E296 /* Spin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B64E810164373C50043E296 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5B64E812164373C50043E296 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -42,8 +58,6 @@
 		5B64E83B164375D40043E296 /* SpinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinViewController.h; sourceTree = "<group>"; };
 		5B64E83C164375D50043E296 /* SpinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinViewController.m; sourceTree = "<group>"; };
 		5B64E83E164376140043E296 /* SpinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinViewController.xib; sourceTree = "<group>"; };
-		5B64E840164376430043E296 /* SpinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinView.h; sourceTree = "<group>"; };
-		5B64E841164376430043E296 /* SpinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinView.m; sourceTree = "<group>"; };
 		5B64E8431643766E0043E296 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -52,11 +66,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A661AC217C7E86700936386 /* MobileCoreServices.framework in Frameworks */,
+				4A661AC017C7E80900936386 /* CoreLocation.framework in Frameworks */,
+				4A661ABF17C7E7C700936386 /* Security.framework in Frameworks */,
+				4A661ABE17C7E7B700936386 /* SystemConfiguration.framework in Frameworks */,
+				4A661ABC17C7E79400936386 /* CFNetwork.framework in Frameworks */,
+				4A661ABB17C7E77B00936386 /* AudioToolbox.framework in Frameworks */,
+				5B64E815164373C50043E296 /* CoreGraphics.framework in Frameworks */,
 				5B64E8441643766E0043E296 /* QuartzCore.framework in Frameworks */,
 				5B64E811164373C50043E296 /* UIKit.framework in Frameworks */,
 				5B64E813164373C50043E296 /* Foundation.framework in Frameworks */,
-				5B64E815164373C50043E296 /* CoreGraphics.framework in Frameworks */,
 				5B64E819164373C50043E296 /* OpenGLES.framework in Frameworks */,
+				4A661AAE17C7E60C00936386 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +87,8 @@
 		5B64E801164373C50043E296 = {
 			isa = PBXGroup;
 			children = (
+				4A661AC117C7E86700936386 /* MobileCoreServices.framework */,
+				4A661ABD17C7E7B700936386 /* SystemConfiguration.framework */,
 				5B64E81A164373C50043E296 /* Spin */,
 				5B64E80F164373C50043E296 /* Frameworks */,
 				5B64E80D164373C50043E296 /* Products */,
@@ -83,6 +106,11 @@
 		5B64E80F164373C50043E296 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A661AB317C7E6EA00936386 /* CoreLocation.framework */,
+				4A661AB117C7E6D400936386 /* CFNetwork.framework */,
+				4A661AAF17C7E6C800936386 /* AudioToolbox.framework */,
+				4A661AB917C7E72E00936386 /* Security.framework */,
+				4A661AAD17C7E60C00936386 /* Parse.framework */,
 				5B64E8431643766E0043E296 /* QuartzCore.framework */,
 				5B64E810164373C50043E296 /* UIKit.framework */,
 				5B64E812164373C50043E296 /* Foundation.framework */,
@@ -100,8 +128,8 @@
 				5B64E824164373C50043E296 /* SpinAppDelegate.m */,
 				5B64E83B164375D40043E296 /* SpinViewController.h */,
 				5B64E83C164375D50043E296 /* SpinViewController.m */,
-				5B64E840164376430043E296 /* SpinView.h */,
-				5B64E841164376430043E296 /* SpinView.m */,
+				4A69053F17D543ED00F767BE /* SpinParseView.h */,
+				4A69053D17D5439300F767BE /* SpinParseView.m */,
 				5B64E81B164373C50043E296 /* Supporting Files */,
 			);
 			path = Spin;
@@ -192,7 +220,7 @@
 				5B64E821164373C50043E296 /* main.m in Sources */,
 				5B64E825164373C50043E296 /* SpinAppDelegate.m in Sources */,
 				5B64E83D164375D50043E296 /* SpinViewController.m in Sources */,
-				5B64E842164376430043E296 /* SpinView.m in Sources */,
+				4A69053E17D5439300F767BE /* SpinParseView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +289,10 @@
 		5B64E839164373C60043E296 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spin/Spin-Prefix.pch";
 				INFOPLIST_FILE = "Spin/Spin-Info.plist";
@@ -273,6 +305,10 @@
 		5B64E83A164373C60043E296 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spin/Spin-Prefix.pch";
 				INFOPLIST_FILE = "Spin/Spin-Info.plist";

@@ -5,8 +5,8 @@
 //
 
 #import "SpinAppDelegate.h"
-
 #import "SpinViewController.h"
+#import <Parse/Parse.h>
 
 
 @implementation SpinAppDelegate
@@ -24,12 +24,60 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSLog(@"application: %@ didFinishLaunchingWithOptions: %@ state: %d", application, launchOptions, [[UIApplication sharedApplication] applicationState]);
+    
+#ifdef APPORTABLE
+	[[UIScreen mainScreen] setCurrentMode:[UIScreenMode emulatedMode:UIScreenBestEmulatedMode]];
+#endif
+    
+    [Parse setApplicationId:@"PLEASE ALSO: set your applicationId in configuration.json"
+                  clientKey:@"PLEASE ALSO: set your clientKey in configuration.json"];
+#ifdef APPORTABLE
+    // N.B.: Requires compiling against Apportable-modified headers.  This may be moved to an internal header in future SDK revisions.  Useful for debugging on Android...
+    [Parse setLogLevel:PARSE_LOG_LEVEL_VERBOSE];
+#endif
+    
+    // Register for push notifications
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound];
+    
+    // Launched from a push notification?
+    NSDictionary *payload = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if (payload)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self application:application didReceiveRemoteNotification:payload];
+        });
+    }
+
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.viewController = [[[SpinViewController alloc] initWithNibName:@"SpinViewController" bundle:nil] autorelease];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken
+{
+    // Store the deviceToken in the current installation and save it to Parse.
+    [[PFInstallation currentInstallation] setDeviceTokenFromData:newDeviceToken];
+    [[PFInstallation currentInstallation] saveInBackground];
+
+    [PFPush storeDeviceToken:newDeviceToken];
+    [PFPush subscribeToChannelInBackground:@""]; // global broadcast channel
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    if (error.code == 3010) {
+        NSLog(@"Push notifications are not supported in the iOS Simulator.");
+    } else {
+        // show some alert or otherwise handle the failure to register.
+        NSLog(@"application:didFailToRegisterForRemoteNotificationsWithError: %@", error);
+    }
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    [PFPush handlePush:userInfo];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
