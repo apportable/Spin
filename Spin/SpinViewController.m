@@ -12,7 +12,39 @@
 
 @end
 
+@interface MyView: UIView
+@end
+
+@implementation MyView
+
+- (void)drawRect:(CGRect)rect
+{
+    [[UIColor blackColor] set];
+    UIRectFill(rect);
+    
+    NSString* text = @"Testing";
+    UIFont* font = [UIFont systemFontOfSize:12];
+    
+    CGSize textSize = [text sizeWithFont:font
+                       constrainedToSize:rect.size
+                           lineBreakMode:NSLineBreakByWordWrapping];
+    
+    rect.origin.x = (rect.size.width - textSize.width) / 2;
+    rect.origin.y = (rect.size.height - textSize.height) / 2;
+    
+    [[UIColor whiteColor] set];
+    [text drawInRect:rect
+            withFont:font
+       lineBreakMode:NSLineBreakByWordWrapping
+           alignment:NSTextAlignmentLeft];
+}
+
+@end
+
 @implementation SpinViewController
+
+@synthesize singleLineLabel = _singleLineLabel;
+@synthesize multiLineLabel = _multiLineLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,6 +63,21 @@
     [link addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 	// Do any additional setup after loading the view.
     [self becomeFirstResponder];
+    
+    [_singleLineLabel setFont:[UIFont fontWithName:@"AldotheApache.ttf" size:25]];
+//    [_singleLineLabel setFont:[UIFont systemFontOfSize:17]];
+    [_multiLineLabel setFont:[UIFont fontWithName:@"vag_rounded_pro.ttf" size:26]];
+    
+    [_multiLineLabel setAdjustsFontSizeToFitWidth:YES];
+    [_singleLineLabel setAdjustsFontSizeToFitWidth:YES];
+    
+    [_singleLineLabel sizeToFit];
+    [_multiLineLabel sizeToFit];
+    
+    MyView* myView = [[[MyView alloc] initWithFrame:CGRectMake(0, 0, 60, 30)] autorelease];
+    myView.frame = CGRectOffset(myView.frame, self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+    [self.view addSubview:myView];
+    
 }
 
 - (void)didReceiveMemoryWarning
