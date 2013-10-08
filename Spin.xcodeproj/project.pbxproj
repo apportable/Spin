@@ -21,6 +21,7 @@
 		5B64E83F164376140043E296 /* SpinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B64E83E164376140043E296 /* SpinViewController.xib */; };
 		5B64E842164376430043E296 /* SpinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64E841164376430043E296 /* SpinView.m */; };
 		5B64E8441643766E0043E296 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E8431643766E0043E296 /* QuartzCore.framework */; };
+		CC6C69C018035190000945D2 /* VagRoundedPro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC6C69BF1803518F000945D2 /* VagRoundedPro.ttf */; };
 		CCB8BA1F17F4A37800BA0687 /* vag_rounded_pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CCB8BA1D17F4A02700BA0687 /* vag_rounded_pro.ttf */; };
 		CCB8BA2017F4A37800BA0687 /* QarmicSansAbridged.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CCB8BA1E17F4A04300BA0687 /* QarmicSansAbridged.ttf */; };
 		CCB8BA2117F4A37800BA0687 /* AldotheApache.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CCB8BA1C17F49F8000BA0687 /* AldotheApache.ttf */; };
@@ -48,6 +49,7 @@
 		5B64E840164376430043E296 /* SpinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinView.h; sourceTree = "<group>"; };
 		5B64E841164376430043E296 /* SpinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinView.m; sourceTree = "<group>"; };
 		5B64E8431643766E0043E296 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CC6C69BF1803518F000945D2 /* VagRoundedPro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = VagRoundedPro.ttf; sourceTree = "<group>"; };
 		CCB8BA1C17F49F8000BA0687 /* AldotheApache.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AldotheApache.ttf; sourceTree = "<group>"; };
 		CCB8BA1D17F4A02700BA0687 /* vag_rounded_pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = vag_rounded_pro.ttf; sourceTree = "<group>"; };
 		CCB8BA1E17F4A04300BA0687 /* QarmicSansAbridged.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = QarmicSansAbridged.ttf; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		5B64E81B164373C50043E296 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5B64E83E164376140043E296 /* SpinViewController.xib */,
 				5B64E81C164373C50043E296 /* Spin-Info.plist */,
 				5B64E81D164373C50043E296 /* InfoPlist.strings */,
 				5B64E820164373C50043E296 /* main.m */,
@@ -123,10 +126,10 @@
 				5B64E826164373C50043E296 /* Default.png */,
 				5B64E828164373C50043E296 /* Default@2x.png */,
 				5B64E82A164373C50043E296 /* Default-568h@2x.png */,
-				5B64E83E164376140043E296 /* SpinViewController.xib */,
 				CCB8BA1D17F4A02700BA0687 /* vag_rounded_pro.ttf */,
 				CCB8BA1E17F4A04300BA0687 /* QarmicSansAbridged.ttf */,
 				CCB8BA1C17F49F8000BA0687 /* AldotheApache.ttf */,
+				CC6C69BF1803518F000945D2 /* VagRoundedPro.ttf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				5B64E829164373C50043E296 /* Default@2x.png in Resources */,
 				5B64E82B164373C50043E296 /* Default-568h@2x.png in Resources */,
 				5B64E83F164376140043E296 /* SpinViewController.xib in Resources */,
+				CC6C69C018035190000945D2 /* VagRoundedPro.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

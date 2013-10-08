@@ -4,6 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>VagRoundedPro.ttf</string>
 		<string>QarmicSansAbridged.ttf</string>
 		<string>vag_rounded_pro.ttf</string>
 		<string>AldotheApache.ttf</string>

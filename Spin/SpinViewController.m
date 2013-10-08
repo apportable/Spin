@@ -23,11 +23,12 @@
     UIRectFill(rect);
     
     NSString* text = @"Testing";
-    UIFont* font = [UIFont systemFontOfSize:12];
+    UIFont* font = [UIFont systemFontOfSize:16];
     
     CGSize textSize = [text sizeWithFont:font
                        constrainedToSize:rect.size
                            lineBreakMode:NSLineBreakByWordWrapping];
+    NSLog(@"text size height %f, rect size height %f", textSize.height, rect.size.height);
     
     rect.origin.x = (rect.size.width - textSize.width) / 2;
     rect.origin.y = (rect.size.height - textSize.height) / 2;
@@ -42,9 +43,6 @@
 @end
 
 @implementation SpinViewController
-
-@synthesize singleLineLabel = _singleLineLabel;
-@synthesize multiLineLabel = _multiLineLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -64,17 +62,34 @@
 	// Do any additional setup after loading the view.
     [self becomeFirstResponder];
     
-    [_singleLineLabel setFont:[UIFont fontWithName:@"AldotheApache.ttf" size:25]];
-//    [_singleLineLabel setFont:[UIFont systemFontOfSize:17]];
-    [_multiLineLabel setFont:[UIFont fontWithName:@"vag_rounded_pro.ttf" size:26]];
+    CGFloat fontSize = 20;
+    UIFont *customFont = [UIFont fontWithName:@"AldotheApache" size:fontSize];
+    UIFont *systemFont = [UIFont systemFontOfSize:16];
     
-    [_multiLineLabel setAdjustsFontSizeToFitWidth:YES];
-    [_singleLineLabel setAdjustsFontSizeToFitWidth:YES];
+    [_customFont0Lines setFont:customFont];
+    [_customFont1Line setFont:customFont];
+    [_customFontMultiline setFont:customFont];
     
-    [_singleLineLabel sizeToFit];
-    [_multiLineLabel sizeToFit];
+    [_systemFont0Lines setFont:systemFont];
+    [_systemFont1Line setFont:systemFont];
+    [_systemFontMultiline setFont:systemFont];
     
-    MyView* myView = [[[MyView alloc] initWithFrame:CGRectMake(0, 0, 60, 30)] autorelease];
+    BOOL adjustsFontSizeToFitWidth = YES;
+    
+    [_customFont1Line setAdjustsFontSizeToFitWidth:adjustsFontSizeToFitWidth];
+//    [_systemFont1Line setAdjustsFontSizeToFitWidth:adjustsFontSizeToFitWidth];
+    
+    [_customFont0Lines sizeToFit];
+    [_customFont1Line sizeToFit];
+    [_customFontMultiline sizeToFit];
+    
+    [_systemFont0Lines sizeToFit];
+    [_systemFont1Line sizeToFit];
+    [_systemFontMultiline sizeToFit];
+    
+    NSLog(@"single line frame size height %f", _systemFont1Line.frame.size.height);
+    
+    MyView* myView = [[[MyView alloc] initWithFrame:CGRectMake(0, 0, 80, 60)] autorelease];
     myView.frame = CGRectOffset(myView.frame, self.view.frame.size.width / 2, self.view.frame.size.height / 2);
     [self.view addSubview:myView];
     
