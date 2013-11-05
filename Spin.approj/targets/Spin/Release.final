@@ -26,7 +26,8 @@
         "APPLICATION_IDENTIFIER": "com.apportable.Spin", 
         "APPLICATION_NAME": "Spin", 
         "FEATURES": [
-            "unspecified_orientation"
+            "unspecified_orientation", 
+            "camera"
         ], 
         "LONG_VERSION": "1.0", 
         "SHORT_VERSION": "1.0", 

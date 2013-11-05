@@ -57,7 +57,7 @@
     //   "write_external_storage"
     //   "write_settings"
     //   "xperia"
-    "FEATURES": ["unspecified_orientation"],
+    "FEATURES": ["unspecified_orientation", "camera"],
 
     // Preferred way of handling URLs in the code.
     // Leave it null for most cases.
