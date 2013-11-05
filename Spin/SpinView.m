@@ -16,6 +16,24 @@
 #define VERT_SWIPE_DRAG_MAX     24
 #define TAP_MIN_DRAG            10
 
+#ifdef APPORTABLE
+#import <BridgeKit/AndroidSurfaceTexture.h>
+#import <BridgeKit/AndroidCamera.h>
+#import <BridgeKit/AndroidSurface.h>
+#import <BridgeKit/AndroidActivity.h>
+#import <BridgeKit/AndroidURI.h>
+#import <CoreMotion/CoreMotion.h>
+
+@interface SpinView ()
+{
+    AndroidCamera *_camera;
+    AndroidSurfaceTexture *_surfaceTexture;
+    AndroidSurface *_surface;
+    GLuint _cameraTex;
+}
+@end
+#endif
+
 @implementation SpinView {
     EAGLContext *context;
     GLuint defaultFramebuffer, colorRenderbuffer;
@@ -80,6 +98,13 @@ static const GLfloat vertices[8 * 3] =
     -1, -1, -1,
 };
 
+static const float vertices2[] = {
+    -3.0f, -3.0f, -1.0f,
+    3.0f,  -3.0f, -1.0f,
+    -3.0f,  3.0f, -1.0f,
+    3.0f,   3.0f, -1.0f
+};
+
 static const GLfloat textcoords[8 * 2] =
 {
     0.0f,   1.0f,
@@ -91,6 +116,13 @@ static const GLfloat textcoords[8 * 2] =
     1.0f,   0.0f,
     0.0f,   1.0f,
     1.0f,   1.0f,
+};
+
+static const float textcoords2[] = {
+    0.0f, 1.0f,
+    1.0f, 1.0f,
+    0.0f, 0.0f,
+    1.0f, 0.0f,
 };
 
 static const GLubyte triangles[12 * 3] =
@@ -131,6 +163,8 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
 {
     CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
     
+    self.frame = [UIScreen mainScreen].bounds;
+    
     rotation = 0.1f;
     rotationSpeed = 3.0f;
     scale = 1.0f;
@@ -166,8 +200,27 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
     
     glClearColor(spinClear * .1, spinClear * .1, spinClear * .1, 1.f);
     
+#ifdef APPORTABLE
+    _cameraTex = 0;
+    glGenTextures(1, &_cameraTex);
+    glBindTexture(36197, _cameraTex);
+    glTexParameterf(36197, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameterf(36197, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    
+    // the texture wraps over at the edges (repeat)
+    glTexParameterf( 36197, GL_TEXTURE_WRAP_S, GL_REPEAT );
+    glTexParameterf( 36197, GL_TEXTURE_WRAP_T, GL_REPEAT );
+    
+    _surfaceTexture = [[AndroidSurfaceTexture alloc] initWithDelegate:self texName:_cameraTex];
+    _surface = [[AndroidSurface alloc] initWithSurfaceTexture:_surfaceTexture];
+    _camera = [AndroidCamera open];
+    
+    [_camera setPreviewTexture:_surfaceTexture];
+    [_camera startPreview];
+#else
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE, GL_SRC_COLOR);
+#endif
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -199,6 +252,12 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
 
 - (void)render:(CADisplayLink *)link
 {
+#ifdef APPORTABLE
+    if (_surfaceTexture->_isReadyToDraw) {
+        [_surfaceTexture updateTexImage];
+    }
+#endif
+    
     glBindFramebufferOES(GL_FRAMEBUFFER_OES, defaultFramebuffer);
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -210,8 +269,31 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
     glRotatef(30, 1, 0, 0);
     glScalef(scale, scale, scale);
     glRotatef(rotation, 0, 1, 0);
-    
+        
+#ifdef APPORTABLE
     glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    
+    glMatrixMode(GL_TEXTURE);
+    glDisable(GL_TEXTURE_2D);
+    glEnable(36197);
+    glBindTexture(36197, _cameraTex);
+    glTexCoordPointer(2, GL_FLOAT, 0, textcoords2);
+    
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glRotatef(-rotation, 0, 1, 0);
+    glRotatef(0, 0, 0, 1);
+    glVertexPointer(3, GL_FLOAT, 0, vertices2);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0 , 4);
+    glPopMatrix();
+    
+    glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+    
+    glDisable(36197);
+    glEnable(GL_TEXTURE_2D);
+#endif
+    
     glEnableClientState(GL_COLOR_ARRAY);
     
     glVertexPointer(3, GL_FLOAT, 0, vertices);
@@ -340,5 +422,14 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
         }
     }
 }
+
+#ifdef APPORTABLE
+- (void)dealloc
+{
+    [_camera stopPreview];
+    
+    [super dealloc];
+}
+#endif
 
 @end
