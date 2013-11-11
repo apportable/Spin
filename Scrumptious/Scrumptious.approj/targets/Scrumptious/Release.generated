@@ -1,0 +1,246 @@
+{
+    "assets": [
+        {
+            "asset": "scrumptious/SCPhotoViewController.xib", 
+            "target": null
+        }, 
+        {
+            "asset": "Scrumptious/en.lproj/InfoPlist.strings", 
+            "target": "en.lproj/InfoPlist.strings"
+        }, 
+        {
+            "asset": "Scrumptious/en.lproj/SCViewController.xib", 
+            "target": null
+        }, 
+        {
+            "asset": "Scrumptious/SCLoginViewController.xib", 
+            "target": null
+        }, 
+        {
+            "asset": "Scrumptious/images/facebook.png", 
+            "target": "facebook.png"
+        }, 
+        {
+            "asset": "Icon-72.png", 
+            "target": "Icon-72.png"
+        }, 
+        {
+            "asset": "Icon.png", 
+            "target": "Icon.png"
+        }, 
+        {
+            "asset": "Icon@2x.png", 
+            "target": "Icon@2x.png"
+        }, 
+        {
+            "asset": "scrumptious/images/action-eating.png", 
+            "target": "action-eating.png"
+        }, 
+        {
+            "asset": "scrumptious/images/action-location.png", 
+            "target": "action-location.png"
+        }, 
+        {
+            "asset": "scrumptious/images/action-people.png", 
+            "target": "action-people.png"
+        }, 
+        {
+            "asset": "scrumptious/en.lproj/Scrumptious.strings", 
+            "target": "en.lproj/Scrumptious.strings"
+        }, 
+        {
+            "asset": "scrumptious/he.lproj/Scrumptious.strings", 
+            "target": "he.lproj/Scrumptious.strings"
+        }, 
+        {
+            "asset": "scrumptious/Default-568h@2x.png", 
+            "target": "Default-568h@2x.png"
+        }, 
+        {
+            "asset": "scrumptious/Default.png", 
+            "target": "Default.png"
+        }, 
+        {
+            "asset": "scrumptious/Default@2x.png", 
+            "target": "Default@2x.png"
+        }, 
+        {
+            "asset": "ReadMe.txt", 
+            "target": "ReadMe.txt"
+        }, 
+        {
+            "asset": "scrumptious/images/action-photo.png", 
+            "target": "action-photo.png"
+        }, 
+        {
+            "asset": "scrumptious/FacebookSDKOverrides.bundle", 
+            "target": "FacebookSDKOverrides.bundle"
+        }, 
+        {
+            "asset": "FBUserSettingsViewResources.bundle", 
+            "target": "FBUserSettingsViewResources.bundle"
+        }
+    ], 
+    "config": {
+        "APPLICATION_FULL_NAME": "Scrumptious", 
+        "APPLICATION_IDENTIFIER": "YOUR_BUNDLE_IDENTIFIER", 
+        "APPLICATION_NAME": "Scrumptious", 
+        "LONG_VERSION": "${FB_BUNDLE_VERSION}", 
+        "SHORT_VERSION": "1.0", 
+        "TEMPLATE_VALUES": {
+            "EXECUTABLE_NAME": "Scrumptious", 
+            "PRODUCT_NAME": "Scrumptious"
+        }, 
+        "URL_SCHEME": [
+            "fbYOUR_FACEBOOK_APPID_HERE", 
+            "fbYOUR_FACEBOOK_APPID_HERE"
+        ]
+    }, 
+    "defines": {
+        "NS_BLOCK_ASSERTIONS": 1, 
+        "__IPHONE_OS_VERSION_MIN_REQUIRED": 50000
+    }, 
+    "deps": [
+        "UIKit", 
+        "CoreLocation", 
+        "UIKit", 
+        "Foundation", 
+        "CoreGraphics", 
+        "AddressBook"
+    ], 
+    "flags": [
+        "-DNS_BLOCK_ASSERTIONS=1", 
+        "-fobjc-arc", 
+        "-fasm-blocks", 
+        {
+            "flag": "-std=gnu99", 
+            "not_type": "c++"
+        }, 
+        {
+            "flag": "-fgnu-keywords", 
+            "not_type": "c++"
+        }, 
+        "-fno-asm", 
+        "-fpascal-strings", 
+        "-Wno-deprecated-declarations", 
+        "-Wmissing-prototypes", 
+        "-Wreturn-type", 
+        "-Wswitch", 
+        "-Wparentheses", 
+        "-Wformat", 
+        "-Wuninitialized", 
+        "-Wunused-value", 
+        "-Wunused-variable", 
+        {
+            "flag": "-Winvalid-offsetof", 
+            "type": "c++"
+        }, 
+        {
+            "flag": "-Wprotocol", 
+            "type": "objc"
+        }
+    ], 
+    "header_paths": [
+        {
+            "header_path": "Scrumptious-generated-files.hmap", 
+            "hmap": {}, 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Scrumptious-own-target-headers.hmap", 
+            "hmap": {}, 
+            "type": "I"
+        }, 
+        {
+            "header_path": "Scrumptious-all-target-headers.hmap", 
+            "hmap": {}, 
+            "type": "I"
+        }, 
+        {
+            "header_path": "Scrumptious-project-headers.hmap", 
+            "hmap": {
+                "SCAppDelegate.h": {
+                    "key": "SCAppDelegate.h", 
+                    "prefix": "Scrumptious/", 
+                    "suffix": "SCAppDelegate.h"
+                }, 
+                "SCLoginViewController.h": {
+                    "key": "SCLoginViewController.h", 
+                    "prefix": "Scrumptious/", 
+                    "suffix": "SCLoginViewController.h"
+                }, 
+                "SCPhotoViewController.h": {
+                    "key": "SCPhotoViewController.h", 
+                    "prefix": "Scrumptious/", 
+                    "suffix": "SCPhotoViewController.h"
+                }, 
+                "SCProtocols.h": {
+                    "key": "SCProtocols.h", 
+                    "prefix": "Scrumptious/", 
+                    "suffix": "SCProtocols.h"
+                }, 
+                "SCViewController.h": {
+                    "key": "SCViewController.h", 
+                    "prefix": "Scrumptious/", 
+                    "suffix": "SCViewController.h"
+                }, 
+                "Scrumptious-Prefix.pch": {
+                    "key": "Scrumptious-Prefix.pch", 
+                    "prefix": "Scrumptious/", 
+                    "suffix": "Scrumptious-Prefix.pch"
+                }
+            }, 
+            "type": "iquote"
+        }
+    ], 
+    "infoplists": [
+        "./Scrumptious/Scrumptious-Info.plist"
+    ], 
+    "libs": [
+        "FacebookSDK"
+    ], 
+    "modules": [], 
+    "pchs": [
+        "./Scrumptious/Scrumptious-Prefix.pch"
+    ], 
+    "sources": [
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "Scrumptious/SCAppDelegate.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "Scrumptious/SCLoginViewController.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "Scrumptious/SCViewController.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "Scrumptious/main.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "scrumptious/SCPhotoViewController.m"
+        }
+    ], 
+    "type": "app", 
+    "version": "1", 
+    "xcode_project": "Scrumptious.xcodeproj"
+}

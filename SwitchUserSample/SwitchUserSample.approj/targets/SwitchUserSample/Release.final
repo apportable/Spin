@@ -1,0 +1,244 @@
+{
+    "assets": [
+        {
+            "asset": "SwitchUserSample/en.lproj/InfoPlist.strings", 
+            "target": "en.lproj/InfoPlist.strings"
+        }, 
+        {
+            "asset": "SwitchUserSample/first.png", 
+            "target": "first.png"
+        }, 
+        {
+            "asset": "SwitchUserSample/first@2x.png", 
+            "target": "first@2x.png"
+        }, 
+        {
+            "asset": "SwitchUserSample/second.png", 
+            "target": "second.png"
+        }, 
+        {
+            "asset": "SwitchUserSample/second@2x.png", 
+            "target": "second@2x.png"
+        }, 
+        {
+            "asset": "SwitchUserSample/SUUsingViewController_iPhone.xib", 
+            "target": null
+        }, 
+        {
+            "asset": "SwitchUserSample/SUUsingViewController_iPad.xib", 
+            "target": null
+        }, 
+        {
+            "asset": "SwitchUserSample/SUSettingsViewController_iPhone.xib", 
+            "target": null
+        }, 
+        {
+            "asset": "SwitchUserSample/SUSettingsViewController_iPad.xib", 
+            "target": null
+        }, 
+        {
+            "asset": "SwitchUserSample/Icon-72.png", 
+            "target": "Icon-72.png"
+        }, 
+        {
+            "asset": "SwitchUserSample/Icon-72@2x.png", 
+            "target": "Icon-72@2x.png"
+        }, 
+        {
+            "asset": "SwitchUserSample/Icon.png", 
+            "target": "Icon.png"
+        }, 
+        {
+            "asset": "SwitchUserSample/Icon@2x.png", 
+            "target": "Icon@2x.png"
+        }, 
+        {
+            "asset": "SwitchUserSample/Default-568h@2x.png", 
+            "target": "Default-568h@2x.png"
+        }, 
+        {
+            "asset": "SwitchUserSample/Default.png", 
+            "target": "Default.png"
+        }, 
+        {
+            "asset": "SwitchUserSample/Default@2x.png", 
+            "target": "Default@2x.png"
+        }
+    ], 
+    "config": {
+        "APPLICATION_FULL_NAME": "SwitchUserSample", 
+        "APPLICATION_IDENTIFIER": "YOUR_BUNDLE_IDENTIFIER", 
+        "APPLICATION_NAME": "SwitchUserSample", 
+        "FEATURES": [
+            "opengles2", 
+            "portrait"
+        ], 
+        "LONG_VERSION": "1.0", 
+        "SHORT_VERSION": "1.0", 
+        "TEMPLATE_VALUES": {
+            "EXECUTABLE_NAME": "SwitchUserSample", 
+            "PRODUCT_NAME": "SwitchUserSample"
+        }, 
+        "URL_SCHEME": [
+            "fbYOUR_FACEBOOK_APPID_HERE", 
+            "fbYOUR_FACEBOOK_APPID_HERE"
+        ]
+    }, 
+    "defines": {
+        "NS_BLOCK_ASSERTIONS": 1, 
+        "__IPHONE_OS_VERSION_MIN_REQUIRED": 50000
+    }, 
+    "deps": [
+        "UIKit", 
+        "UIKit", 
+        "Foundation", 
+        "CoreGraphics"
+    ], 
+    "flags": [
+        "-DNS_BLOCK_ASSERTIONS=1", 
+        "-fobjc-arc", 
+        "-fasm-blocks", 
+        {
+            "flag": "-std=gnu99", 
+            "not_type": "c++"
+        }, 
+        {
+            "flag": "-fgnu-keywords", 
+            "not_type": "c++"
+        }, 
+        "-fno-asm", 
+        "-fpascal-strings", 
+        "-Wno-deprecated-declarations", 
+        "-Wreturn-type", 
+        "-Wswitch", 
+        "-Wparentheses", 
+        "-Wformat", 
+        "-Wuninitialized", 
+        "-Wunused-value", 
+        "-Wunused-variable", 
+        {
+            "flag": "-Winvalid-offsetof", 
+            "type": "c++"
+        }, 
+        {
+            "flag": "-Wprotocol", 
+            "type": "objc"
+        }
+    ], 
+    "header_paths": [
+        {
+            "header_path": "SwitchUserSample-generated-files.hmap", 
+            "hmap": {}, 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "SwitchUserSample-own-target-headers.hmap", 
+            "hmap": {}, 
+            "type": "I"
+        }, 
+        {
+            "header_path": "SwitchUserSample-all-target-headers.hmap", 
+            "hmap": {}, 
+            "type": "I"
+        }, 
+        {
+            "header_path": "SwitchUserSample-project-headers.hmap", 
+            "hmap": {
+                "SUAppDelegate.h": {
+                    "key": "SUAppDelegate.h", 
+                    "prefix": "SwitchUserSample/", 
+                    "suffix": "SUAppDelegate.h"
+                }, 
+                "SUProfileTableViewCell.h": {
+                    "key": "SUProfileTableViewCell.h", 
+                    "prefix": "SwitchUserSample/", 
+                    "suffix": "SUProfileTableViewCell.h"
+                }, 
+                "SUSettingsViewController.h": {
+                    "key": "SUSettingsViewController.h", 
+                    "prefix": "SwitchUserSample/", 
+                    "suffix": "SUSettingsViewController.h"
+                }, 
+                "SUUserManager.h": {
+                    "key": "SUUserManager.h", 
+                    "prefix": "SwitchUserSample/", 
+                    "suffix": "SUUserManager.h"
+                }, 
+                "SUUsingViewController.h": {
+                    "key": "SUUsingViewController.h", 
+                    "prefix": "SwitchUserSample/", 
+                    "suffix": "SUUsingViewController.h"
+                }, 
+                "SwitchUserSample-Prefix.pch": {
+                    "key": "SwitchUserSample-Prefix.pch", 
+                    "prefix": "SwitchUserSample/", 
+                    "suffix": "SwitchUserSample-Prefix.pch"
+                }
+            }, 
+            "type": "iquote"
+        }, 
+        "ApportableFacebookSDK/include"
+    ], 
+    "infoplists": [
+        "./SwitchUserSample/SwitchUserSample-Info.plist"
+    ], 
+    "java_libs": [], 
+    "java_res_dirs": [], 
+    "java_sourcepaths": [], 
+    "java_sources": [], 
+    "libs": [
+        "FacebookSDK"
+    ], 
+    "link_flags": [], 
+    "modules": [], 
+    "pchs": [
+        "./SwitchUserSample/SwitchUserSample-Prefix.pch"
+    ], 
+    "sources": [
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "SwitchUserSample/SUAppDelegate.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "SwitchUserSample/SUProfileTableViewCell.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "SwitchUserSample/SUSettingsViewController.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "SwitchUserSample/SUUserManager.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "SwitchUserSample/SUUsingViewController.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "SwitchUserSample/main.m"
+        }
+    ], 
+    "type": "app", 
+    "version": "1", 
+    "xcode_project": "SwitchUserSample.xcodeproj"
+}

@@ -1,0 +1,170 @@
+{
+    "assets": [
+        {
+            "asset": "ProfilePictureSample/en.lproj/InfoPlist.strings", 
+            "target": "en.lproj/InfoPlist.strings"
+        }, 
+        {
+            "asset": "ProfilePictureSample/en.lproj/PPViewController_iPhone.xib", 
+            "target": null
+        }, 
+        {
+            "asset": "ProfilePictureSample/en.lproj/PPViewController_iPad.xib", 
+            "target": null
+        }, 
+        {
+            "asset": "ProfilePictureSample/Icon-72.png", 
+            "target": "Icon-72.png"
+        }, 
+        {
+            "asset": "ProfilePictureSample/Icon-72@2x.png", 
+            "target": "Icon-72@2x.png"
+        }, 
+        {
+            "asset": "ProfilePictureSample/Icon.png", 
+            "target": "Icon.png"
+        }, 
+        {
+            "asset": "ProfilePictureSample/Icon@2x.png", 
+            "target": "Icon@2x.png"
+        }, 
+        {
+            "asset": "ProfilePictureSample/Default-568h@2x.png", 
+            "target": "Default-568h@2x.png"
+        }, 
+        {
+            "asset": "ProfilePictureSample/Default.png", 
+            "target": "Default.png"
+        }, 
+        {
+            "asset": "ProfilePictureSample/Default@2x.png", 
+            "target": "Default@2x.png"
+        }
+    ], 
+    "config": {
+        "APPLICATION_FULL_NAME": "ProfilePictureSample", 
+        "APPLICATION_IDENTIFIER": "YOUR_BUNDLE_IDENTIFIER", 
+        "APPLICATION_NAME": "ProfilePictureSample", 
+        "LONG_VERSION": "1.0", 
+        "SHORT_VERSION": "1.0", 
+        "TEMPLATE_VALUES": {
+            "EXECUTABLE_NAME": "ProfilePictureSample", 
+            "PRODUCT_NAME": "ProfilePictureSample"
+        }
+    }, 
+    "defines": {
+        "NS_BLOCK_ASSERTIONS": 1, 
+        "__IPHONE_OS_VERSION_MIN_REQUIRED": 50000
+    }, 
+    "deps": [
+        "UIKit", 
+        "UIKit", 
+        "Foundation", 
+        "CoreGraphics"
+    ], 
+    "flags": [
+        "-DNS_BLOCK_ASSERTIONS=1", 
+        "-fobjc-arc", 
+        "-fasm-blocks", 
+        {
+            "flag": "-std=gnu99", 
+            "not_type": "c++"
+        }, 
+        {
+            "flag": "-fgnu-keywords", 
+            "not_type": "c++"
+        }, 
+        "-fno-asm", 
+        "-fpascal-strings", 
+        "-Wno-deprecated-declarations", 
+        "-Wreturn-type", 
+        "-Wswitch", 
+        "-Wparentheses", 
+        "-Wformat", 
+        "-Wuninitialized", 
+        "-Wunused-value", 
+        "-Wunused-variable", 
+        {
+            "flag": "-Winvalid-offsetof", 
+            "type": "c++"
+        }, 
+        {
+            "flag": "-Wprotocol", 
+            "type": "objc"
+        }
+    ], 
+    "header_paths": [
+        {
+            "header_path": "ProfilePictureSample-generated-files.hmap", 
+            "hmap": {}, 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "ProfilePictureSample-own-target-headers.hmap", 
+            "hmap": {}, 
+            "type": "I"
+        }, 
+        {
+            "header_path": "ProfilePictureSample-all-target-headers.hmap", 
+            "hmap": {}, 
+            "type": "I"
+        }, 
+        {
+            "header_path": "ProfilePictureSample-project-headers.hmap", 
+            "hmap": {
+                "PPAppDelegate.h": {
+                    "key": "PPAppDelegate.h", 
+                    "prefix": "ProfilePictureSample/", 
+                    "suffix": "PPAppDelegate.h"
+                }, 
+                "PPViewController.h": {
+                    "key": "PPViewController.h", 
+                    "prefix": "ProfilePictureSample/", 
+                    "suffix": "PPViewController.h"
+                }, 
+                "ProfilePictureSample-Prefix.pch": {
+                    "key": "ProfilePictureSample-Prefix.pch", 
+                    "prefix": "ProfilePictureSample/", 
+                    "suffix": "ProfilePictureSample-Prefix.pch"
+                }
+            }, 
+            "type": "iquote"
+        }
+    ], 
+    "infoplists": [
+        "./ProfilePictureSample/ProfilePictureSample-Info.plist"
+    ], 
+    "libs": [
+        "FacebookSDK"
+    ], 
+    "modules": [], 
+    "pchs": [
+        "./ProfilePictureSample/ProfilePictureSample-Prefix.pch"
+    ], 
+    "sources": [
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "ProfilePictureSample/PPAppDelegate.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "ProfilePictureSample/PPViewController.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "ProfilePictureSample/main.m"
+        }
+    ], 
+    "type": "app", 
+    "version": "1", 
+    "xcode_project": "ProfilePictureSample.xcodeproj"
+}

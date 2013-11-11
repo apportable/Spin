@@ -1,0 +1,169 @@
+{
+    "assets": [
+        {
+            "asset": "FriendPickerSample/en.lproj/InfoPlist.strings", 
+            "target": "en.lproj/InfoPlist.strings"
+        }, 
+        {
+            "asset": "FriendPickerSample/en.lproj/FPViewController_iPhone.xib", 
+            "target": null
+        }, 
+        {
+            "asset": "FriendPickerSample/en.lproj/FPViewController_iPad.xib", 
+            "target": null
+        }, 
+        {
+            "asset": "FriendPickerSample/Icon-72.png", 
+            "target": "Icon-72.png"
+        }, 
+        {
+            "asset": "FriendPickerSample/Icon-72@2x.png", 
+            "target": "Icon-72@2x.png"
+        }, 
+        {
+            "asset": "FriendPickerSample/Icon.png", 
+            "target": "Icon.png"
+        }, 
+        {
+            "asset": "FriendPickerSample/Icon@2x.png", 
+            "target": "Icon@2x.png"
+        }, 
+        {
+            "asset": "FriendPickerSample/Default-568h@2x.png", 
+            "target": "Default-568h@2x.png"
+        }, 
+        {
+            "asset": "FriendPickerSample/Default.png", 
+            "target": "Default.png"
+        }, 
+        {
+            "asset": "FriendPickerSample/Default@2x.png", 
+            "target": "Default@2x.png"
+        }
+    ], 
+    "config": {
+        "APPLICATION_FULL_NAME": "FriendPickerSample", 
+        "APPLICATION_IDENTIFIER": "YOUR_BUNDLE_IDENTIFIER", 
+        "APPLICATION_NAME": "FriendPickerSample", 
+        "FEATURES": [
+            "opengles2", 
+            "portrait"
+        ], 
+        "LONG_VERSION": "1.0", 
+        "SHORT_VERSION": "1.0", 
+        "TEMPLATE_VALUES": {
+            "EXECUTABLE_NAME": "FriendPickerSample", 
+            "PRODUCT_NAME": "FriendPickerSample"
+        }, 
+        "URL_SCHEME": [
+            "fbYOUR_FACEBOOK_APPID_HERE", 
+            "fbYOUR_FACEBOOK_APPID_HERE"
+        ]
+    }, 
+    "defines": {
+        "DEBUG": 1, 
+        "__IPHONE_OS_VERSION_MIN_REQUIRED": 50000
+    }, 
+    "deps": [
+        "UIKit", 
+        "UIKit", 
+        "Foundation", 
+        "CoreGraphics"
+    ], 
+    "flags": [
+        "-fobjc-arc", 
+        "-fasm-blocks", 
+        {
+            "flag": "-std=gnu99", 
+            "not_type": "c++"
+        }, 
+        {
+            "flag": "-fgnu-keywords", 
+            "not_type": "c++"
+        }, 
+        "-fno-asm", 
+        "-fpascal-strings", 
+        "-Wno-deprecated-declarations", 
+        "-Wmissing-prototypes", 
+        "-Wreturn-type", 
+        "-Wswitch", 
+        "-Wparentheses", 
+        "-Wformat", 
+        "-Wuninitialized", 
+        "-Wunused-value", 
+        "-Wunused-variable", 
+        {
+            "flag": "-Winvalid-offsetof", 
+            "type": "c++"
+        }, 
+        {
+            "flag": "-Wprotocol", 
+            "type": "objc"
+        }
+    ], 
+    "header_paths": [
+        {
+            "header_path": "FriendPickerSample.hmap", 
+            "hmap": {
+                "FPAppDelegate.h": {
+                    "key": "FPAppDelegate.h", 
+                    "prefix": "FriendPickerSample/", 
+                    "suffix": "FPAppDelegate.h"
+                }, 
+                "FPViewController.h": {
+                    "key": "FPViewController.h", 
+                    "prefix": "FriendPickerSample/", 
+                    "suffix": "FPViewController.h"
+                }, 
+                "FriendPickerSample-Prefix.pch": {
+                    "key": "FriendPickerSample-Prefix.pch", 
+                    "prefix": "FriendPickerSample/", 
+                    "suffix": "FriendPickerSample-Prefix.pch"
+                }
+            }, 
+            "type": "I"
+        }, 
+        "ApportableFacebookSDK/include"
+    ], 
+    "infoplists": [
+        "./FriendPickerSample/FriendPickerSample-Info.plist"
+    ], 
+    "java_libs": [], 
+    "java_res_dirs": [], 
+    "java_sourcepaths": [], 
+    "java_sources": [], 
+    "libs": [
+        "FacebookSDK"
+    ], 
+    "link_flags": [], 
+    "modules": [], 
+    "pchs": [
+        "./FriendPickerSample/FriendPickerSample-Prefix.pch"
+    ], 
+    "sources": [
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "FriendPickerSample/FPAppDelegate.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "FriendPickerSample/FPViewController.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "FriendPickerSample/main.m"
+        }
+    ], 
+    "type": "app", 
+    "version": "1", 
+    "xcode_project": "FriendPickerSample.xcodeproj"
+}

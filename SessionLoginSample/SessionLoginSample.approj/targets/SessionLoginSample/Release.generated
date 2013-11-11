@@ -1,0 +1,175 @@
+{
+    "assets": [
+        {
+            "asset": "SessionLoginSample/en.lproj/InfoPlist.strings", 
+            "target": "en.lproj/InfoPlist.strings"
+        }, 
+        {
+            "asset": "SessionLoginSample/en.lproj/SLViewController_iPhone.xib", 
+            "target": null
+        }, 
+        {
+            "asset": "SessionLoginSample/en.lproj/SLViewController_iPad.xib", 
+            "target": null
+        }, 
+        {
+            "asset": "SessionLoginSample/Icon-72.png", 
+            "target": "Icon-72.png"
+        }, 
+        {
+            "asset": "SessionLoginSample/Icon-72@2x.png", 
+            "target": "Icon-72@2x.png"
+        }, 
+        {
+            "asset": "SessionLoginSample/Icon.png", 
+            "target": "Icon.png"
+        }, 
+        {
+            "asset": "SessionLoginSample/Icon@2x.png", 
+            "target": "Icon@2x.png"
+        }, 
+        {
+            "asset": "SessionLoginSample/Default-568h@2x.png", 
+            "target": "Default-568h@2x.png"
+        }, 
+        {
+            "asset": "SessionLoginSample/Default.png", 
+            "target": "Default.png"
+        }, 
+        {
+            "asset": "SessionLoginSample/Default@2x.png", 
+            "target": "Default@2x.png"
+        }
+    ], 
+    "config": {
+        "APPLICATION_FULL_NAME": "SessionLoginSample", 
+        "APPLICATION_IDENTIFIER": "YOUR_BUNDLE_IDENTIFIER", 
+        "APPLICATION_NAME": "SessionLoginSample", 
+        "LONG_VERSION": "1.0", 
+        "SHORT_VERSION": "1.0", 
+        "TEMPLATE_VALUES": {
+            "EXECUTABLE_NAME": "SessionLoginSample", 
+            "PRODUCT_NAME": "SessionLoginSample"
+        }, 
+        "URL_SCHEME": [
+            "fbYOUR_FACEBOOK_APPID_HERE", 
+            "fbYOUR_FACEBOOK_APPID_HERE"
+        ]
+    }, 
+    "defines": {
+        "NS_BLOCK_ASSERTIONS": 1, 
+        "__IPHONE_OS_VERSION_MIN_REQUIRED": 50000
+    }, 
+    "deps": [
+        "UIKit", 
+        "UIKit", 
+        "Foundation", 
+        "CoreGraphics"
+    ], 
+    "flags": [
+        "-DNS_BLOCK_ASSERTIONS=1", 
+        "-fobjc-arc", 
+        "-fasm-blocks", 
+        {
+            "flag": "-std=gnu99", 
+            "not_type": "c++"
+        }, 
+        {
+            "flag": "-fgnu-keywords", 
+            "not_type": "c++"
+        }, 
+        "-fno-asm", 
+        "-fpascal-strings", 
+        "-Wno-deprecated-declarations", 
+        "-Wmissing-prototypes", 
+        "-Wreturn-type", 
+        "-Wswitch", 
+        "-Wparentheses", 
+        "-Wformat", 
+        "-Wuninitialized", 
+        "-Wunused-value", 
+        "-Wunused-variable", 
+        {
+            "flag": "-Winvalid-offsetof", 
+            "type": "c++"
+        }, 
+        {
+            "flag": "-Wprotocol", 
+            "type": "objc"
+        }
+    ], 
+    "header_paths": [
+        {
+            "header_path": "SessionLoginSample-generated-files.hmap", 
+            "hmap": {}, 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "SessionLoginSample-own-target-headers.hmap", 
+            "hmap": {}, 
+            "type": "I"
+        }, 
+        {
+            "header_path": "SessionLoginSample-all-target-headers.hmap", 
+            "hmap": {}, 
+            "type": "I"
+        }, 
+        {
+            "header_path": "SessionLoginSample-project-headers.hmap", 
+            "hmap": {
+                "SLAppDelegate.h": {
+                    "key": "SLAppDelegate.h", 
+                    "prefix": "SessionLoginSample/", 
+                    "suffix": "SLAppDelegate.h"
+                }, 
+                "SLViewController.h": {
+                    "key": "SLViewController.h", 
+                    "prefix": "SessionLoginSample/", 
+                    "suffix": "SLViewController.h"
+                }, 
+                "SessionLoginSample-Prefix.pch": {
+                    "key": "SessionLoginSample-Prefix.pch", 
+                    "prefix": "SessionLoginSample/", 
+                    "suffix": "SessionLoginSample-Prefix.pch"
+                }
+            }, 
+            "type": "iquote"
+        }
+    ], 
+    "infoplists": [
+        "./SessionLoginSample/SessionLoginSample-Info.plist"
+    ], 
+    "libs": [
+        "FacebookSDK"
+    ], 
+    "modules": [], 
+    "pchs": [
+        "./SessionLoginSample/SessionLoginSample-Prefix.pch"
+    ], 
+    "sources": [
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "SessionLoginSample/SLAppDelegate.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "SessionLoginSample/SLViewController.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "SessionLoginSample/main.m"
+        }
+    ], 
+    "type": "app", 
+    "version": "1", 
+    "xcode_project": "SessionLoginSample.xcodeproj"
+}
