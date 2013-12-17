@@ -41,7 +41,9 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSLog(@"Remote notification device token: %@", deviceToken);
-    NSLog(@"Remote notification device token string: %@", [NSString stringWithUTF8String:[deviceToken bytes]]);
+    NSString *token = [[[NSString alloc] initWithData:deviceToken
+                                             encoding:NSUTF8StringEncoding] autorelease];
+    NSLog(@"Remote notification device token string: %@", token);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
