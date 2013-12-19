@@ -132,7 +132,9 @@
     "defines": {},
     // A list of dependencies.  Typically these correspond to
     // frameworks in the xcode project.
-    "deps": [],
+    "deps": [
+        "GameKitAmazon"
+    ],
     // A list of source files (e.g. .m, .mm, .c, .cc, and .cpp) files to build.
     // Source files can be a string, e.g. "./main.c", or a dictionary specifying
     // the file, any special flags, any defines, and the environment
@@ -151,7 +153,9 @@
     // or a dictionary like above, but instead specifying the full target file name
     // for the asset, e.g.,
     // {"asset": "./Resources/cube_texture.pvr.ccz", "target_file": "Bundled Resources/cube_texture.pvr.gz", "env": {"TARGET_TEXTURE_FMT": "pvr"}}
-    "assets": [],
+    "assets": [
+        "Spin.approj/assets/api_key.txt",
+    ],
     // A list of Info.plist files.  The first one in the list will be the one we consider the main Info.plist.
     "infoplists": [],
   },
@@ -184,7 +188,9 @@
     "defines": {},
     // A list of dependencies.  Typically these correspond to
     // frameworks in the xcode project.
-    "deps": [],
+    "deps": [
+        "GameKit",
+    ],
     // A list of source files (e.g. .m, .mm, .c, .cc, and .cpp) files to remove from the build.
     // e.g. "./External/Reachabilty/Reachability.m"
     "sources": [],

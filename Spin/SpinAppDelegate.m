@@ -7,6 +7,7 @@
 #import "SpinAppDelegate.h"
 
 #import "SpinViewController.h"
+#import <GameKit/GameKit.h>
 
 
 @implementation SpinAppDelegate

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21292E791778F0D000066095 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21292E781778F0D000066095 /* GameKit.framework */; };
 		5B64E811164373C50043E296 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E810164373C50043E296 /* UIKit.framework */; };
 		5B64E813164373C50043E296 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E812164373C50043E296 /* Foundation.framework */; };
 		5B64E815164373C50043E296 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E814164373C50043E296 /* CoreGraphics.framework */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21292E781778F0D000066095 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		5B64E80C164373C50043E296 /* Spin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B64E810164373C50043E296 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5B64E812164373C50043E296 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -52,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21292E791778F0D000066095 /* GameKit.framework in Frameworks */,
 				5B64E8441643766E0043E296 /* QuartzCore.framework in Frameworks */,
 				5B64E811164373C50043E296 /* UIKit.framework in Frameworks */,
 				5B64E813164373C50043E296 /* Foundation.framework in Frameworks */,
@@ -66,6 +69,7 @@
 		5B64E801164373C50043E296 = {
 			isa = PBXGroup;
 			children = (
+				21292E781778F0D000066095 /* GameKit.framework */,
 				5B64E81A164373C50043E296 /* Spin */,
 				5B64E80F164373C50043E296 /* Frameworks */,
 				5B64E80D164373C50043E296 /* Products */,
