@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4ACF3BEA184FF85900848665 /* GameCircle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACF3BE9184FF85900848665 /* GameCircle.framework */; };
+		4ACF3BEF185008E100848665 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACF3BEB185008A400848665 /* Security.framework */; };
+		4ACF3BF1185008E800848665 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACF3BF0185008E800848665 /* libsqlite3.dylib */; };
+		4ACF3BF31850094F00848665 /* AmazonInsightsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACF3BF21850094F00848665 /* AmazonInsightsSDK.framework */; };
+		4ACF3BF51850098400848665 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACF3BF41850098400848665 /* SystemConfiguration.framework */; };
+		4ACF3BF9185009DE00848665 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACF3BF8185009DE00848665 /* CoreLocation.framework */; };
+		4ACF3BFB185009FC00848665 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACF3BFA185009FC00848665 /* libz.dylib */; };
+		4ACF3BFC18500A2100848665 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACF3BF6185009A900848665 /* MessageUI.framework */; };
+		4ACF3BFE18500A3F00848665 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACF3BFD18500A3F00848665 /* AdSupport.framework */; };
+		4ACF3BFF18500AF400848665 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21292E781778F0D000066095 /* GameKit.framework */; };
 		5B64E811164373C50043E296 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E810164373C50043E296 /* UIKit.framework */; };
 		5B64E813164373C50043E296 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E812164373C50043E296 /* Foundation.framework */; };
 		5B64E815164373C50043E296 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E814164373C50043E296 /* CoreGraphics.framework */; };
@@ -24,6 +34,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21292E781778F0D000066095 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		4ACF3BE9184FF85900848665 /* GameCircle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GameCircle.framework; sourceTree = "<group>"; };
+		4ACF3BEB185008A400848665 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		4ACF3BED185008C000848665 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		4ACF3BF0185008E800848665 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		4ACF3BF21850094F00848665 /* AmazonInsightsSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AmazonInsightsSDK.framework; sourceTree = "<group>"; };
+		4ACF3BF41850098400848665 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4ACF3BF6185009A900848665 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		4ACF3BF8185009DE00848665 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4ACF3BFA185009FC00848665 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		4ACF3BFD18500A3F00848665 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		5B64E80C164373C50043E296 /* Spin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B64E810164373C50043E296 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5B64E812164373C50043E296 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -52,11 +73,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ACF3BFE18500A3F00848665 /* AdSupport.framework in Frameworks */,
+				4ACF3BFC18500A2100848665 /* MessageUI.framework in Frameworks */,
+				4ACF3BF9185009DE00848665 /* CoreLocation.framework in Frameworks */,
+				4ACF3BF51850098400848665 /* SystemConfiguration.framework in Frameworks */,
+				4ACF3BF1185008E800848665 /* libsqlite3.dylib in Frameworks */,
+				4ACF3BFB185009FC00848665 /* libz.dylib in Frameworks */,
+				4ACF3BEF185008E100848665 /* Security.framework in Frameworks */,
 				5B64E8441643766E0043E296 /* QuartzCore.framework in Frameworks */,
 				5B64E811164373C50043E296 /* UIKit.framework in Frameworks */,
 				5B64E813164373C50043E296 /* Foundation.framework in Frameworks */,
 				5B64E815164373C50043E296 /* CoreGraphics.framework in Frameworks */,
 				5B64E819164373C50043E296 /* OpenGLES.framework in Frameworks */,
+				4ACF3BFF18500AF400848665 /* GameKit.framework in Frameworks */,
+				4ACF3BEA184FF85900848665 /* GameCircle.framework in Frameworks */,
+				4ACF3BF31850094F00848665 /* AmazonInsightsSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +114,17 @@
 		5B64E80F164373C50043E296 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4ACF3BFA185009FC00848665 /* libz.dylib */,
+				4ACF3BF0185008E800848665 /* libsqlite3.dylib */,
+				4ACF3BFD18500A3F00848665 /* AdSupport.framework */,
+				4ACF3BF8185009DE00848665 /* CoreLocation.framework */,
+				4ACF3BF6185009A900848665 /* MessageUI.framework */,
+				4ACF3BF41850098400848665 /* SystemConfiguration.framework */,
+				4ACF3BEB185008A400848665 /* Security.framework */,
+				4ACF3BE9184FF85900848665 /* GameCircle.framework */,
+				21292E781778F0D000066095 /* GameKit.framework */,
+				4ACF3BED185008C000848665 /* CFNetwork.framework */,
+				4ACF3BF21850094F00848665 /* AmazonInsightsSDK.framework */,
 				5B64E8431643766E0043E296 /* QuartzCore.framework */,
 				5B64E810164373C50043E296 /* UIKit.framework */,
 				5B64E812164373C50043E296 /* Foundation.framework */,
@@ -261,6 +303,10 @@
 		5B64E839164373C60043E296 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spin/Spin-Prefix.pch";
 				INFOPLIST_FILE = "Spin/Spin-Info.plist";
@@ -273,6 +319,10 @@
 		5B64E83A164373C60043E296 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spin/Spin-Prefix.pch";
 				INFOPLIST_FILE = "Spin/Spin-Info.plist";
