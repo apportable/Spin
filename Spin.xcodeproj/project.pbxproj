@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A06357D1885D67B0089CD69 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A06357C1885D67B0089CD69 /* SystemConfiguration.framework */; };
+		4A0635821885F2BA0089CD69 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0635811885F2BA0089CD69 /* Reachability.m */; };
+		4A063585188600870089CD69 /* stop-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A063583188600870089CD69 /* stop-32.png */; };
+		4A063586188600870089CD69 /* WWAN5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A063584188600870089CD69 /* WWAN5.png */; };
+		4A0635881886008E0089CD69 /* Airport.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A0635871886008E0089CD69 /* Airport.png */; };
 		5B64E811164373C50043E296 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E810164373C50043E296 /* UIKit.framework */; };
 		5B64E813164373C50043E296 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E812164373C50043E296 /* Foundation.framework */; };
 		5B64E815164373C50043E296 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E814164373C50043E296 /* CoreGraphics.framework */; };
@@ -19,11 +24,15 @@
 		5B64E82B164373C50043E296 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B64E82A164373C50043E296 /* Default-568h@2x.png */; };
 		5B64E83D164375D50043E296 /* SpinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64E83C164375D50043E296 /* SpinViewController.m */; };
 		5B64E83F164376140043E296 /* SpinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B64E83E164376140043E296 /* SpinViewController.xib */; };
-		5B64E842164376430043E296 /* SpinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64E841164376430043E296 /* SpinView.m */; };
-		5B64E8441643766E0043E296 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E8431643766E0043E296 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A06357C1885D67B0089CD69 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4A0635801885F2BA0089CD69 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		4A0635811885F2BA0089CD69 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		4A063583188600870089CD69 /* stop-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-32.png"; sourceTree = "<group>"; };
+		4A063584188600870089CD69 /* WWAN5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WWAN5.png; sourceTree = "<group>"; };
+		4A0635871886008E0089CD69 /* Airport.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Airport.png; sourceTree = "<group>"; };
 		5B64E80C164373C50043E296 /* Spin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B64E810164373C50043E296 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5B64E812164373C50043E296 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -42,8 +51,6 @@
 		5B64E83B164375D40043E296 /* SpinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinViewController.h; sourceTree = "<group>"; };
 		5B64E83C164375D50043E296 /* SpinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinViewController.m; sourceTree = "<group>"; };
 		5B64E83E164376140043E296 /* SpinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinViewController.xib; sourceTree = "<group>"; };
-		5B64E840164376430043E296 /* SpinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinView.h; sourceTree = "<group>"; };
-		5B64E841164376430043E296 /* SpinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinView.m; sourceTree = "<group>"; };
 		5B64E8431643766E0043E296 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -52,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B64E8441643766E0043E296 /* QuartzCore.framework in Frameworks */,
+				4A06357D1885D67B0089CD69 /* SystemConfiguration.framework in Frameworks */,
 				5B64E811164373C50043E296 /* UIKit.framework in Frameworks */,
 				5B64E813164373C50043E296 /* Foundation.framework in Frameworks */,
 				5B64E815164373C50043E296 /* CoreGraphics.framework in Frameworks */,
@@ -83,6 +90,7 @@
 		5B64E80F164373C50043E296 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A06357C1885D67B0089CD69 /* SystemConfiguration.framework */,
 				5B64E8431643766E0043E296 /* QuartzCore.framework */,
 				5B64E810164373C50043E296 /* UIKit.framework */,
 				5B64E812164373C50043E296 /* Foundation.framework */,
@@ -100,8 +108,8 @@
 				5B64E824164373C50043E296 /* SpinAppDelegate.m */,
 				5B64E83B164375D40043E296 /* SpinViewController.h */,
 				5B64E83C164375D50043E296 /* SpinViewController.m */,
-				5B64E840164376430043E296 /* SpinView.h */,
-				5B64E841164376430043E296 /* SpinView.m */,
+				4A0635801885F2BA0089CD69 /* Reachability.h */,
+				4A0635811885F2BA0089CD69 /* Reachability.m */,
 				5B64E81B164373C50043E296 /* Supporting Files */,
 			);
 			path = Spin;
@@ -118,6 +126,9 @@
 				5B64E828164373C50043E296 /* Default@2x.png */,
 				5B64E82A164373C50043E296 /* Default-568h@2x.png */,
 				5B64E83E164376140043E296 /* SpinViewController.xib */,
+				4A0635871886008E0089CD69 /* Airport.png */,
+				4A063583188600870089CD69 /* stop-32.png */,
+				4A063584188600870089CD69 /* WWAN5.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -174,11 +185,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A063586188600870089CD69 /* WWAN5.png in Resources */,
 				5B64E81F164373C50043E296 /* InfoPlist.strings in Resources */,
 				5B64E827164373C50043E296 /* Default.png in Resources */,
+				4A063585188600870089CD69 /* stop-32.png in Resources */,
 				5B64E829164373C50043E296 /* Default@2x.png in Resources */,
 				5B64E82B164373C50043E296 /* Default-568h@2x.png in Resources */,
 				5B64E83F164376140043E296 /* SpinViewController.xib in Resources */,
+				4A0635881886008E0089CD69 /* Airport.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,8 +205,8 @@
 			files = (
 				5B64E821164373C50043E296 /* main.m in Sources */,
 				5B64E825164373C50043E296 /* SpinAppDelegate.m in Sources */,
+				4A0635821885F2BA0089CD69 /* Reachability.m in Sources */,
 				5B64E83D164375D50043E296 /* SpinViewController.m in Sources */,
-				5B64E842164376430043E296 /* SpinView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
