@@ -151,7 +151,7 @@
     // or a dictionary like above, but instead specifying the full target file name
     // for the asset, e.g.,
     // {"asset": "./Resources/cube_texture.pvr.ccz", "target_file": "Bundled Resources/cube_texture.pvr.gz", "env": {"TARGET_TEXTURE_FMT": "pvr"}}
-    "assets": [],
+    "assets": ["SpinViewController.nib"],
     // A list of Info.plist files.  The first one in the list will be the one we consider the main Info.plist.
     "infoplists": [],
   },

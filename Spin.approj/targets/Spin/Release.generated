@@ -1,46 +1,9 @@
 {
-    "xcode_project": "Spin.xcodeproj", 
-    "sources": [
-        {
-            "language": "objc", 
-            "header_paths": [], 
-            "source": "Spin/SpinAppDelegate.m", 
-            "flags": [], 
-            "defines": {}
-        }, 
-        {
-            "language": "objc", 
-            "header_paths": [], 
-            "source": "Spin/SpinView.m", 
-            "flags": [], 
-            "defines": {}
-        }, 
-        {
-            "language": "objc", 
-            "header_paths": [], 
-            "source": "Spin/SpinViewController.m", 
-            "flags": [], 
-            "defines": {}
-        }, 
-        {
-            "language": "objc", 
-            "header_paths": [], 
-            "source": "Spin/main.m", 
-            "flags": [], 
-            "defines": {}
-        }
-    ], 
-    "infoplists": [
-        "./Spin/Spin-Info.plist"
-    ], 
-    "defines": {
-        "__IPHONE_OS_VERSION_MIN_REQUIRED": 60000, 
-        "NS_BLOCK_ASSERTIONS": 1
-    }, 
-    "pchs": [
-        "./Spin/Spin-Prefix.pch"
-    ], 
     "assets": [
+        {
+            "asset": "Spin/en.lproj/InfoPlist.strings", 
+            "target": "en.lproj/InfoPlist.strings"
+        }, 
         {
             "asset": "Spin/Default.png", 
             "target": "Default.png"
@@ -50,79 +13,39 @@
             "target": "Default@2x.png"
         }, 
         {
-            "asset": "Spin/SpinViewController.xib", 
-            "target": null
-        }, 
-        {
             "asset": "Spin/Default-568h@2x.png", 
             "target": "Default-568h@2x.png"
-        }, 
-        {
-            "asset": "Spin/en.lproj/InfoPlist.strings", 
-            "target": "en.lproj/InfoPlist.strings"
         }
     ], 
-    "type": "app", 
-    "header_paths": [
-        {
-            "type": "iquote", 
-            "header_path": "Spin-generated-files.hmap", 
-            "hmap": {}
-        }, 
-        {
-            "type": "I", 
-            "header_path": "Spin-own-target-headers.hmap", 
-            "hmap": {}
-        }, 
-        {
-            "type": "I", 
-            "header_path": "Spin-all-target-headers.hmap", 
-            "hmap": {}
-        }, 
-        {
-            "type": "iquote", 
-            "header_path": "Spin-project-headers.hmap", 
-            "hmap": {
-                "SpinAppDelegate.h": {
-                    "prefix": "Spin/", 
-                    "suffix": "SpinAppDelegate.h", 
-                    "key": "SpinAppDelegate.h"
-                }, 
-                "SpinView.h": {
-                    "prefix": "Spin/", 
-                    "suffix": "SpinView.h", 
-                    "key": "SpinView.h"
-                }, 
-                "SpinViewController.h": {
-                    "prefix": "Spin/", 
-                    "suffix": "SpinViewController.h", 
-                    "key": "SpinViewController.h"
-                }, 
-                "Spin-Prefix.pch": {
-                    "prefix": "Spin/", 
-                    "suffix": "Spin-Prefix.pch", 
-                    "key": "Spin-Prefix.pch"
-                }
-            }
-        }, 
-        {
-            "type": "iquote", 
-            "header_path": "."
-        }, 
-        {
-            "type": "iquote", 
-            "header_path": "apportable"
-        }, 
-        {
-            "type": "iquote", 
-            "header_path": "Spin"
+    "config": {
+        "APPLICATION_FULL_NAME": "Spin", 
+        "APPLICATION_IDENTIFIER": "com.apportable.Spin", 
+        "APPLICATION_NAME": "Spin", 
+        "LONG_VERSION": "1.0", 
+        "SHORT_VERSION": "1.0", 
+        "TEMPLATE_VALUES": {
+            "EXECUTABLE_NAME": "Spin", 
+            "PRODUCT_NAME": "Spin"
         }
+    }, 
+    "defines": {
+        "NS_BLOCK_ASSERTIONS": 1, 
+        "__IPHONE_OS_VERSION_MIN_REQUIRED": 60000
+    }, 
+    "deps": [
+        "UIKit", 
+        "QuartzCore", 
+        "UIKit", 
+        "Foundation", 
+        "CoreGraphics", 
+        "OpenGLES"
     ], 
-    "modules": [], 
-    "version": "1", 
     "flags": [
         "-DNS_BLOCK_ASSERTIONS=1", 
-        "-fwritable-strings", 
+        {
+            "flag": "-DNS_BLOCK_ASSERTIONS=1", 
+            "type": "c++"
+        }, 
         "-fasm-blocks", 
         {
             "flag": "-std=gnu99", 
@@ -152,23 +75,135 @@
             "type": "objc"
         }
     ], 
-    "deps": [
-        "UIKit", 
-        "QuartzCore", 
-        "UIKit", 
-        "Foundation", 
-        "CoreGraphics", 
-        "OpenGLES"
-    ], 
-    "config": {
-        "APPLICATION_IDENTIFIER": "com.apportable.Spin", 
-        "TEMPLATE_VALUES": {
-            "PRODUCT_NAME": "Spin", 
-            "EXECUTABLE_NAME": "Spin"
+    "header_paths": [
+        {
+            "header_path": "Spin-generated-files.hmap", 
+            "hmap": {}, 
+            "type": "iquote"
         }, 
-        "LONG_VERSION": "1.0", 
-        "SHORT_VERSION": "1.0", 
-        "APPLICATION_NAME": "Spin", 
-        "APPLICATION_FULL_NAME": "Spin"
-    }
+        {
+            "header_path": "Spin-own-target-headers.hmap", 
+            "hmap": {}, 
+            "type": "I"
+        }, 
+        {
+            "header_path": "Spin-all-target-headers.hmap", 
+            "hmap": {}, 
+            "type": "I"
+        }, 
+        {
+            "header_path": "Spin-project-headers.hmap", 
+            "hmap": {
+                "Spin-Prefix.pch": {
+                    "key": "Spin-Prefix.pch", 
+                    "prefix": "Spin/", 
+                    "suffix": "Spin-Prefix.pch"
+                }, 
+                "SpinAppDelegate.h": {
+                    "key": "SpinAppDelegate.h", 
+                    "prefix": "Spin/", 
+                    "suffix": "SpinAppDelegate.h"
+                }, 
+                "SpinView.h": {
+                    "key": "SpinView.h", 
+                    "prefix": "Spin/", 
+                    "suffix": "SpinView.h"
+                }, 
+                "SpinViewController.h": {
+                    "key": "SpinViewController.h", 
+                    "prefix": "Spin/", 
+                    "suffix": "SpinViewController.h"
+                }
+            }, 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": ".", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Spin", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Spin.approj", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Spin.approj/assets", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Spin.approj/targets", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Spin.approj/targets/Spin", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "/var/folders/mx/6dg83hl52kl6dtqx393dcf7h0000gp/T/tmppdR3RC/BUILT_PRODUCTS_DIR/include", 
+            "type": "I"
+        }, 
+        {
+            "header_path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include", 
+            "type": "I"
+        }, 
+        {
+            "header_path": "/var/folders/mx/6dg83hl52kl6dtqx393dcf7h0000gp/T/tmppdR3RC/DERIVED_FILE_DIR/armv7", 
+            "type": "I"
+        }, 
+        {
+            "header_path": "/var/folders/mx/6dg83hl52kl6dtqx393dcf7h0000gp/T/tmppdR3RC/DERIVED_FILE_DIR", 
+            "type": "I"
+        }
+    ], 
+    "infoplists": [
+        "./Spin/Spin-Info.plist"
+    ], 
+    "libs": [], 
+    "modules": [], 
+    "pchs": [
+        "./Spin/Spin-Prefix.pch"
+    ], 
+    "sources": [
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "Spin/SpinAppDelegate.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "Spin/SpinView.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "Spin/SpinViewController.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "Spin/main.m"
+        }
+    ], 
+    "storyboards": [], 
+    "type": "app", 
+    "version": "1", 
+    "xcode_project": "Spin.xcodeproj", 
+    "xibs": [
+        {
+            "target": null, 
+            "xib": "Spin/SpinViewController.xib"
+        }
+    ]
 }
