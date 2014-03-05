@@ -19,6 +19,8 @@
 @property (retain, nonatomic) IBOutlet UILabel *userName;
 @property (retain, nonatomic) IBOutlet UILabel *score;
 @property (retain, nonatomic) IBOutlet UILabel *digestVal;
+
+@property (assign, nonatomic) BOOL isSignedIn;
 @end
 
 static int64_t gameScore = 0LL;
@@ -80,6 +82,20 @@ static int64_t gameScore = 0LL;
                                                object:nil];
 
     NSArray *features = [NSArray arrayWithObjects:AGFeatureAchievements, AGFeatureLeaderboards, AGFeatureWhispersync, nil];
+    
+    [AGPlayer setSignedInStateDidChangeHandler:^(BOOL isSignedIn) {
+        [self setIsSignedIn:isSignedIn];
+        if (isSignedIn)
+        {
+            [self fetchLocalPlayer];
+        }
+        else
+        {
+            [self.userName setText:@"NOT LOGGED IN"];
+            [self.score setText:@"NOT LOGGED IN"];
+        }
+    }];
+    
     [GameCircle beginWithFeatures:features completionHandler:^(NSError *error) {
         if (error)
         {
@@ -88,38 +104,30 @@ static int64_t gameScore = 0LL;
         else
         {
             NSLog(@"GameCircle is ready, fetching local player ...");
-            [self pollLocalPlayerWithCompletionHandler:nil];
         }
     }];
 }
 
-- (void)pollLocalPlayerWithCompletionHandler:(void(^)(AGPlayer *player, NSError *error))completionHandler
+- (void)fetchLocalPlayer
 {
-    if (!completionHandler)
+    if (![self isSignedIn])
     {
-        completionHandler = ^(AGPlayer *player, NSError *error) { };
+        return;
     }
-    completionHandler = Block_copy(completionHandler);
-    
     [AGPlayer localPlayerWithCompletionHandler:^(AGPlayer *player, NSError *error) {
-        if (error)
+        if (error || !player)
         {
             NSLog(@"OOPS, problem fetching local player : %@", error);
-        }
-        else if (!player)
-        {
-            NSLog(@"Player is null...");
+            NSLog(@"Will re-attempt fetch after short delay...");
+            [self performSelector:@selector(fetchLocalPlayer) withObject:self afterDelay:2.0];
         }
         else
         {
-            NSLog(@"Local player fetched! ... alias:%@ ID:%@", [player alias], [player playerID]);
+            NSLog(@"Local player fetched! ... alias:%@ ID:%@ avatarURL:%@", [player alias], [player playerID], [player avatarURL]);
             [self.userName setText:[player alias]];
             [self.score setText:[NSString stringWithFormat:@"%lld", gameScore]];
             [self reportAchievementsAndScores];
         }
-        
-        completionHandler(player, error);
-        Block_release(completionHandler);
     }];
 }
 
@@ -322,38 +330,38 @@ static int64_t gameScore = 0LL;
 
 - (IBAction)showGameCircle:(id)sender
 {
-    [[AGOverlay sharedOverlay] showGameCircle:YES];
-    [self pollLocalPlayerWithCompletionHandler:nil];
+    if ([self isSignedIn])
+    {
+        [[AGOverlay sharedOverlay] showGameCircle:YES];
+    }
+    else
+    {
+        [[AGOverlay sharedOverlay] showWithState:AGOverlaySignIn animated:YES];
+    }
 }
 
 - (IBAction)showAchievements:(id)sender
 {
-    [self pollLocalPlayerWithCompletionHandler:^(AGPlayer *player, NSError *error) {
-        if (error || !player)
-        {
-            // not logged in, show GameCircle Overlay to login
-            [[AGOverlay sharedOverlay] showGameCircle:YES];
-        }
-        else
-        {
-            [[AGOverlay sharedOverlay] showWithState:AGOverlayAchievements animated:YES];
-        }
-    }];
+    if ([self isSignedIn])
+    {
+        [[AGOverlay sharedOverlay] showWithState:AGOverlayAchievements animated:YES];
+    }
+    else
+    {
+        [[AGOverlay sharedOverlay] showWithState:AGOverlaySignIn animated:YES];
+    }
 }
 
 - (IBAction)showLeaderboards:(id)sender
 {
-    [self pollLocalPlayerWithCompletionHandler:^(AGPlayer *player, NSError *error) {
-        if (error || !player)
-        {
-            // not logged in, show GameCircle Overlay to login
-            [[AGOverlay sharedOverlay] showGameCircle:YES];
-        }
-        else
-        {
-            [[AGOverlay sharedOverlay] showWithState:AGOverlayLeaderboards animated:YES];
-        }
-    }];
+    if ([self isSignedIn])
+    {
+        [[AGOverlay sharedOverlay] showWithState:AGOverlayLeaderboards animated:YES];
+    }
+    else
+    {
+        [[AGOverlay sharedOverlay] showWithState:AGOverlaySignIn animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -712,6 +720,8 @@ if ((random() % 2) == 0) \
     NSLog(@"inConflict : %d", [developerString inConflict]);
     NSLog(@"isSet      : %d", [developerString isSet]);
     NSLog(@"cloudValue : %@", [developerString cloudValue]);
+    NSLog(@"cloudTimestamp : %lf", [developerString cloudTimestamp]);
+    NSLog(@"timeimestamp : %lf", [developerString timestamp]);
     NSLog(@"value      : %@", [developerString value]);
     [developerString markAsResolved];
 
@@ -732,7 +742,6 @@ if ((random() % 2) == 0) \
 - (void)onDataUploadedToCloud:(NSNotification *)notification
 {
     NSLog(@"onDataUploadedToCloud...");
-    [self pollLocalPlayerWithCompletionHandler:nil];
     [self _testOutputCurrentData];
     NSString *digest = [self _digestForCurrentData:[[AGWhispersync sharedInstance] gameData]];
     [self.digestVal setText:digest];
@@ -756,7 +765,6 @@ if ((random() % 2) == 0) \
 - (void)onNewCloudData:(NSNotification *)notification
 {
     NSLog(@"onNewCloudData...");
-    [self pollLocalPlayerWithCompletionHandler:nil];
     [self _testOutputCurrentData];
     NSString *digest = [self _digestForCurrentData:[[AGWhispersync sharedInstance] gameData]];
     [self.digestVal setText:digest];
