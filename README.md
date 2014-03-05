@@ -5,7 +5,7 @@ A simple OpenGL ES 1 spinning cube.  But with Achievements!  And Leaderboards!  
 
 To get this running:
 
-* You will need to follow the [Amazon GameCircle developer console setup instructions](https://developer.amazon.com/sdk/gamecircle/documentation/gamecircle-config.html).
+* You will need to follow the [Amazon GameCircle developer console setup instructions](https://developer.amazon.com/public/apis/engage/gamecircle).
 
 * Set the proper value of CFBundleIdentifier in Spin/Spin-Info.plist
 
