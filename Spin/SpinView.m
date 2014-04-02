@@ -12,6 +12,17 @@
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 
+// For multicast DNS and DNS Service Discovery
+#import <Foundation/Foundation.h>
+#import <CFNetwork/CFNetwork.h>
+#import <CFNetwork/CFNetServices.h>
+
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+
 #define HORIZ_SWIPE_DRAG_MIN    24
 #define VERT_SWIPE_DRAG_MAX     24
 #define TAP_MIN_DRAG            10
@@ -326,6 +337,7 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
         {
             // Process a tap event.
             NSLog(@"Tap");
+            [self testCFNetServices:@"localhost" portNum:8888];
         }
     }
     else {
@@ -339,6 +351,216 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
             NSLog(@"Movement: %d", (int)movement);
         }
     }
+}
+
+#pragma mark Delegate
+
+-(void)tellDelegate
+{
+    MyNetServices *service = [[MyNetServices alloc] init];
+    service.delegate = self;
+    [service registerMyService];
+}
+
+static void registerCallback(CFNetServiceRef theService, CFStreamError *err, void *info)
+{
+    NSLog(@"DAPHDAPHDAPH: %s:%d: Blah %@", __func__, __LINE__, _cfSocket);
+}
+
+-(void)startBonjour:(MyNetServices *)myService
+{
+    NSLog(@"DAPHDAPHDAPH: %s:%d: Blah %@", __func__, __LINE__, _cfSocket);
+    CFStreamError error;
+
+    CFStringRef serviceType = CFSTR("_nexus._udp");
+    CFStringRef serviceName = CFSTR("Nexus 7 Device");
+    CFStringRef domain = CFSTR("");
+    int thePort = 8888;
+
+    CFNetServiceRef netService = CFNetServiceCreate(NULL, domain, serviceType, serviceName, thePort);
+    if (netService == nil)
+    {
+        NSLog(@"ERROR: %d: netService is nil", __LINE__);
+    }
+
+    CFNetServiceClientContext clientCtx = {0, NULL, NULL, NULL, NULL};
+
+    CFNetServiceSetClient(netService, registerCallback, &clientCtx);
+    CFNetServiceScheduleWithRunLoop(netService, CFRunLoopGetCurrent(), kCFRunLoopCommonModes);
+    CFOptionFlags options = 0;
+
+    if (CFNetServiceRegisterWithOptions(netService, options, &error) == false)
+    {
+        CFNetServiceUnscheduleFromRunLoop(netService, CFRunLoopGetCurrent(), kCFRunLoopCommonModes);
+        CFNetServiceSetClient(netService, NULL, NULL);
+        CFRelease(netService);
+        fprintf(stderr, "Could not register Bonjour service!");
+    }
+}
+
+#pragma mark Sockets
+
+CFSocketRef _cfSocket;
+
+static void SocketReadCallback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address, const void *data, void *info)
+{
+    NSLog(@"DAPHDAPHDAPH: %s:%d: Made it this far!", __func__, __LINE__);
+
+    int err, sock;
+    struct sockaddr_storage addr;
+    socklen_t addrLen;
+    uint8_t buf[65536];
+    ssize_t bytesRead;
+
+    sock = CFSocketGetNative(s);
+    if (sock < 0) {
+        err = errno;
+        NSLog(@"Line %d: ERROR: errno = %d\n\n", __LINE__, err);
+    }
+
+    addrLen = sizeof(addr);
+    bytesRead = recvfrom(sock, buf, sizeof(buf), 0, (struct sockaddr_storage *) &addr, &addrLen);
+    if (bytesRead <= 0) {
+        err = errno;
+        NSLog(@"Line %d: ERROR: errno = %d\n\n", __LINE__, err);
+    } else {
+        NSData *dataObj;
+        NSData *addrObj;
+
+        dataObj = [NSData dataWithBytes:buf length:(NSUInteger) bytesRead];
+        if (dataObj == nil) {
+            err = errno;
+            NSLog(@"Line %d: ERROR: errno = %d\n\n", __LINE__, err);
+        }
+        addrObj = [NSData dataWithBytes:&addr length:addrLen];
+        if (addrObj == nil) {
+            err = errno;
+            NSLog(@"Line %d: ERROR: errno = %d\n\n", __LINE__, err);
+        }
+
+        NSString *msg;
+        NSString *address;
+
+        msg = [[NSString alloc]initWithData:dataObj encoding:NSUTF8StringEncoding];
+        assert(msg != nil);
+        //address = [[NSString alloc]initWithData:addrObj encoding:NSUTF8StringEncoding];
+        //assert(address != nil);
+
+        //NSLog(@"DAPHDAPHDAPH: Received message--\"%@\" from Client %@", msg, address);
+        NSLog(@"DAPHDAPHDAPH: Received message--\"%@\" from Client", msg);
+        [msg release];
+        //[address release];
+    }
+}
+
+- (void)testCFNetServices:(NSString *)host portNum:(NSUInteger)port
+{
+    NSLog(@"Huzzah! Calling testCFNetServices! addr=%@:%d", host, port);
+
+    sa_family_t socketFamily;
+    int err, junk, sock;
+    CFRunLoopSourceRef rls;
+
+    const CFSocketContext context = {0, (__bridge void *) (self), NULL, NULL, NULL};
+
+    NSLog(@"Moving onto creating the udp socket!");
+    // Create UDP socket for IPv6 (default) or IPv4
+    err = 0;
+    sock = socket(AF_INET6, SOCK_DGRAM, 0);
+    if (sock >= 0) {
+        socketFamily = AF_INET6;
+        NSLog(@"DAPHDAPHDAPH: %d: socketFamily is ipv6", __LINE__);
+    } else {
+        sock = socket(AF_INET, SOCK_DGRAM, 0);
+        if (sock >= 0) {
+            socketFamily = AF_INET;
+            NSLog(@"DAPHDAPHDAPH: %d: socketFamily is ipv4", __LINE__);
+        } else {
+            err = errno;
+            socketFamily = 0;
+            NSLog(@"Line %d: ERROR: errno = %d", __LINE__, err);
+        }
+    }
+
+    // Bind the socket
+    if (err == 0) {
+        struct sockaddr_storage addr;
+        struct sockaddr_in * addr4;
+        struct sockaddr_in6 * addr6;
+
+        addr4 = (struct sockaddr_in *) &addr;
+        addr6 = (struct sockaddr_in6 *) &addr;
+        
+        memset(&addr, 0, sizeof(addr));
+        addr.ss_family = socketFamily;
+        if (socketFamily == AF_INET) {
+            addr4->sin_len = sizeof(*addr4);
+            addr4->sin_port = htons(port);
+            addr4->sin_addr.s_addr = INADDR_ANY;
+        } else {
+            addr6->sin6_port = htons(port);
+            addr6->sin6_addr = in6addr_any;
+        }
+
+        NSLog(@"LINE %d: Binding the socket", __LINE__);
+        err = bind(sock, (const struct sockaddr *) &addr, sizeof(*addr6));
+        if (err < 0) {
+            err = errno;
+            NSLog(@"Line %d: ERROR: errno = %d\n\n", __LINE__, err);
+        }
+    }
+
+    // Make socket non-blocking
+    if (err == 0) {
+        NSLog(@"LINE %d: Making socket non-blocking", __LINE__);
+        int flags;
+
+        flags = fcntl(sock, F_GETFL);
+        err = fcntl(sock, F_SETFL, flags | O_NONBLOCK);
+        if (err < 0) {
+            err = errno;
+            NSLog(@"Line %d: ERROR: errno = %d\n\n", __LINE__, err);
+        }
+    }
+
+    // Wrap socket in CFSocket
+    if (err == 0) {
+        NSLog(@"LINE %d: Wrapping socket in CFSocket", __LINE__);
+        _cfSocket = CFSocketCreateWithNative(NULL, sock, kCFSocketReadCallBack, SocketReadCallback, &context);
+
+        assert(CFSocketGetSocketFlags(_cfSocket) & kCFSocketCloseOnInvalidate);
+        sock = -1;
+
+        rls = CFSocketCreateRunLoopSource(NULL, _cfSocket, 0);
+        if (rls == NULL) {
+            err = errno;
+            NSLog(@"Line %d: ERROR: errno = %d\n\n", __LINE__, err);
+        }
+
+        CFRunLoopAddSource(CFRunLoopGetCurrent(), rls, kCFRunLoopDefaultMode);
+
+        CFRelease(rls);
+        // Add shit to make server read data being passed to it and responds
+        //     - See UDPEcho.m
+        //          215: SocketReadCallback
+        //          162: readData
+    }
+
+    if (sock != -1) {
+        junk = close(sock);
+        if (junk != 0) {
+            err = errno;
+            NSLog(@"Line %d: ERROR: errno = %d\n\n", __LINE__, err);
+        }
+    }
+
+    if (err != 0) {
+        NSLog(@"Line %d: ERROR: errno = %d\n\n", __LINE__, err);
+    }
+
+    // Tell the delegate UDP server is up
+    [self tellDelegate];
+
 }
 
 @end

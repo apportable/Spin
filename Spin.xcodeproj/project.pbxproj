@@ -21,6 +21,8 @@
 		5B64E83F164376140043E296 /* SpinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B64E83E164376140043E296 /* SpinViewController.xib */; };
 		5B64E842164376430043E296 /* SpinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64E841164376430043E296 /* SpinView.m */; };
 		5B64E8441643766E0043E296 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E8431643766E0043E296 /* QuartzCore.framework */; };
+		64A3295418EB732900D14F56 /* MyNetServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A3295318EB732900D14F56 /* MyNetServices.m */; };
+		64A3295A18EBA29C00D14F56 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A3295918EBA29C00D14F56 /* CFNetwork.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,10 @@
 		5B64E840164376430043E296 /* SpinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinView.h; sourceTree = "<group>"; };
 		5B64E841164376430043E296 /* SpinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinView.m; sourceTree = "<group>"; };
 		5B64E8431643766E0043E296 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		64A3295218EB732900D14F56 /* MyNetServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNetServices.h; sourceTree = "<group>"; };
+		64A3295318EB732900D14F56 /* MyNetServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNetServices.m; sourceTree = "<group>"; };
+		64A3295518EBA23400D14F56 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		64A3295918EBA29C00D14F56 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64A3295A18EBA29C00D14F56 /* CFNetwork.framework in Frameworks */,
 				5B64E8441643766E0043E296 /* QuartzCore.framework in Frameworks */,
 				5B64E811164373C50043E296 /* UIKit.framework in Frameworks */,
 				5B64E813164373C50043E296 /* Foundation.framework in Frameworks */,
@@ -83,6 +90,8 @@
 		5B64E80F164373C50043E296 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				64A3295918EBA29C00D14F56 /* CFNetwork.framework */,
+				64A3295518EBA23400D14F56 /* CoreFoundation.framework */,
 				5B64E8431643766E0043E296 /* QuartzCore.framework */,
 				5B64E810164373C50043E296 /* UIKit.framework */,
 				5B64E812164373C50043E296 /* Foundation.framework */,
@@ -102,6 +111,8 @@
 				5B64E83C164375D50043E296 /* SpinViewController.m */,
 				5B64E840164376430043E296 /* SpinView.h */,
 				5B64E841164376430043E296 /* SpinView.m */,
+				64A3295218EB732900D14F56 /* MyNetServices.h */,
+				64A3295318EB732900D14F56 /* MyNetServices.m */,
 				5B64E81B164373C50043E296 /* Supporting Files */,
 			);
 			path = Spin;
@@ -190,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B64E821164373C50043E296 /* main.m in Sources */,
+				64A3295418EB732900D14F56 /* MyNetServices.m in Sources */,
 				5B64E825164373C50043E296 /* SpinAppDelegate.m in Sources */,
 				5B64E83D164375D50043E296 /* SpinViewController.m in Sources */,
 				5B64E842164376430043E296 /* SpinView.m in Sources */,

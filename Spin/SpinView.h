@@ -7,6 +7,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SpinView : UIView
+#import "MyNetServices.h"
+
+@interface SpinView : UIView <MyNetServicesDelegate>
 
 @end
