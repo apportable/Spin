@@ -22,6 +22,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+#import "TestmDNS.h"
 
 #define HORIZ_SWIPE_DRAG_MIN    24
 #define VERT_SWIPE_DRAG_MAX     24
@@ -337,7 +338,10 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
         {
             // Process a tap event.
             NSLog(@"Tap");
-            [self testCFNetServices:@"localhost" portNum:8888];
+            [self testCFNetServices:@"localhost" portNum:5353];
+            NSLog(@"In touchesEnded again!");
+            [TestmDNS setup];
+            NSLog(@"End Tap!");
         }
     }
     else {
