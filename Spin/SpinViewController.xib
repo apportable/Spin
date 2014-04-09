@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1536</int>
-		<string key="IBDocument.SystemVersion">13A603</string>
+		<string key="IBDocument.SystemVersion">13C64</string>
 		<string key="IBDocument.InterfaceBuilderVersion">4514</string>
-		<string key="IBDocument.AppKitVersion">1265</string>
-		<string key="IBDocument.HIToolboxVersion">695.00</string>
+		<string key="IBDocument.AppKitVersion">1265.19</string>
+		<string key="IBDocument.HIToolboxVersion">697.40</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">3747</string>
@@ -140,6 +140,7 @@
 						<string key="NSFrame">{{160, 179}, {140, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -179,10 +180,10 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<reference key="IBUINormalTitleColor" ref="638730904"/>
 						<reference key="IBUIHighlightedTitleColor" ref="244572302"/>
-						<string key="IBUINormalTitle">GameCircle</string>
+						<string key="IBUINormalTitle">No Provider</string>
 						<reference key="IBUINormalTitleShadowColor" ref="294914173"/>
-						<reference key="IBUIFontDescription" ref="290100209"/>
-						<reference key="IBUIFont" ref="861724327"/>
+						<reference key="IBUIFontDescription" ref="606071613"/>
+						<reference key="IBUIFont" ref="192374681"/>
 					</object>
 					<object class="IBUIButton" id="344444799">
 						<reference key="NSNextResponder" ref="191373211"/>
@@ -317,12 +318,12 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">showGameCircle:</string>
+						<string key="label">showPseudoGameCenterOverlay:</string>
 						<reference key="source" ref="1059461441"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<string key="id">109</string>
+					<string key="id">RRw-fB-utK</string>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -459,8 +460,8 @@
 						<string key="awardDizzy:">id</string>
 						<string key="increaseScore:">id</string>
 						<string key="showAchievements:">id</string>
-						<string key="showGameCircle:">id</string>
 						<string key="showLeaderboards:">id</string>
+						<string key="showPseudoGameCenterOverlay:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="awardDizzy:">
@@ -475,12 +476,12 @@
 							<string key="name">showAchievements:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="showGameCircle:">
-							<string key="name">showGameCircle:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="showLeaderboards:">
 							<string key="name">showLeaderboards:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showPseudoGameCenterOverlay:">
+							<string key="name">showPseudoGameCenterOverlay:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>

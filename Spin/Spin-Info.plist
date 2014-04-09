@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.YOURORG.YOURAPP.SHOULD.MATCH.WHAT.IS.IN.YOUR.AMAZON.DEVELOPER.CONSOLE</string>
+	<string>com.YOURORG.YOURAPP.SHOULD.MATCH.WHAT.IS.IN.YOUR.AMAZON.ANDOR.GOOGLE.DEVELOPER.CONSOLE</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

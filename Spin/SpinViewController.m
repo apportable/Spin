@@ -9,14 +9,30 @@
 #import <QuartzCore/QuartzCore.h>
 #import <GameKit/GameKit.h>
 
+// GameKit Providers on the Apportable Android platform
+#define kGameKitProviderGoogle "GooglePlay"
+#define kGameKitProviderAmazon "AmazonGameCircle"
+
+// NOTE: Amazon GameCircle allows you to name achievements and leaderboards the same as their iOS/GameCenter counterparts...
 #define kDizzinessAchievement @"dizziness"
+#define kReverseAchievement @"reversespin"
 #define kSpinLeaderboard @"SpinLeaderboard"
+#define kSpinAltLeaderboard @"AnotherLeaderboard"
+
+// ... but on Google Play you need to use the IDs generated for you in your developer console
+#define kGPGDizzinessAchievement @"ENTER-THE-VALUE-FROM-YOUR-GOOGLE-DEVELOPER-CONSOLE"
+#define kGPGReverseAchievement @"ENTER-THE-VALUE-FROM-YOUR-GOOGLE-DEVELOPER-CONSOLE"
+#define kGPGSpinLeaderboard @"ENTER-THE-VALUE-FROM-YOUR-GOOGLE-DEVELOPER-CONSOLE"
+#define kGPGSpinAltLeaderboard @"ENTER-THE-VALUE-FROM-YOUR-GOOGLE-DEVELOPER-CONSOLE"
 
 @interface SpinViewController () <GKGameCenterControllerDelegate, GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate>
 @property (retain, nonatomic) IBOutlet UIButton *dizzyButton;
 @property (retain, nonatomic) IBOutlet UIButton *loginButton;
 @property (retain, nonatomic) IBOutlet UILabel *userName;
 @property (retain, nonatomic) IBOutlet UILabel *score;
+
+@property (copy, nonatomic) NSString *dizzyAchivement;
+@property (copy, nonatomic) NSString *spinLeaderboard;
 @end
 
 static int64_t gameScore = 0LL;
@@ -32,11 +48,14 @@ static int64_t gameScore = 0LL;
     return self;
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [_dizzyButton release];
     [_loginButton release];
     [_userName release];
     [_score release];
+    [_dizzyAchivement release];
+    [_spinLeaderboard release];
     [super dealloc];
 }
 
@@ -48,6 +67,28 @@ static int64_t gameScore = 0LL;
     [link addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 	// Do any additional setup after loading the view.
     [self becomeFirstResponder];
+    
+//-- you could brace this with #ifdef APPORTABLE -- but you don't need to
+    [self setDizzyAchivement:kDizzinessAchievement];
+    [self setSpinLeaderboard:kSpinLeaderboard];
+    const char *str = getenv("GAMEKIT_PROVIDER");
+    if (str && strcmp(str, kGameKitProviderGoogle) == 0)
+    {
+        [_loginButton setTitle:@(str) forState:UIControlStateNormal];
+        [_loginButton setEnabled:NO];
+        [self setDizzyAchivement:kGPGDizzinessAchievement];
+        [self setSpinLeaderboard:kGPGSpinLeaderboard];
+    }
+    else if (str && strcmp(str, kGameKitProviderAmazon) == 0)
+    {
+        [_loginButton setTitle:@(str) forState:UIControlStateNormal];
+    }
+    else
+    {
+        NSLog(@"OOPS : no GameKit backend provider specified, expect a null implementation on Android!");
+    }
+//-- #endif
+    
     [self authenticateLocalPlayer];
 }
 
@@ -89,7 +130,7 @@ static int64_t gameScore = 0LL;
 
 - (IBAction)awardDizzy:(id)sender
 {
-    GKAchievement *achievement = [[[GKAchievement alloc] initWithIdentifier:kDizzinessAchievement] autorelease];
+    GKAchievement *achievement = [[[GKAchievement alloc] initWithIdentifier:[self dizzyAchivement]] autorelease];
     if (achievement)
     {
         achievement.percentComplete = 100.0;
@@ -115,7 +156,7 @@ static int64_t gameScore = 0LL;
 - (IBAction)increaseScore:(id)sender
 {
     gameScore += 10;
-    GKScore *gkScore = [[GKScore alloc] initWithCategory:kSpinLeaderboard];
+    GKScore *gkScore = [[GKScore alloc] initWithCategory:[self spinLeaderboard]];
     gkScore.value = gameScore;
     [self.score setText:[NSString stringWithFormat:@"%lld", gameScore]];
     [gkScore reportScoreWithCompletionHandler:^(NSError *error) {
@@ -131,14 +172,13 @@ static int64_t gameScore = 0LL;
     [gkScore release];
 }
 
-- (IBAction)showGameCircle:(id)sender
+- (IBAction)showPseudoGameCenterOverlay:(id)sender
 {
     GKGameCenterViewController *gameCenterController = [[GKGameCenterViewController alloc] init]; // released in callback
     if (gameCenterController != nil)
     {
         gameCenterController.gameCenterDelegate = self;
-        [self presentViewController:gameCenterController animated:YES completion:^{
-        }];
+        [self presentViewController:gameCenterController animated:YES completion:nil];
     }
 }
 
@@ -158,7 +198,7 @@ static int64_t gameScore = 0LL;
         }
         else
         {
-            [self showGameCircle:sender];
+            [self showPseudoGameCenterOverlay:sender];
         }
     }];
 }
@@ -179,7 +219,7 @@ static int64_t gameScore = 0LL;
         }
         else
         {
-            [self showGameCircle:sender];
+            [self showPseudoGameCenterOverlay:sender];
         }
     }];
 }
@@ -229,22 +269,25 @@ static int64_t gameScore = 0LL;
 #pragma mark -
 #pragma mark various GKGameCenterControllerDelegate methods
 
-// NOTE: with Amazon GameCircle backend on Android, these are called before overlay dismissal ...
+// NOTE: with Amazon GameCircle backend on Android, these may be called before overlay dismissal ...
 
 - (void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController
 {
+    NSLog(@"gameCenterViewControllerDidFinish ...");
     [self dismissViewControllerAnimated:YES completion:nil];
     [gameCenterViewController release];
 }
 
 - (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)leaderboardViewController
 {
+    NSLog(@"leaderboardViewControllerDidFinish ...");
     [self dismissViewControllerAnimated:YES completion:nil];
     [leaderboardViewController release];
 }
 
 - (void)achievementViewControllerDidFinish:(GKAchievementViewController *)achievementViewController
 {
+    NSLog(@"achievementViewControllerDidFinish ...");
     [self dismissViewControllerAnimated:YES completion:nil];
     [achievementViewController release];
 }

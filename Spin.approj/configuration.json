@@ -95,6 +95,9 @@
     // to be compressed.
     //"COMPRESSED_ASSETS_PATTERN": "",
     //"UNCOMPRESSED_ASSETS_PATTERN": "",
+
+    // If you're using Google Play Game Services, put in the client id (a numerical value)
+    "GOOGLE_PLAY_CLIENT_ID": "SET_THIS_TO_YOUR_APPS_NUMERIC_GOOGLE_PLAY_ID",
   },
 
   // Sometimes header include path ordering matters.  If so, put the ordering constraints into this
@@ -132,9 +135,7 @@
     "defines": {},
     // A list of dependencies.  Typically these correspond to
     // frameworks in the xcode project.
-    "deps": [
-        "GameKitAmazon"
-    ],
+    "deps": [],
     // A list of source files (e.g. .m, .mm, .c, .cc, and .cpp) files to build.
     // Source files can be a string, e.g. "./main.c", or a dictionary specifying
     // the file, any special flags, any defines, and the environment
@@ -154,7 +155,7 @@
     // for the asset, e.g.,
     // {"asset": "./Resources/cube_texture.pvr.ccz", "target_file": "Bundled Resources/cube_texture.pvr.gz", "env": {"TARGET_TEXTURE_FMT": "pvr"}}
     "assets": [
-        "Spin.approj/assets/api_key.txt",
+        "Spin.approj/assets/api_key.txt", // A GameCircle API Key (for the AmazonGameCircle backend provider)
     ],
     // A list of Info.plist files.  The first one in the list will be the one we consider the main Info.plist.
     "infoplists": [],
@@ -188,9 +189,7 @@
     "defines": {},
     // A list of dependencies.  Typically these correspond to
     // frameworks in the xcode project.
-    "deps": [
-        "GameKit",
-    ],
+    "deps": [],
     // A list of source files (e.g. .m, .mm, .c, .cc, and .cpp) files to remove from the build.
     // e.g. "./External/Reachabilty/Reachability.m"
     "sources": [],
