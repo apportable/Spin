@@ -12,7 +12,7 @@
 
 @protocol MyNetServicesDelegate
 
--(void)startBonjour:(MyNetServices *)myService;
+//-(void)startBonjour:(MyNetServices *)myService;
 
 @end
 
@@ -21,6 +21,6 @@
 
 @property (nonatomic, assign) id delegate;
 
--(void)registerMyService;
+//-(void)registerMyService;
 
 @end

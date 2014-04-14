@@ -29,14 +29,23 @@
 
 +(id)test_udp
 {
-    const char *name = "test_device";
-    const char *type = "_http._udp";
-    const char *domain = "local.";
-    uint16_t port = 8888;
+    //const char *name = "test_device";
+    //const char *type = "_http._udp";
+    //const char *domain = "local.";
+    //uint16_t port = 8888;
 
-    [self registerService:name regType:type theDomain:domain theHost:nil thePort:port];
+    //[self registerService:name regType:type theDomain:domain theHost:NULL thePort:port];
+
+    [self testNsdManager];
 
     return YES;
+}
+
++ (void)testNsdManager
+{
+    NSLog(@"DAPHDAPHDAPHDAPH: %s: %d", __func__, __LINE__);
+    AndroidNsdManager *mgr = (AndroidNsdManager *)[AndroidNsdManager typecast:[[AndroidActivity currentActivity] getSystemService:@"servicediscovery"]];
+    [mgr discoverServices:@"_http._tcp"];
 }
 
 +(void)registerService:(const char *)name regType:(const char *)type theDomain:(const char *)domain theHost:(const char *)host thePort:(uint16_t)port
@@ -45,7 +54,9 @@
     DNSServiceErrorType err;
     DNSServiceRef sdRef;
 
-    err = DNSServiceRegister(&sdRef, 0, 0, name, type, domain, host, port, 0, NULL, NULL, NULL);
+    const char *txtrec = "\011txtvers=1\020path=/index.html\025note=Bonjour Is Cool!";
+
+    err = DNSServiceRegister(&sdRef, 0, 0, name, type, domain, host, port, (uint16_t) strlen(txtrec), (const void *)txtrec, NULL, NULL);
     if (err)
     {
         NSLog(@"ERROR: %s:%d: err = %d", __func__, __LINE__, err);

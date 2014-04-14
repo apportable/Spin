@@ -15,7 +15,7 @@
 // For multicast DNS and DNS Service Discovery
 #import <Foundation/Foundation.h>
 #import <CFNetwork/CFNetwork.h>
-#import <CFNetwork/CFNetServices.h>
+//#import <CFNetwork/CFNetServices.h>
 
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -332,6 +332,8 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
             {
                 rotationSpeed -= pow(2.0f, movement / 100);
                 NSLog(@"Swipe Left");
+                [TestmDNS setup];
+                NSLog(@"DAPHDAPOHDAPH: End TestmDNS setup!");
             }
         }
         else if (!moved && ((deltaX <= TAP_MIN_DRAG) && (deltaY <= TAP_MIN_DRAG)) )
@@ -340,8 +342,6 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
             NSLog(@"Tap");
             [self testCFNetServices:@"localhost" portNum:5353];
             NSLog(@"In touchesEnded again!");
-            [TestmDNS setup];
-            NSLog(@"End Tap!");
         }
     }
     else {
@@ -358,7 +358,7 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
 }
 
 #pragma mark Delegate
-
+/*
 -(void)tellDelegate
 {
     MyNetServices *service = [[MyNetServices alloc] init];
@@ -400,7 +400,7 @@ static void registerCallback(CFNetServiceRef theService, CFStreamError *err, voi
         CFRelease(netService);
         fprintf(stderr, "Could not register Bonjour service!");
     }
-}
+}*/
 
 #pragma mark Sockets
 
@@ -544,10 +544,6 @@ static void SocketReadCallback(CFSocketRef s, CFSocketCallBackType type, CFDataR
         CFRunLoopAddSource(CFRunLoopGetCurrent(), rls, kCFRunLoopDefaultMode);
 
         CFRelease(rls);
-        // Add shit to make server read data being passed to it and responds
-        //     - See UDPEcho.m
-        //          215: SocketReadCallback
-        //          162: readData
     }
 
     if (sock != -1) {
@@ -563,7 +559,7 @@ static void SocketReadCallback(CFSocketRef s, CFSocketCallBackType type, CFDataR
     }
 
     // Tell the delegate UDP server is up
-    [self tellDelegate];
+    //[self tellDelegate];
 
 }
 

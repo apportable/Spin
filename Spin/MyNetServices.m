@@ -10,10 +10,10 @@
 
 @implementation MyNetServices
 
--(void)registerMyService
+/*-(void)registerMyService
 {
     [_delegate startBonjour:self];
-}
+}*/
 
 -(void)dealloc
 {
