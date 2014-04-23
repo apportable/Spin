@@ -37,6 +37,7 @@
     }, 
     "deps": [
         "UIKit", 
+        "CFNetwork", 
         "QuartzCore", 
         "UIKit", 
         "Foundation", 
@@ -97,6 +98,11 @@
         {
             "header_path": "Spin-project-headers.hmap", 
             "hmap": {
+                "MyNetServices.h": {
+                    "key": "MyNetServices.h", 
+                    "prefix": "Spin/", 
+                    "suffix": "MyNetServices.h"
+                }, 
                 "Spin-Prefix.pch": {
                     "key": "Spin-Prefix.pch", 
                     "prefix": "Spin/", 
@@ -116,6 +122,11 @@
                     "key": "SpinViewController.h", 
                     "prefix": "Spin/", 
                     "suffix": "SpinViewController.h"
+                }, 
+                "TestmDNS.h": {
+                    "key": "TestmDNS.h", 
+                    "prefix": "Spin/", 
+                    "suffix": "TestmDNS.h"
                 }
             }, 
             "type": "iquote"
@@ -145,7 +156,7 @@
             "type": "iquote"
         }, 
         {
-            "header_path": "/var/folders/mx/6dg83hl52kl6dtqx393dcf7h0000gp/T/tmppdR3RC/BUILT_PRODUCTS_DIR/include", 
+            "header_path": "/var/folders/jb/rhgt4kcj13z2xpgtf_r5cylm0000gn/T/tmpHvCJHx/BUILT_PRODUCTS_DIR/include", 
             "type": "I"
         }, 
         {
@@ -153,11 +164,11 @@
             "type": "I"
         }, 
         {
-            "header_path": "/var/folders/mx/6dg83hl52kl6dtqx393dcf7h0000gp/T/tmppdR3RC/DERIVED_FILE_DIR/armv7", 
+            "header_path": "/var/folders/jb/rhgt4kcj13z2xpgtf_r5cylm0000gn/T/tmpHvCJHx/DERIVED_FILE_DIR/armv7", 
             "type": "I"
         }, 
         {
-            "header_path": "/var/folders/mx/6dg83hl52kl6dtqx393dcf7h0000gp/T/tmppdR3RC/DERIVED_FILE_DIR", 
+            "header_path": "/var/folders/jb/rhgt4kcj13z2xpgtf_r5cylm0000gn/T/tmpHvCJHx/DERIVED_FILE_DIR", 
             "type": "I"
         }
     ], 
@@ -175,6 +186,13 @@
         "./Spin/Spin-Prefix.pch"
     ], 
     "sources": [
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "Spin/MyNetServices.m"
+        }, 
         {
             "defines": {}, 
             "flags": [], 
@@ -201,12 +219,20 @@
             "flags": [], 
             "header_paths": [], 
             "language": "objc", 
+            "source": "Spin/TestmDNS.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
             "source": "Spin/main.m"
         }
     ], 
     "storyboards": [], 
     "type": "app", 
-    "version": "1", 
+    "version": "3", 
+    "xcdatamodels": [], 
     "xcode_project": "Spin.xcodeproj", 
     "xibs": [
         {
