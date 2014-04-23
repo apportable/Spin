@@ -24,7 +24,7 @@
 
     [self registerService:name regType:type theDomain:domain theHost:nil thePort:port];
 
-    return YES;
+    return @YES;
 }
 
 +(id)test_udp
@@ -44,8 +44,14 @@
 + (void)testNsdManager
 {
     NSLog(@"DAPHDAPHDAPHDAPH: %s: %d", __func__, __LINE__);
-    AndroidNsdManager *mgr = (AndroidNsdManager *)[AndroidNsdManager typecast:[[AndroidActivity currentActivity] getSystemService:@"servicediscovery"]];
+    AndroidNsdManager *mgr = (AndroidNsdManager *)[[AndroidActivity currentActivity] nsdManager];
     [mgr discoverServices:@"_http._tcp"];
+
+    [mgr registerService:@"TestmDns" serviceType:@"_http._tcp" servicePort:8889];
+
+    //NSLog(@"DAPHDAPHDAPHDAPHDAPH: HAHA. MADE IT THIS FAR: %s: %d", __func__, __LINE__);
+    //[mgr stopServiceDiscovery];
+    NSLog(@"DAPHDAPHDAPHDAPH: %s: %d", __func__, __LINE__);
 }
 
 +(void)registerService:(const char *)name regType:(const char *)type theDomain:(const char *)domain theHost:(const char *)host thePort:(uint16_t)port
