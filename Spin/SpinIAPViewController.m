@@ -14,6 +14,8 @@
 @property (nonatomic, retain) SKProductsRequest *productsRequest;
 @property (nonatomic, retain) SKProductsResponse *productsList;
 @property (retain, nonatomic) IBOutlet UIButton *nonConsumable;
+@property (retain, nonatomic) IBOutlet UILabel *consumablePrice;
+@property (retain, nonatomic) IBOutlet UILabel *nonconsumablePrice;
 
 @end
 
@@ -47,6 +49,8 @@
     [_productsRequest release];
     [_productsList release];
     [_nonConsumable release];
+    [_consumablePrice release];
+    [_nonconsumablePrice release];
     [super dealloc];
 }
 
@@ -106,6 +110,11 @@
             NSLog(@"Product description: %@" , product.localizedDescription);
             NSLog(@"Product price: %@" , product.price);
             NSLog(@"Product price locale: %@" , product.priceLocale);
+            if ([product.productIdentifier isEqualToString:@"com.apportable.spin.consumable1"]) {
+                self.consumablePrice.text = [[product price] stringValue];
+            } else if ([product.productIdentifier isEqualToString:@"com.apportable.spin.nonconsumable1"]) {
+                self.nonconsumablePrice.text = [[product price] stringValue];
+            }
         }
     }
     
