@@ -1,29 +1,20 @@
 {
-    "xcode_project": "Spin.xcodeproj", 
-    "java_sources": [], 
-    "pchs": [
-        "./Spin/Spin-Prefix.pch"
-    ], 
     "assets": [
         {
-            "asset": "Spin/Default@2x.png", 
-            "target": "Default@2x.png"
+            "asset": "Spin/en.lproj/InfoPlist.strings", 
+            "target": "en.lproj/InfoPlist.strings"
         }, 
         {
             "asset": "Spin/Default.png", 
             "target": "Default.png"
         }, 
         {
+            "asset": "Spin/Default@2x.png", 
+            "target": "Default@2x.png"
+        }, 
+        {
             "asset": "Spin/Default-568h@2x.png", 
             "target": "Default-568h@2x.png"
-        }, 
-        {
-            "asset": "Spin/SpinIAPViewController.xib", 
-            "target": null
-        }, 
-        {
-            "asset": "Spin/en.lproj/InfoPlist.strings", 
-            "target": "en.lproj/InfoPlist.strings"
         }, 
         {
             "asset": "./Spin.approj/assets/SKProducts.plist", 
@@ -33,123 +24,50 @@
             "target": "SKProducts.plist"
         }
     ], 
-    "link_flags": [], 
     "config": {
+        "APPLICATION_FULL_NAME": "Spin", 
+        "APPLICATION_IDENTIFIER": "com.apportable.Spin", 
+        "APPLICATION_NAME": "Spin", 
         "FEATURES": [
             "portrait"
         ], 
-        "SHORT_VERSION": "1.0", 
-        "APPLICATION_NAME": "Spin", 
         "LONG_VERSION": "1.0", 
-        "APPLICATION_IDENTIFIER": "com.apportable.Spin", 
+        "SHORT_VERSION": "1.0", 
         "TEMPLATE_VALUES": {
-            "PRODUCT_NAME": "Spin", 
-            "EXECUTABLE_NAME": "Spin"
-        }, 
-        "APPLICATION_FULL_NAME": "Spin"
+            "EXECUTABLE_NAME": "Spin", 
+            "PRODUCT_NAME": "Spin"
+        }
     }, 
-    "header_paths": [
+    "defines": {
+        "NS_BLOCK_ASSERTIONS": 1, 
+        "__IPHONE_OS_VERSION_MIN_REQUIRED": 60000
+    }, 
+    "deps": [
+        "UIKit", 
+        "QuartzCore", 
+        "UIKit", 
+        "Foundation", 
+        "CoreGraphics", 
+        "OpenGLES", 
         {
-            "header_path": "Spin-generated-files.hmap", 
-            "type": "iquote", 
-            "hmap": {}
-        }, 
-        {
-            "header_path": "Spin-own-target-headers.hmap", 
-            "type": "I", 
-            "hmap": {}
-        }, 
-        {
-            "header_path": "Spin-all-target-headers.hmap", 
-            "type": "I", 
-            "hmap": {}
-        }, 
-        {
-            "header_path": "Spin-project-headers.hmap", 
-            "type": "iquote", 
-            "hmap": {
-                "SpinIAPView.h": {
-                    "prefix": "Spin/", 
-                    "suffix": "SpinIAPView.h", 
-                    "key": "SpinIAPView.h"
-                }, 
-                "SpinIAPViewController.h": {
-                    "prefix": "Spin/", 
-                    "suffix": "SpinIAPViewController.h", 
-                    "key": "SpinIAPViewController.h"
-                }, 
-                "Spin-Prefix.pch": {
-                    "prefix": "Spin/", 
-                    "suffix": "Spin-Prefix.pch", 
-                    "key": "Spin-Prefix.pch"
-                }, 
-                "SpinAppDelegate.h": {
-                    "prefix": "Spin/", 
-                    "suffix": "SpinAppDelegate.h", 
-                    "key": "SpinAppDelegate.h"
-                }
+            "dep": "StoreKit", 
+            "env": {
+                "TARGET_APP_STORE": "google"
             }
         }, 
         {
-            "header_path": ".", 
-            "type": "iquote"
-        }, 
-        {
-            "header_path": "Spin", 
-            "type": "iquote"
-        }, 
-        {
-            "header_path": "Spin.approj", 
-            "type": "iquote"
-        }, 
-        {
-            "header_path": "Spin.approj/assets", 
-            "type": "iquote"
-        }, 
-        {
-            "header_path": "Spin.approj/targets", 
-            "type": "iquote"
-        }, 
-        {
-            "header_path": "Spin.approj/targets/Spin", 
-            "type": "iquote"
+            "dep": "StoreKitAmazon", 
+            "env": {
+                "TARGET_APP_STORE": "amazon"
+            }
         }
     ], 
-    "modules": [], 
-    "sources": [
-        {
-            "source": "Spin/SpinAppDelegate.m", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc", 
-            "defines": {}
-        }, 
-        {
-            "source": "Spin/SpinIAPView.m", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc", 
-            "defines": {}
-        }, 
-        {
-            "source": "Spin/SpinIAPViewController.m", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc", 
-            "defines": {}
-        }, 
-        {
-            "source": "Spin/main.m", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc", 
-            "defines": {}
-        }
-    ], 
-    "version": "1", 
     "flags": [
         "-DNS_BLOCK_ASSERTIONS=1", 
-        "-fwritable-strings", 
+        {
+            "flag": "-DNS_BLOCK_ASSERTIONS=1", 
+            "type": "c++"
+        }, 
         "-fasm-blocks", 
         {
             "flag": "-std=gnu99", 
@@ -179,36 +97,145 @@
             "type": "objc"
         }
     ], 
+    "header_paths": [
+        {
+            "header_path": "Spin-generated-files.hmap", 
+            "hmap": {}, 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Spin-own-target-headers.hmap", 
+            "hmap": {}, 
+            "type": "I"
+        }, 
+        {
+            "header_path": "Spin-all-target-headers.hmap", 
+            "hmap": {}, 
+            "type": "I"
+        }, 
+        {
+            "header_path": "Spin-project-headers.hmap", 
+            "hmap": {
+                "Spin-Prefix.pch": {
+                    "key": "Spin-Prefix.pch", 
+                    "prefix": "Spin/", 
+                    "suffix": "Spin-Prefix.pch"
+                }, 
+                "SpinAppDelegate.h": {
+                    "key": "SpinAppDelegate.h", 
+                    "prefix": "Spin/", 
+                    "suffix": "SpinAppDelegate.h"
+                }, 
+                "SpinIAPView.h": {
+                    "key": "SpinIAPView.h", 
+                    "prefix": "Spin/", 
+                    "suffix": "SpinIAPView.h"
+                }, 
+                "SpinIAPViewController.h": {
+                    "key": "SpinIAPViewController.h", 
+                    "prefix": "Spin/", 
+                    "suffix": "SpinIAPViewController.h"
+                }
+            }, 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": ".", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "apportable", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Spin", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Spin.approj", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Spin.approj/assets", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Spin.approj/targets", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "Spin.approj/targets/Spin", 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "/var/folders/9z/yb2g6_ds1_3cbc5q74cc9jjc0000gn/T/tmpI7A7tU/BUILT_PRODUCTS_DIR/include", 
+            "type": "I"
+        }, 
+        {
+            "header_path": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include", 
+            "type": "I"
+        }, 
+        {
+            "header_path": "/var/folders/9z/yb2g6_ds1_3cbc5q74cc9jjc0000gn/T/tmpI7A7tU/DERIVED_FILE_DIR/armv7", 
+            "type": "I"
+        }, 
+        {
+            "header_path": "/var/folders/9z/yb2g6_ds1_3cbc5q74cc9jjc0000gn/T/tmpI7A7tU/DERIVED_FILE_DIR", 
+            "type": "I"
+        }
+    ], 
     "infoplists": [
         "./Spin/Spin-Info.plist"
     ], 
-    "deps": [
-        "UIKit", 
-        "QuartzCore", 
-        "UIKit", 
-        "Foundation", 
-        "CoreGraphics", 
-        "OpenGLES", 
+    "java_libs": [], 
+    "java_res_dirs": [], 
+    "java_sourcepaths": [], 
+    "java_sources": [], 
+    "libs": [], 
+    "link_flags": [], 
+    "modules": [], 
+    "pchs": [
+        "./Spin/Spin-Prefix.pch"
+    ], 
+    "sources": [
         {
-            "dep": "StoreKit", 
-            "env": {
-                "TARGET_APP_STORE": "google"
-            }
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "Spin/SpinAppDelegate.m"
         }, 
         {
-            "dep": "StoreKitAmazon", 
-            "env": {
-                "TARGET_APP_STORE": "amazon"
-            }
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "Spin/SpinIAPView.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "Spin/SpinIAPViewController.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "Spin/main.m"
         }
     ], 
-    "libs": [], 
-    "java_sourcepaths": [], 
-    "java_res_dirs": [], 
+    "storyboards": [], 
     "type": "app", 
-    "java_libs": [], 
-    "defines": {
-        "__IPHONE_OS_VERSION_MIN_REQUIRED": 60000, 
-        "NS_BLOCK_ASSERTIONS": 1
-    }
+    "version": "3", 
+    "xcdatamodels": [], 
+    "xcode_project": "Spin.xcodeproj", 
+    "xibs": [
+        {
+            "target": null, 
+            "xib": "Spin/SpinIAPViewController.xib"
+        }
+    ]
 }
