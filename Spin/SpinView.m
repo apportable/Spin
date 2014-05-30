@@ -12,6 +12,8 @@
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 
+#import "CCGLQueue.h"
+
 #define HORIZ_SWIPE_DRAG_MIN    24
 #define VERT_SWIPE_DRAG_MAX     24
 #define TAP_MIN_DRAG            10
@@ -140,34 +142,35 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
         kEAGLDrawablePropertyRetainedBacking : @NO,
         kEAGLDrawablePropertyColorFormat : kEAGLColorFormatRGBA8
     };
-    context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
-    
-    [EAGLContext setCurrentContext:context];
-    
-    glGenFramebuffersOES(1, &defaultFramebuffer);
-    glGenRenderbuffersOES(1, &colorRenderbuffer);
-    
-    glBindFramebufferOES(GL_FRAMEBUFFER_OES, defaultFramebuffer);
-    glBindRenderbufferOES(GL_RENDERBUFFER_OES, colorRenderbuffer);
-    glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_COLOR_ATTACHMENT0_OES, GL_RENDERBUFFER_OES, colorRenderbuffer);
-    
-    [context renderbufferStorage:GL_RENDERBUFFER_OES fromDrawable:eaglLayer];
-    
-    int width = self.frame.size.width;
-    int height = self.frame.size.width;
-    
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_CULL_FACE);
-    
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluPerspective(20, (float)width / (float) height, 5, 15);
-    glViewport(0, 0, width, height);
-    
-    glClearColor(spinClear * .1, spinClear * .1, spinClear * .1, 1.f);
-    
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_ONE, GL_SRC_COLOR);
+
+    [[CCGLQueue mainQueueWithAPI:kEAGLRenderingAPIOpenGLES1] start];
+    [[CCGLQueue mainQueueWithAPI:kEAGLRenderingAPIOpenGLES1] addOperation:^(EAGLContext *ctx){
+        
+        glGenFramebuffersOES(1, &defaultFramebuffer);
+        glGenRenderbuffersOES(1, &colorRenderbuffer);
+        
+        glBindFramebufferOES(GL_FRAMEBUFFER_OES, defaultFramebuffer);
+        glBindRenderbufferOES(GL_RENDERBUFFER_OES, colorRenderbuffer);
+        glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_COLOR_ATTACHMENT0_OES, GL_RENDERBUFFER_OES, colorRenderbuffer);
+        
+        [ctx renderbufferStorage:GL_RENDERBUFFER_OES fromDrawable:eaglLayer];
+        
+        int width = self.frame.size.width;
+        int height = self.frame.size.width;
+        
+        glEnable(GL_DEPTH_TEST);
+        glEnable(GL_CULL_FACE);
+        
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+        gluPerspective(20, (float)width / (float) height, 5, 15);
+        glViewport(0, 0, width, height);
+        
+        glClearColor(spinClear * .1, spinClear * .1, spinClear * .1, 1.f);
+        
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_ONE, GL_SRC_COLOR);
+    } ];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -194,38 +197,45 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
 {
     [super setBounds:bounds];
     CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
-    [context renderbufferStorage:GL_RENDERBUFFER_OES fromDrawable:eaglLayer];
+    [[CCGLQueue mainQueueWithAPI:kEAGLRenderingAPIOpenGLES1] addOperation:^(EAGLContext *ctx){
+        [ctx renderbufferStorage:GL_RENDERBUFFER_OES fromDrawable:eaglLayer];
+    }];
 }
 
 - (void)render:(CADisplayLink *)link
 {
-    glBindFramebufferOES(GL_FRAMEBUFFER_OES, defaultFramebuffer);
+    [[CCGLQueue mainQueueWithAPI:kEAGLRenderingAPIOpenGLES1] addOperation:^(EAGLContext *ctx){
     
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glBindFramebufferOES(GL_FRAMEBUFFER_OES, defaultFramebuffer);
+        
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        
+        glMatrixMode(GL_MODELVIEW);
+        
+        glLoadIdentity();
+        glTranslatef(0, 0, -10);
+        glRotatef(30, 1, 0, 0);
+        glScalef(scale, scale, scale);
+        glRotatef(rotation, 0, 1, 0);
+        
+        glEnableClientState(GL_VERTEX_ARRAY);
+        glEnableClientState(GL_COLOR_ARRAY);
+        
+        glVertexPointer(3, GL_FLOAT, 0, vertices);
+        glColorPointer(4, GL_UNSIGNED_BYTE, 0, colors);
+        
+        glDrawElements(GL_TRIANGLES, 12 * 3, GL_UNSIGNED_BYTE, triangles);
+        glDisableClientState(GL_COLOR_ARRAY);
+        glDisableClientState(GL_VERTEX_ARRAY);
+        
+        rotation += rotationSpeed;
+        
+        glBindRenderbufferOES(GL_RENDERBUFFER_OES, colorRenderbuffer);
     
-    glMatrixMode(GL_MODELVIEW);
+        [ctx presentRenderbuffer:GL_RENDERBUFFER_OES];
+    }];
     
-    glLoadIdentity();
-    glTranslatef(0, 0, -10);
-    glRotatef(30, 1, 0, 0);
-    glScalef(scale, scale, scale);
-    glRotatef(rotation, 0, 1, 0);
-    
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glEnableClientState(GL_COLOR_ARRAY);
-    
-    glVertexPointer(3, GL_FLOAT, 0, vertices);
-    glColorPointer(4, GL_UNSIGNED_BYTE, 0, colors);
-    
-    glDrawElements(GL_TRIANGLES, 12 * 3, GL_UNSIGNED_BYTE, triangles);
-    glDisableClientState(GL_COLOR_ARRAY);
-    glDisableClientState(GL_VERTEX_ARRAY);
-    
-    rotation += rotationSpeed;
-    
-    glBindRenderbufferOES(GL_RENDERBUFFER_OES, colorRenderbuffer);
-    
-    [context presentRenderbuffer:GL_RENDERBUFFER_OES];
+    [[CCGLQueue mainQueueWithAPI:kEAGLRenderingAPIOpenGLES1] flush];
 }
 
 

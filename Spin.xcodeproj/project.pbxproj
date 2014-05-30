@@ -21,6 +21,7 @@
 		5B64E83F164376140043E296 /* SpinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B64E83E164376140043E296 /* SpinViewController.xib */; };
 		5B64E842164376430043E296 /* SpinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64E841164376430043E296 /* SpinView.m */; };
 		5B64E8441643766E0043E296 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E8431643766E0043E296 /* QuartzCore.framework */; };
+		D285ED471937D898009F4E88 /* CCGLQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = D285ED461937D898009F4E88 /* CCGLQueue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,8 @@
 		5B64E840164376430043E296 /* SpinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinView.h; sourceTree = "<group>"; };
 		5B64E841164376430043E296 /* SpinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinView.m; sourceTree = "<group>"; };
 		5B64E8431643766E0043E296 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D285ED451937D898009F4E88 /* CCGLQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCGLQueue.h; sourceTree = "<group>"; };
+		D285ED461937D898009F4E88 /* CCGLQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCGLQueue.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +105,8 @@
 				5B64E83C164375D50043E296 /* SpinViewController.m */,
 				5B64E840164376430043E296 /* SpinView.h */,
 				5B64E841164376430043E296 /* SpinView.m */,
+				D285ED451937D898009F4E88 /* CCGLQueue.h */,
+				D285ED461937D898009F4E88 /* CCGLQueue.m */,
 				5B64E81B164373C50043E296 /* Supporting Files */,
 			);
 			path = Spin;
@@ -191,6 +196,7 @@
 			files = (
 				5B64E821164373C50043E296 /* main.m in Sources */,
 				5B64E825164373C50043E296 /* SpinAppDelegate.m in Sources */,
+				D285ED471937D898009F4E88 /* CCGLQueue.m in Sources */,
 				5B64E83D164375D50043E296 /* SpinViewController.m in Sources */,
 				5B64E842164376430043E296 /* SpinView.m in Sources */,
 			);
@@ -261,6 +267,7 @@
 		5B64E839164373C60043E296 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spin/Spin-Prefix.pch";
 				INFOPLIST_FILE = "Spin/Spin-Info.plist";
@@ -273,6 +280,7 @@
 		5B64E83A164373C60043E296 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spin/Spin-Prefix.pch";
 				INFOPLIST_FILE = "Spin/Spin-Info.plist";

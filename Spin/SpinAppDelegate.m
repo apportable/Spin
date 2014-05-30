@@ -14,19 +14,13 @@
 @synthesize window = _window;
 @synthesize viewController = _viewController;
 
-- (void)dealloc
-{
-    [_window release];
-    [_viewController release];
-    [super dealloc];
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSLog(@"application: %@ didFinishLaunchingWithOptions: %@ state: %d", application, launchOptions, [[UIApplication sharedApplication] applicationState]);
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[[SpinViewController alloc] initWithNibName:@"SpinViewController" bundle:nil] autorelease];
+    self.viewController = [[SpinViewController alloc] initWithNibName:@"SpinViewController" bundle:nil];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;

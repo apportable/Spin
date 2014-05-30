@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DE7FDEF4-4C7E-47F7-AF02-0C6717AEEDB8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Spin</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EECC43A7-5D28-49F3-805C-9A4BA3DDB143</key>
+		<string>https://github.com/apportable/Spin.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Spin.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EECC43A7-5D28-49F3-805C-9A4BA3DDB143</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/apportable/Spin.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EECC43A7-5D28-49F3-805C-9A4BA3DDB143</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EECC43A7-5D28-49F3-805C-9A4BA3DDB143</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Spin</string>
+		</dict>
+	</array>
+</dict>
+</plist>
