@@ -21,9 +21,18 @@
     [super dealloc];
 }
 
+static const char *applicationStateName(UIApplicationState state) {
+#define STATE_CASE(s) case s: return #s;
+    switch (state) {
+        STATE_CASE(UIApplicationStateActive)
+        STATE_CASE(UIApplicationStateInactive)
+        STATE_CASE(UIApplicationStateBackground)
+    }
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSLog(@"application: %@ didFinishLaunchingWithOptions: %@ state: %d", application, launchOptions, [[UIApplication sharedApplication] applicationState]);
+    NSLog(@"application: %@ didFinishLaunchingWithOptions: %@ state: %s", application, launchOptions, applicationStateName([[UIApplication sharedApplication] applicationState]));
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.viewController = [[[SpinViewController alloc] initWithNibName:@"SpinViewController" bundle:nil] autorelease];
@@ -36,32 +45,32 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    NSLog(@"applicationWillResignActive: %@ state: %d", application, [[UIApplication sharedApplication] applicationState]);
+    NSLog(@"applicationWillResignActive: %@ state: %s", application, applicationStateName([[UIApplication sharedApplication] applicationState]));
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    NSLog(@"applicationDidEnterBackground: %@ state: %d", application, [[UIApplication sharedApplication] applicationState]);
+    NSLog(@"applicationDidEnterBackground: %@ state: %s", application, applicationStateName([[UIApplication sharedApplication] applicationState]));
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    NSLog(@"applicationWillEnterForeground: %@ state: %d", application, [[UIApplication sharedApplication] applicationState]);
+    NSLog(@"applicationWillEnterForeground: %@ state: %s", application, applicationStateName([[UIApplication sharedApplication] applicationState]));
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    NSLog(@"applicationDidBecomeActive: %@ state: %d", application,[[UIApplication sharedApplication] applicationState]);
+    NSLog(@"applicationDidBecomeActive: %@ state: %s", application, applicationStateName([[UIApplication sharedApplication] applicationState]));
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    NSLog(@"applicationWillTerminate: %@ state: %d", application, [[UIApplication sharedApplication] applicationState]);
+    NSLog(@"applicationWillTerminate: %@ state: %s", application, applicationStateName([[UIApplication sharedApplication] applicationState]));
 }
 
 @end
