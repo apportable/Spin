@@ -253,7 +253,7 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
         {
             // multi touch
             NSArray *touchArray = [touches allObjects];
-            NSLog(@"multi touch detected %d", [touches count]);
+            NSLog(@"multi touch detected %@", @([touches count]));
             UITouch *touch1 = [touchArray objectAtIndex:0];
             NSLog(@"touch1 %@", touch1);
 			UITouch *touch2 = [touchArray objectAtIndex:1];
