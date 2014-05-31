@@ -22,7 +22,6 @@
     float scale;
     float rotation;
     float rotationSpeed;
-    
     BOOL zoomed;
     BOOL moved;
     CGPoint startTouchPosition;
@@ -35,24 +34,6 @@
 }
 
 static float spinClear = 1.f;
-
-static const GLubyte texture1[4 * 4] =
-{
-    255, 128,  64, 255,
-    64, 128, 255, 255,
-    
-    64, 128, 255, 255,
-    255, 128,  64, 255,
-};
-
-static const GLubyte texture2[4 * 4] =
-{
-    255, 128,  64, 255,
-    128, 255,  64, 255,
-    
-    128, 255,  64, 255,
-    255, 128,  64, 255,
-};
 
 static const GLubyte colors[8 * 4] =
 {
@@ -78,19 +59,6 @@ static const GLfloat vertices[8 * 3] =
     1,  1, -1,
     1, -1, -1,
     -1, -1, -1,
-};
-
-static const GLfloat textcoords[8 * 2] =
-{
-    0.0f,   1.0f,
-    0.0f,   0.0f,
-    1.0f,   0.0f,
-    1.0f,   1.0f,
-    
-    0.0f,   0.0f,
-    1.0f,   0.0f,
-    0.0f,   1.0f,
-    1.0f,   1.0f,
 };
 
 static const GLubyte triangles[12 * 3] =
@@ -253,7 +221,7 @@ void gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
         {
             // multi touch
             NSArray *touchArray = [touches allObjects];
-            NSLog(@"multi touch detected %@", @([touches count]));
+            NSLog(@"multi touch detected %@ touches", @([touches count]));
             UITouch *touch1 = [touchArray objectAtIndex:0];
             NSLog(@"touch1 %@", touch1);
 			UITouch *touch2 = [touchArray objectAtIndex:1];

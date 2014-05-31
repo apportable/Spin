@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UIKit/UIScreenMode.h>
 
 #import "SpinAppDelegate.h"
 
 int main(int argc, char *argv[]) {
     @autoreleasepool {
+#ifdef APPORTABLE
+        [[UIScreen mainScreen] setCurrentMode:[UIScreenMode emulatedMode:UIScreenBestEmulatedMode]];
+#endif
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([SpinAppDelegate class]));
     }
 }

@@ -8,9 +8,6 @@
 #import "SpinViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface SpinViewController ()
-
-@end
 
 @implementation SpinViewController
 
