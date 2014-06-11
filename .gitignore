@@ -1,6 +1,8 @@
 .sconsign.dblite
 *.xcuserdatad
+xcshareddata/
 /apportable/xcodebuild.out
 /apportable/xcodesettings.out
+/Spin.approj/targets/
 .sconsign.dblite
 .DS_Store
