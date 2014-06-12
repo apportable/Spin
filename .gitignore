@@ -3,6 +3,7 @@
 xcshareddata/
 /apportable/xcodebuild.out
 /apportable/xcodesettings.out
-/Spin.approj/targets/
+/Spin.approj/targets/Spin/Release.generated
+/Spin.approj/targets/Spin/Release.final
 .sconsign.dblite
 .DS_Store
