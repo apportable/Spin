@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
+#import "FBFrictionlessRequestSettings.h"
 #import "FBLoginDialog.h"
 #import "FBRequest.h"
 #import "FBSessionManualTokenCachingStrategy.h"
-#import "FBFrictionlessRequestSettings.h"
 #import "FacebookSDK.h"
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -41,33 +41,21 @@
  * and Graph APIs, and start user interface interactions (such as
  * pop-ups promoting for credentials, permissions, stream posts, etc.)
  */
-@interface Facebook : NSObject<FBLoginDialogDelegate>{
-    id<FBSessionDelegate> _sessionDelegate;
-    NSMutableSet* _requests;
-    FBSession* _session;    
-    FBSessionManualTokenCachingStrategy *_tokenCaching;
-    FBDialog* _fbDialog;
-    NSString* _appId;
-    NSString* _urlSchemeSuffix;
-    BOOL _isExtendingAccessToken;
-    FBRequest *_requestExtendingAccessToken;
-    NSDate* _lastAccessTokenUpdate;
-    FBFrictionlessRequestSettings* _frictionlessRequestSettings;
-}
+@interface Facebook : NSObject<FBLoginDialogDelegate>
 
-@property(nonatomic, copy) NSString* accessToken;
-@property(nonatomic, copy) NSDate* expirationDate;
-@property(nonatomic, assign) id<FBSessionDelegate> sessionDelegate;
-@property(nonatomic, copy) NSString* urlSchemeSuffix;
-@property(nonatomic, readonly) BOOL isFrictionlessRequestsEnabled;
-@property(nonatomic, readonly, retain) FBSession *session;
+@property (nonatomic, copy) NSString *accessToken;
+@property (nonatomic, copy) NSDate *expirationDate;
+@property (nonatomic, assign) id<FBSessionDelegate> sessionDelegate;
+@property (nonatomic, copy) NSString *urlSchemeSuffix;
+@property (nonatomic, readonly) BOOL isFrictionlessRequestsEnabled;
+@property (nonatomic, readonly, retain) FBSession *session;
 
-- (id)initWithAppId:(NSString *)appId
-        andDelegate:(id<FBSessionDelegate>)delegate;
+- (instancetype)initWithAppId:(NSString *)appId
+                  andDelegate:(id<FBSessionDelegate>)delegate;
 
-- (id)initWithAppId:(NSString *)appId
-    urlSchemeSuffix:(NSString *)urlSchemeSuffix
-        andDelegate:(id<FBSessionDelegate>)delegate;
+- (instancetype)initWithAppId:(NSString *)appId
+              urlSchemeSuffix:(NSString *)urlSchemeSuffix
+                  andDelegate:(id<FBSessionDelegate>)delegate;
 
 - (void)authorize:(NSArray *)permissions;
 
@@ -83,32 +71,40 @@
 
 - (void)logout:(id<FBSessionDelegate>)delegate;
 
-- (FBRequest*)requestWithParams:(NSMutableDictionary *)params
-                    andDelegate:(id <FBRequestDelegate>)delegate;
+- (FBRequest *)requestWithParams:(NSMutableDictionary *)params
+                     andDelegate:(id<FBRequestDelegate>)delegate;
 
-- (FBRequest*)requestWithMethodName:(NSString *)methodName
+- (FBRequest *)requestWithMethodName:(NSString *)methodName
+                           andParams:(NSMutableDictionary *)params
+                       andHttpMethod:(NSString *)httpMethod
+                         andDelegate:(id<FBRequestDelegate>)delegate;
+
+- (FBRequest *)requestWithGraphPath:(NSString *)graphPath
+                        andDelegate:(id<FBRequestDelegate>)delegate;
+
+- (FBRequest *)requestWithGraphPath:(NSString *)graphPath
+                          andParams:(NSMutableDictionary *)params
+                        andDelegate:(id<FBRequestDelegate>)delegate;
+
+- (FBRequest *)requestWithGraphPath:(NSString *)graphPath
                           andParams:(NSMutableDictionary *)params
                       andHttpMethod:(NSString *)httpMethod
-                        andDelegate:(id <FBRequestDelegate>)delegate;
-
-- (FBRequest*)requestWithGraphPath:(NSString *)graphPath
-                       andDelegate:(id <FBRequestDelegate>)delegate;
-
-- (FBRequest*)requestWithGraphPath:(NSString *)graphPath
-                         andParams:(NSMutableDictionary *)params
-                       andDelegate:(id <FBRequestDelegate>)delegate;
-
-- (FBRequest*)requestWithGraphPath:(NSString *)graphPath
-                         andParams:(NSMutableDictionary *)params
-                     andHttpMethod:(NSString *)httpMethod
-                       andDelegate:(id <FBRequestDelegate>)delegate;
+                        andDelegate:(id<FBRequestDelegate>)delegate;
 
 - (void)dialog:(NSString *)action
    andDelegate:(id<FBDialogDelegate>)delegate;
 
+#ifdef APPORTABLE
+// FBDialog custom param override prefixes NSArray of NSString prefixes
+#define kApportableWebViewControllerOverridePrefixes @"ApportableWebViewControllerOverridePrefixes"
+// FBDialog custom param override prefix (default is @"fbconnect://success" if not specified)
+#define kApportableWebViewControllerOverridePrefix   @"ApportableWebViewControllerOverridePrefix"
+// FBDialog custom param dialog view title (default is @"Facebook Dialog" if not specified)
+#define kApportableWebViewControllerTitle            @"ApportableWebViewControllerTitle"
+#endif
 - (void)dialog:(NSString *)action
      andParams:(NSMutableDictionary *)params
-   andDelegate:(id <FBDialogDelegate>)delegate;
+   andDelegate:(id<FBDialogDelegate>)delegate;
 
 - (BOOL)isSessionValid;
 
@@ -118,7 +114,7 @@
 
 - (BOOL)isFrictionlessEnabledForRecipient:(id)fbid;
 
-- (BOOL)isFrictionlessEnabledForRecipients:(NSArray*)fbids;
+- (BOOL)isFrictionlessEnabledForRecipients:(NSArray *)fbids;
 
 @end
 
@@ -146,8 +142,8 @@
  * should overwrite the old access token with the new one in this method.
  * See extendAccessToken for more details.
  */
-- (void)fbDidExtendToken:(NSString*)accessToken
-               expiresAt:(NSDate*)expiresAt;
+- (void)fbDidExtendToken:(NSString *)accessToken
+               expiresAt:(NSDate *)expiresAt;
 
 /**
  * Called when the user logged out.
@@ -174,7 +170,7 @@ enum {
     kFBRequestStateError
 };
 
-// FBRequest(Deprecated) 
+// FBRequest(Deprecated)
 //
 // Summary
 // The deprecated category is used to maintain back compat and ease migration
@@ -183,19 +179,19 @@ enum {
 /**
  * Do not use this interface directly, instead, use method in Facebook.h
  */
-@interface FBRequest(Deprecated)
+@interface FBRequest (Deprecated)
 
-@property(nonatomic,assign) id<FBRequestDelegate> delegate;
+@property (nonatomic, assign) id<FBRequestDelegate> delegate;
 
 /**
  * The URL which will be contacted to execute the request.
  */
-@property(nonatomic,copy) NSString* url;
+@property (nonatomic, copy) NSString *url;
 
 /**
  * The API method which will be called.
  */
-@property(nonatomic,copy) NSString* httpMethod;
+@property (nonatomic, copy) NSString *httpMethod;
 
 /**
  * The dictionary of parameters to pass to the method.
@@ -203,28 +199,28 @@ enum {
  * These values in the dictionary will be converted to strings using the
  * standard Objective-C object-to-string conversion facilities.
  */
-@property(nonatomic,retain) NSMutableDictionary* params;
-@property(nonatomic,retain) NSURLConnection*  connection;
-@property(nonatomic,retain) NSMutableData* responseText;
+@property (nonatomic, retain) NSMutableDictionary *params;
+@property (nonatomic, retain) NSURLConnection *connection;
+@property (nonatomic, retain) NSMutableData *responseText;
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-@property(nonatomic) FBRequestState state;
+@property (nonatomic) FBRequestState state;
 #pragma GCC diagnostic pop
-@property(nonatomic) BOOL sessionDidExpire;
+@property (nonatomic) BOOL sessionDidExpire;
 
 /**
  * Error returned by the server in case of request's failure (or nil otherwise).
  */
-@property(nonatomic,retain) NSError* error;
+@property (nonatomic, retain) NSError *error;
 
-- (BOOL) loading;
+- (BOOL)loading;
 
 + (NSString *)serializeURL:(NSString *)baseUrl
                     params:(NSDictionary *)params;
 
-+ (NSString*)serializeURL:(NSString *)baseUrl
-                   params:(NSDictionary *)params
-               httpMethod:(NSString *)httpMethod;
++ (NSString *)serializeURL:(NSString *)baseUrl
+                    params:(NSDictionary *)params
+                httpMethod:(NSString *)httpMethod;
 
 @end
 
