@@ -135,7 +135,12 @@
     "defines": {},
     // A list of dependencies.  Typically these correspond to
     // frameworks in the xcode project.
-    "deps": [],
+    "deps": [
+        // Build with environment variable TARGET_APP_STORE set to one of the following to enable either Google Play or
+        // Amazon GameCircle backing of the GameKit API
+        { "dep": "GameKitPlus", "env": {"TARGET_APP_STORE": "google"} },
+        { "dep": "GameKitAmazon", "env": {"TARGET_APP_STORE": "amazon"} },
+    ],
     // A list of source files (e.g. .m, .mm, .c, .cc, and .cpp) files to build.
     // Source files can be a string, e.g. "./main.c", or a dictionary specifying
     // the file, any special flags, any defines, and the environment
@@ -189,7 +194,10 @@
     "defines": {},
     // A list of dependencies.  Typically these correspond to
     // frameworks in the xcode project.
-    "deps": [],
+    "deps": [
+        // NOTE: you do not need to remove GameKit dependency anymore ... this is a no-op
+        "GameKit",
+    ],
     // A list of source files (e.g. .m, .mm, .c, .cc, and .cpp) files to remove from the build.
     // e.g. "./External/Reachabilty/Reachability.m"
     "sources": [],

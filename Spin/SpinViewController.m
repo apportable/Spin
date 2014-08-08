@@ -9,9 +9,12 @@
 #import <QuartzCore/QuartzCore.h>
 #import <GameKit/GameKit.h>
 
+#ifdef APPORTABLE
 // GameKit Providers on the Apportable Android platform
-#define kGameKitProviderGoogle "GooglePlay"
-#define kGameKitProviderAmazon "AmazonGameCircle"
+#define kGameKitProviderGoogle @"GooglePlay"
+#define kGameKitProviderAmazon @"AmazonGameCircle"
+extern NSString *gkProviderName;
+#endif
 
 // NOTE: Amazon GameCircle allows you to name achievements and leaderboards the same as their iOS/GameCenter counterparts...
 #define kDizzinessAchievement @"dizziness"
@@ -68,26 +71,25 @@ static int64_t gameScore = 0LL;
 	// Do any additional setup after loading the view.
     [self becomeFirstResponder];
     
-//-- you could brace this with #ifdef APPORTABLE -- but you don't need to
     [self setDizzyAchivement:kDizzinessAchievement];
     [self setSpinLeaderboard:kSpinLeaderboard];
-    const char *str = getenv("GAMEKIT_PROVIDER");
-    if (str && strcmp(str, kGameKitProviderGoogle) == 0)
+#ifdef APPORTABLE
+    if ([gkProviderName isEqualToString:kGameKitProviderGoogle])
     {
-        [_loginButton setTitle:@(str) forState:UIControlStateNormal];
+        [_loginButton setTitle:kGameKitProviderGoogle forState:UIControlStateNormal];
         [_loginButton setEnabled:NO];
         [self setDizzyAchivement:kGPGDizzinessAchievement];
         [self setSpinLeaderboard:kGPGSpinLeaderboard];
     }
-    else if (str && strcmp(str, kGameKitProviderAmazon) == 0)
+    else if ([gkProviderName isEqualToString:kGameKitProviderAmazon])
     {
-        [_loginButton setTitle:@(str) forState:UIControlStateNormal];
+        [_loginButton setTitle:kGameKitProviderAmazon forState:UIControlStateNormal];
     }
     else
     {
         NSLog(@"OOPS : no GameKit backend provider specified, expect a null implementation on Android!");
     }
-//-- #endif
+#endif
     
     [self authenticateLocalPlayer];
 }
