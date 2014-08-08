@@ -12,11 +12,11 @@ To get this running:
 
 * For Amazon GameCircle : Set up your app in the [Amazon developer console](https://developer.amazon.com/public/apis/engage/gamecircle).  Set the proper API Key value in Spin.approj/assets/api\_key.txt
 
-* Specify the GAMEKIT\_PROVIDER when building:
+* Specify the TARGET\_APP\_STORE when building:
 
-    GAMEKIT_PROVIDER=GooglePlay BUILD_TIMESTAMP=... SIGNING_PUBKEY=... ANDROID_KEYSTORE=... ANDROID_KEY_NAME=... ANDROID_KEYSTORE_PASS=... apportable load
+    TARGET_APP_STORE=google BUILD_TIMESTAMP=... SIGNING_PUBKEY=... ANDROID_KEYSTORE=... ANDROID_KEY_NAME=... ANDROID_KEYSTORE_PASS=... apportable load
 
-    GAMEKIT_PROVIDER=AmazonGameCircle BUILD_TIMESTAMP=... SIGNING_PUBKEY=... ANDROID_KEYSTORE=... ANDROID_KEY_NAME=... ANDROID_KEYSTORE_PASS=... apportable load
+    TARGET_APP_STORE=amazon BUILD_TIMESTAMP=... SIGNING_PUBKEY=... ANDROID_KEYSTORE=... ANDROID_KEY_NAME=... ANDROID_KEYSTORE_PASS=... apportable load
 
 Links:
 -----
