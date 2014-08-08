@@ -187,43 +187,37 @@ static int64_t gameScore = 0LL;
 - (IBAction)showAchievements:(id)sender
 {
     GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
-    [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
-        if (localPlayer.isAuthenticated)
+    if (localPlayer.isAuthenticated)
+    {
+        GKAchievementViewController *achievementViewController = [[GKAchievementViewController alloc] init]; // released in callback
+        if (achievementViewController != nil)
         {
-            [self.userName setText:[localPlayer alias]];
-            GKAchievementViewController *achievementViewController = [[GKAchievementViewController alloc] init]; // released in callback
-            if (achievementViewController != nil)
-            {
-                achievementViewController.achievementDelegate = self;
-                [self presentViewController:achievementViewController animated:YES completion:nil];
-            }
+            achievementViewController.achievementDelegate = self;
+            [self presentViewController:achievementViewController animated:YES completion:nil];
         }
-        else
-        {
-            [self showPseudoGameCenterOverlay:sender];
-        }
-    }];
+    }
+    else
+    {
+        [self showPseudoGameCenterOverlay:sender];
+    }
 }
 
 - (IBAction)showLeaderboards:(id)sender
 {
     GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
-    [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
-        if (localPlayer.isAuthenticated)
+    if (localPlayer.isAuthenticated)
+    {
+        GKLeaderboardViewController *leaderboardViewController = [[GKLeaderboardViewController alloc] init]; // released in callback
+        if (leaderboardViewController != nil)
         {
-            [self.userName setText:[localPlayer alias]];
-            GKLeaderboardViewController *leaderboardViewController = [[GKLeaderboardViewController alloc] init]; // released in callback
-            if (leaderboardViewController != nil)
-            {
-                leaderboardViewController.leaderboardDelegate = self;
-                [self presentViewController:leaderboardViewController animated:YES completion:nil];
-            }
+            leaderboardViewController.leaderboardDelegate = self;
+            [self presentViewController:leaderboardViewController animated:YES completion:nil];
         }
-        else
-        {
-            [self showPseudoGameCenterOverlay:sender];
-        }
-    }];
+    }
+    else
+    {
+        [self showPseudoGameCenterOverlay:sender];
+    }
 }
 
 - (void)didReceiveMemoryWarning
