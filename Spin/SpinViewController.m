@@ -7,7 +7,7 @@
 
 #import "SpinViewController.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import <MediaPlayer/MediaPlayer.h>
 
 @implementation SpinViewController
 
@@ -28,6 +28,20 @@
     [link addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 	// Do any additional setup after loading the view.
     [self becomeFirstResponder];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"cats" withExtension:@"mp4"];
+    MPMoviePlayerViewController *viewController = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
+    
+    [viewController.view setBackgroundColor:[UIColor clearColor]];
+    [viewController.moviePlayer setScalingMode:MPMovieScalingModeFill];
+    [viewController.moviePlayer setRepeatMode:MPMovieRepeatModeOne];
+    [viewController.moviePlayer setMovieSourceType:MPMovieSourceTypeFile];
+    [viewController.moviePlayer setShouldAutoplay:YES];
+    
+    [self presentMoviePlayerViewControllerAnimated:viewController];
 }
 
 - (void)didReceiveMemoryWarning
