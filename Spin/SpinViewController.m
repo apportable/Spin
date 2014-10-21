@@ -10,6 +10,8 @@
 
 #import <netinet/in.h>
 #import <SystemConfiguration/SCNetworkReachability.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <SystemConfiguration/SCDynamicStoreCopySpecific.h>
 
 @interface SpinViewController ()
 
@@ -68,28 +70,16 @@
     [self becomeFirstResponder];
     
     self.summaryLabel.hidden = YES;
-    
-    /*
-     Observe the kNetworkReachabilityChangedNotification. When that notification is posted, the method reachabilityChanged will be called.
-     */
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
-    
-    //Change the host name here to change the server you want to monitor.
-    NSString *remoteHostName = @"www.apple.com";
-    NSString *remoteHostLabelFormatString = NSLocalizedString(@"Remote Host: %@", @"Remote host label format string");
-    self.remoteHostLabel.text = [NSString stringWithFormat:remoteHostLabelFormatString, remoteHostName];
-    
-    self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
-    [self.hostReachability startNotifier];
-    [self updateInterfaceWithReachability:self.hostReachability];
-    
-    self.internetReachability = [Reachability reachabilityForInternetConnection];
-    [self.internetReachability startNotifier];
-    [self updateInterfaceWithReachability:self.internetReachability];
-    
-    self.wifiReachability = [Reachability reachabilityForLocalWiFi];
-    [self.wifiReachability startNotifier];
-    [self updateInterfaceWithReachability:self.wifiReachability];
+
+    // SCDynamicStoreCopy Test
+    SCDynamicStoreRef store = NULL;
+    NSString *hostName = (__bridge NSString *)SCDynamicStoreCopyLocalHostName(store);
+    NSLog(@"HostName: %@", hostName);
+    [hostName release];
+
+    NSString *deviceName = (__bridge NSString *)SCDynamicStoreCopyComputerName(store, NULL);
+    NSLog(@"Computer Name: %@", deviceName);
+    [deviceName release];
 }
 
 - (void)didReceiveMemoryWarning
