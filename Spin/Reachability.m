@@ -162,7 +162,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 		returnValue->localWiFiRef = YES;
 	}
     
-	return [returnValue autorelease];
+	return returnValue;
 }
 
 #pragma mark - Start and stop notifier
