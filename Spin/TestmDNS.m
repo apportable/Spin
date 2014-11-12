@@ -44,7 +44,7 @@
 + (void)testNsdManager
 {
     NSLog(@"DAPHDAPHDAPHDAPH: %s: %d", __func__, __LINE__);
-    AndroidNsdManager *mgr = (AndroidNsdManager *)[[AndroidActivity currentActivity] nsdManager];
+    BK2AndroidNsdManager *mgr = (BK2AndroidNsdManager *)[[BK2AndroidActivity currentActivity] nsdManager];
     [mgr discoverServices:@"_http._tcp"];
 
     [mgr registerService:@"TestmDns" serviceType:@"_http._tcp" servicePort:8889];

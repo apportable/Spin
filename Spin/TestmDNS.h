@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <BridgeKit/AndroidActivity.h>
-#import <BridgeKit/AndroidNsdManager.h>
+#import <BridgeKit/BK2AndroidActivity.h>
+#import <BridgeKit/BK2AndroidNsdManager.h>
 #import <dns_sd.h>
 
 @interface TestmDNS : NSObject
