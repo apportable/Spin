@@ -21,6 +21,19 @@
 		5B64E83F164376140043E296 /* SpinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B64E83E164376140043E296 /* SpinViewController.xib */; };
 		5B64E842164376430043E296 /* SpinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B64E841164376430043E296 /* SpinView.m */; };
 		5B64E8441643766E0043E296 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E8431643766E0043E296 /* QuartzCore.framework */; };
+		CA25DF711A4369090028CDE2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E8431643766E0043E296 /* QuartzCore.framework */; };
+		CA25DF721A4369090028CDE2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E810164373C50043E296 /* UIKit.framework */; };
+		CA25DF731A4369090028CDE2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E812164373C50043E296 /* Foundation.framework */; };
+		CA25DF741A4369090028CDE2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E814164373C50043E296 /* CoreGraphics.framework */; };
+		CA25DF751A4369090028CDE2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B64E818164373C50043E296 /* OpenGLES.framework */; };
+		CA25DF771A4369090028CDE2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B64E81D164373C50043E296 /* InfoPlist.strings */; };
+		CA25DF781A4369090028CDE2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B64E826164373C50043E296 /* Default.png */; };
+		CA25DF791A4369090028CDE2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B64E828164373C50043E296 /* Default@2x.png */; };
+		CA25DF7A1A4369090028CDE2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B64E82A164373C50043E296 /* Default-568h@2x.png */; };
+		CA25DF7B1A4369090028CDE2 /* SpinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B64E83E164376140043E296 /* SpinViewController.xib */; };
+		CA25DF811A4369330028CDE2 /* SpinAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25DF631A435F920028CDE2 /* SpinAppDelegate.swift */; };
+		CA25DF821A4369350028CDE2 /* SpinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25DF661A43600B0028CDE2 /* SpinViewController.swift */; };
+		CA25DF831A4369370028CDE2 /* SpinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25DF681A43604E0028CDE2 /* SpinView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +58,11 @@
 		5B64E840164376430043E296 /* SpinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinView.h; sourceTree = "<group>"; };
 		5B64E841164376430043E296 /* SpinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinView.m; sourceTree = "<group>"; };
 		5B64E8431643766E0043E296 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CA25DF631A435F920028CDE2 /* SpinAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinAppDelegate.swift; sourceTree = "<group>"; };
+		CA25DF661A43600B0028CDE2 /* SpinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinViewController.swift; sourceTree = "<group>"; };
+		CA25DF681A43604E0028CDE2 /* SpinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinView.swift; sourceTree = "<group>"; };
+		CA25DF7F1A4369090028CDE2 /* SpinSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpinSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA25DF801A43690D0028CDE2 /* SpinSwift-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpinSwift-Info.plist"; path = "/Users/paulb/apps/Spin/SpinSwift-Info.plist"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,15 +78,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CA25DF701A4369090028CDE2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA25DF711A4369090028CDE2 /* QuartzCore.framework in Frameworks */,
+				CA25DF721A4369090028CDE2 /* UIKit.framework in Frameworks */,
+				CA25DF731A4369090028CDE2 /* Foundation.framework in Frameworks */,
+				CA25DF741A4369090028CDE2 /* CoreGraphics.framework in Frameworks */,
+				CA25DF751A4369090028CDE2 /* OpenGLES.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		5B64E801164373C50043E296 = {
 			isa = PBXGroup;
 			children = (
+				CA25DF621A435F710028CDE2 /* Swift */,
 				5B64E81A164373C50043E296 /* Spin */,
 				5B64E80F164373C50043E296 /* Frameworks */,
 				5B64E80D164373C50043E296 /* Products */,
+				CA25DF801A43690D0028CDE2 /* SpinSwift-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				5B64E80C164373C50043E296 /* Spin.app */,
+				CA25DF7F1A4369090028CDE2 /* SpinSwift.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,6 +155,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CA25DF621A435F710028CDE2 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				CA25DF631A435F920028CDE2 /* SpinAppDelegate.swift */,
+				CA25DF661A43600B0028CDE2 /* SpinViewController.swift */,
+				CA25DF681A43604E0028CDE2 /* SpinView.swift */,
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,6 +183,23 @@
 			name = Spin;
 			productName = ThisWayIsUp;
 			productReference = 5B64E80C164373C50043E296 /* Spin.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CA25DF6A1A4369090028CDE2 /* SpinSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA25DF7C1A4369090028CDE2 /* Build configuration list for PBXNativeTarget "SpinSwift" */;
+			buildPhases = (
+				CA25DF6B1A4369090028CDE2 /* Sources */,
+				CA25DF701A4369090028CDE2 /* Frameworks */,
+				CA25DF761A4369090028CDE2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpinSwift;
+			productName = ThisWayIsUp;
+			productReference = CA25DF7F1A4369090028CDE2 /* SpinSwift.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -165,6 +225,7 @@
 			projectRoot = "";
 			targets = (
 				5B64E80B164373C50043E296 /* Spin */,
+				CA25DF6A1A4369090028CDE2 /* SpinSwift */,
 			);
 		};
 /* End PBXProject section */
@@ -182,6 +243,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CA25DF761A4369090028CDE2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA25DF771A4369090028CDE2 /* InfoPlist.strings in Resources */,
+				CA25DF781A4369090028CDE2 /* Default.png in Resources */,
+				CA25DF791A4369090028CDE2 /* Default@2x.png in Resources */,
+				CA25DF7A1A4369090028CDE2 /* Default-568h@2x.png in Resources */,
+				CA25DF7B1A4369090028CDE2 /* SpinViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -193,6 +266,16 @@
 				5B64E825164373C50043E296 /* SpinAppDelegate.m in Sources */,
 				5B64E83D164375D50043E296 /* SpinViewController.m in Sources */,
 				5B64E842164376430043E296 /* SpinView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA25DF6B1A4369090028CDE2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA25DF811A4369330028CDE2 /* SpinAppDelegate.swift in Sources */,
+				CA25DF821A4369350028CDE2 /* SpinViewController.swift in Sources */,
+				CA25DF831A4369370028CDE2 /* SpinView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,10 +344,14 @@
 		5B64E839164373C60043E296 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spin/Spin-Prefix.pch";
 				INFOPLIST_FILE = "Spin/Spin-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Spin;
+				SWIFT_OBJC_BRIDGING_HEADER = "Swift/Spin-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USER_HEADER_SEARCH_PATHS = "$SRCROOT/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -273,10 +360,46 @@
 		5B64E83A164373C60043E296 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spin/Spin-Prefix.pch";
 				INFOPLIST_FILE = "Spin/Spin-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Spin;
+				SWIFT_OBJC_BRIDGING_HEADER = "Swift/Spin-Bridging-Header.h";
+				USER_HEADER_SEARCH_PATHS = "$SRCROOT/**";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		CA25DF7D1A4369090028CDE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Spin/Spin-Prefix.pch";
+				INFOPLIST_FILE = "SpinSwift-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = SpinSwift;
+				SWIFT_OBJC_BRIDGING_HEADER = "Swift/Spin-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USER_HEADER_SEARCH_PATHS = "$SRCROOT/**";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CA25DF7E1A4369090028CDE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Spin/Spin-Prefix.pch";
+				INFOPLIST_FILE = "SpinSwift-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = SpinSwift;
+				SWIFT_OBJC_BRIDGING_HEADER = "Swift/Spin-Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "$SRCROOT/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -299,6 +422,15 @@
 			buildConfigurations = (
 				5B64E839164373C60043E296 /* Debug */,
 				5B64E83A164373C60043E296 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA25DF7C1A4369090028CDE2 /* Build configuration list for PBXNativeTarget "SpinSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA25DF7D1A4369090028CDE2 /* Debug */,
+				CA25DF7E1A4369090028CDE2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
