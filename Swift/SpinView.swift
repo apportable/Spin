@@ -10,7 +10,7 @@ import UIKit
 
 @objc(SpinView)
 class SpinView : UIView {
-    var context : EAGLContext!
+    var context : EAGLContext?
     var defaultFramebuffer : GLuint = 0
     var colorRenderbuffer : GLuint = 0
     var scale : Float = 0
@@ -94,7 +94,7 @@ class SpinView : UIView {
         eaglLayer.drawableProperties = [
             kEAGLDrawablePropertyRetainedBacking : false,
             kEAGLDrawablePropertyColorFormat : kEAGLColorFormatRGBA8
-        ];
+        ] as NSDictionary
         context = EAGLContext(API:EAGLRenderingAPI.OpenGLES1)
         
         EAGLContext.setCurrentContext(context);
@@ -139,8 +139,8 @@ class SpinView : UIView {
     func setBounds(bounds : CGRect)
     {
         super.bounds = bounds;
-        let eaglLayer : CAEAGLLayer = CAEAGLLayer(layer: self.layer)
-        self.context!.renderbufferStorage(Int(GL_RENDERBUFFER_OES), fromDrawable:eaglLayer)
+        let eaglLayer : CAEAGLLayer = self.layer as CAEAGLLayer
+        self.context?.renderbufferStorage(Int(GL_RENDERBUFFER_OES), fromDrawable:eaglLayer)
     }
     
     func render(link : CADisplayLink)
@@ -171,6 +171,6 @@ class SpinView : UIView {
         
         glBindRenderbufferOES(GLenum(GL_RENDERBUFFER_OES), colorRenderbuffer);
         
-        self.context!.presentRenderbuffer(Int(GL_RENDERBUFFER_OES))
+        self.context?.presentRenderbuffer(Int(GL_RENDERBUFFER_OES))
     }
 }
