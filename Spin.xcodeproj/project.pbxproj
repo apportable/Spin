@@ -382,7 +382,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = SpinSwift;
-				SWIFT_OBJC_BRIDGING_HEADER = "Swift/Spin-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USER_HEADER_SEARCH_PATHS = "$SRCROOT/**";
 				WRAPPER_EXTENSION = app;
@@ -399,7 +399,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = SpinSwift;
-				SWIFT_OBJC_BRIDGING_HEADER = "Swift/Spin-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				USER_HEADER_SEARCH_PATHS = "$SRCROOT/**";
 				WRAPPER_EXTENSION = app;
 			};
